@@ -5,7 +5,7 @@
 | Thông tin         | Nội dung                                                                            |
 | ----------------- | ----------------------------------------------------------------------------------- |
 | Họ và tên        | Trần Huy Hoàng                                                                     |
-| MSSV              | [MSSV — tự điền]                                                                  |
+| MSSV              | 2A202601709                                                                  |
 | Khóa/Lớp         | K3                                                                                    |
 | Tên nhóm         | Lúc Lắc Vàng                                                                       |
 | Vai trò chính     | Source & data-model owner (ingestion, cleaning, evaluation set)                       |
