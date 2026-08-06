@@ -6,8 +6,8 @@
 |---|---|
 | Họ và tên | Hà Nhật Khánh Duy |
 | MSSV | 2A202602031 |
-| Khóa/Lớp | K3 — Day 10 |
-| Tên nhóm | Crossref Scholarly RAG |
+| Khóa/Lớp | K3 — E403 |
+| Tên nhóm | LucLacVang |
 | Vai trò chính | Data ingestion và cleaning |
 | Repository | K3_Day10_Data-Pipeline-Data-Observability-Luc-Lac-Vang |
 | Ngày hoàn thành | 2026-08-06 |
