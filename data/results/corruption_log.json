@@ -1,0 +1,49 @@
+{
+  "generated_at": "2026-08-06T03:44:30.416869+00:00",
+  "source_rows": 197,
+  "corrupted_rows": 198,
+  "frozen_test_set": "D:\\Projects\\K3_Day10_Data-Pipeline-Data-Observability-Luc-Lac-Vang\\data\\eval\\test_set.json",
+  "frozen_doc_ids_available": [
+    "10.1002/9781118445112.stat08455",
+    "10.1007/s10994-022-06200-0",
+    "10.1007/978-1-0716-3195-9_2",
+    "10.1007/s44379-025-00016-0",
+    "10.1029/2024jh000434",
+    "10.1029/2025jh000676",
+    "10.1029/2024jh000135",
+    "10.1029/2025jh000835",
+    "10.1029/2024jh000184",
+    "10.1029/2026jh001264"
+  ],
+  "scenarios": [
+    {
+      "name": "blank_summary",
+      "paper_ids": [
+        "10.1002/9781118445112.stat08455"
+      ],
+      "rows_affected": 1
+    },
+    {
+      "name": "stale_date",
+      "paper_ids": [
+        "10.1007/s10994-022-06200-0"
+      ],
+      "new_published": "2000-01-01",
+      "rows_affected": 1
+    },
+    {
+      "name": "duplicate_id",
+      "paper_ids": [
+        "10.1007/978-1-0716-3195-9_2"
+      ],
+      "rows_added": 1
+    },
+    {
+      "name": "embedding_noise",
+      "paper_ids": [
+        "10.1007/s44379-025-00016-0"
+      ],
+      "rows_affected": 1
+    }
+  ]
+}

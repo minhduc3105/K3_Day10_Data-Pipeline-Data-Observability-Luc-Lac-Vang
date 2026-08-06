@@ -1,0 +1,28 @@
+{
+  "report_name": "corrupted_quality",
+  "total_rows": 198,
+  "is_valid": false,
+  "checks": {
+    "row_count": {
+      "passed": true,
+      "observed": 198,
+      "expected": "> 0"
+    },
+    "paper_id_complete": {
+      "passed": true,
+      "observed_missing": 0
+    },
+    "paper_id_unique": {
+      "passed": false,
+      "observed_duplicates": 1
+    },
+    "title_complete": {
+      "passed": true,
+      "observed_missing": 0
+    },
+    "summary_min_length": {
+      "passed": false,
+      "observed_below_100_chars": 1
+    }
+  }
+}

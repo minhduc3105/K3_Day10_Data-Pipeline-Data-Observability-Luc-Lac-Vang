@@ -1,0 +1,28 @@
+{
+  "report_name": "repaired_quality",
+  "total_rows": 197,
+  "is_valid": true,
+  "checks": {
+    "row_count": {
+      "passed": true,
+      "observed": 197,
+      "expected": "> 0"
+    },
+    "paper_id_complete": {
+      "passed": true,
+      "observed_missing": 0
+    },
+    "paper_id_unique": {
+      "passed": true,
+      "observed_duplicates": 0
+    },
+    "title_complete": {
+      "passed": true,
+      "observed_missing": 0
+    },
+    "summary_min_length": {
+      "passed": true,
+      "observed_below_100_chars": 0
+    }
+  }
+}

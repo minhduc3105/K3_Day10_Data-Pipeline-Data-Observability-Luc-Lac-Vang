@@ -17,6 +17,7 @@ def test_build_test_set_is_factual_deterministic_and_persisted(tmp_path) -> None
                 "authors_joined": f"Author {index}",
                 "published": "2026-08-01",
                 "categories_joined": "Machine Learning",
+                "comment": f"Publisher {index}",
             }
             for index in range(8)
         ]
@@ -25,11 +26,13 @@ def test_build_test_set_is_factual_deterministic_and_persisted(tmp_path) -> None
 
     samples = build_test_set(dataframe.sample(frac=1, random_state=7), output_path)
 
-    assert len(samples) == MIN_TEST_SET_SIZE
-    assert [sample["id"] for sample in samples] == [f"q{index}" for index in range(1, MIN_TEST_SET_SIZE + 1)]
+    assert len(samples) >= MIN_TEST_SET_SIZE
+    assert [sample["id"] for sample in samples] == [f"q{index}" for index in range(1, len(samples) + 1)]
     assert all(sample["question_type"] == "factual" for sample in samples)
     assert all(len(sample["ground_truth_doc_ids"]) == 1 for sample in samples)
     assert samples[0]["question"] == "Who authored 'Paper 0'?"
+    assert samples[1]["question"] == "When was 'Paper 0' published?"
+    assert samples[2]["question"] == "What categories does 'Paper 0' belong to?"
     assert json.loads(output_path.read_text(encoding="utf-8")) == samples
 
 

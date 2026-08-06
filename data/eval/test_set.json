@@ -20,8 +20,8 @@
   {
     "id": "q3",
     "question_type": "factual",
-    "question": "What is the main point of 'Developing and Running Machine Learning Software: Machine Learning Operations (MLOps)'?",
-    "ground_truth": "Abstract Machine learning software is fundamentally different from most other software in one important respect: it is tightly linked with data.",
+    "question": "Which publisher is listed for 'Developing and Running Machine Learning Software: Machine Learning Operations (MLOps)'?",
+    "ground_truth": "Wiley",
     "ground_truth_doc_ids": [
       "10.1002/9781118445112.stat08455"
     ]
@@ -29,32 +29,104 @@
   {
     "id": "q4",
     "question_type": "factual",
-    "question": "Who authored 'Classic Machine Learning Methods'?",
+    "question": "What DOI identifies 'Developing and Running Machine Learning Software: Machine Learning Operations (MLOps)'?",
+    "ground_truth": "10.1002/9781118445112.stat08455",
+    "ground_truth_doc_ids": [
+      "10.1002/9781118445112.stat08455"
+    ]
+  },
+  {
+    "id": "q5",
+    "question_type": "factual",
+    "question": "What is the DOI landing-page URL for 'Developing and Running Machine Learning Software: Machine Learning Operations (MLOps)'?",
+    "ground_truth": "https://doi.org/10.1002/9781118445112.stat08455",
+    "ground_truth_doc_ids": [
+      "10.1002/9781118445112.stat08455"
+    ]
+  },
+  {
+    "id": "q6",
+    "question_type": "factual",
+    "question": "Where is the PDF URL for 'Naive automated machine learning'?",
+    "ground_truth": "https://link.springer.com/content/pdf/10.1007/s10994-022-06200-0.pdf",
+    "ground_truth_doc_ids": [
+      "10.1007/s10994-022-06200-0"
+    ]
+  },
+  {
+    "id": "q7",
+    "question_type": "factual",
+    "question": "What is the main point of 'Developing and Running Machine Learning Software: Machine Learning Operations (MLOps)'?",
+    "ground_truth": "Abstract Machine learning software is fundamentally different from most other software in one important respect: it is tightly linked with data.",
+    "ground_truth_doc_ids": [
+      "10.1002/9781118445112.stat08455"
+    ]
+  },
+  {
+    "id": "q8",
+    "question_type": "factual",
+    "question": "Name the author(s) of 'Classic Machine Learning Methods'.",
     "ground_truth": "Johann Faouzi, Olivier Colliot",
     "ground_truth_doc_ids": [
       "10.1007/978-1-0716-3195-9_2"
     ]
   },
   {
-    "id": "q5",
+    "id": "q9",
     "question_type": "factual",
-    "question": "When was 'Classic Machine Learning Methods' published?",
+    "question": "What is the publication date of 'Classic Machine Learning Methods'?",
     "ground_truth": "2023-01-01",
     "ground_truth_doc_ids": [
       "10.1007/978-1-0716-3195-9_2"
     ]
   },
   {
-    "id": "q6",
+    "id": "q10",
     "question_type": "factual",
-    "question": "What is the main point of 'Classic Machine Learning Methods'?",
+    "question": "Who published 'Classic Machine Learning Methods'?",
+    "ground_truth": "Springer US",
+    "ground_truth_doc_ids": [
+      "10.1007/978-1-0716-3195-9_2"
+    ]
+  },
+  {
+    "id": "q11",
+    "question_type": "factual",
+    "question": "Give the DOI for 'Classic Machine Learning Methods'.",
+    "ground_truth": "10.1007/978-1-0716-3195-9_2",
+    "ground_truth_doc_ids": [
+      "10.1007/978-1-0716-3195-9_2"
+    ]
+  },
+  {
+    "id": "q12",
+    "question_type": "factual",
+    "question": "Where can the DOI record for 'Classic Machine Learning Methods' be found?",
+    "ground_truth": "https://doi.org/10.1007/978-1-0716-3195-9_2",
+    "ground_truth_doc_ids": [
+      "10.1007/978-1-0716-3195-9_2"
+    ]
+  },
+  {
+    "id": "q13",
+    "question_type": "factual",
+    "question": "What PDF link is recorded for 'When physics meets machine learning: a survey of physics-informed machine learning'?",
+    "ground_truth": "https://link.springer.com/content/pdf/10.1007/s44379-025-00016-0.pdf",
+    "ground_truth_doc_ids": [
+      "10.1007/s44379-025-00016-0"
+    ]
+  },
+  {
+    "id": "q14",
+    "question_type": "factual",
+    "question": "According to its abstract, what does 'Classic Machine Learning Methods' describe?",
     "ground_truth": "Abstract In this chapter, we present the main classic machine learning methods.",
     "ground_truth_doc_ids": [
       "10.1007/978-1-0716-3195-9_2"
     ]
   },
   {
-    "id": "q7",
+    "id": "q15",
     "question_type": "factual",
     "question": "Who authored 'Naive automated machine learning'?",
     "ground_truth": "Felix Mohr, Marcel Wever",
@@ -63,7 +135,7 @@
     ]
   },
   {
-    "id": "q8",
+    "id": "q16",
     "question_type": "factual",
     "question": "When was 'Naive automated machine learning' published?",
     "ground_truth": "2023-04-01",
@@ -72,7 +144,43 @@
     ]
   },
   {
-    "id": "q9",
+    "id": "q17",
+    "question_type": "factual",
+    "question": "Which publisher is listed for 'Naive automated machine learning'?",
+    "ground_truth": "Springer Science and Business Media LLC",
+    "ground_truth_doc_ids": [
+      "10.1007/s10994-022-06200-0"
+    ]
+  },
+  {
+    "id": "q18",
+    "question_type": "factual",
+    "question": "What DOI identifies 'Naive automated machine learning'?",
+    "ground_truth": "10.1007/s10994-022-06200-0",
+    "ground_truth_doc_ids": [
+      "10.1007/s10994-022-06200-0"
+    ]
+  },
+  {
+    "id": "q19",
+    "question_type": "factual",
+    "question": "What is the DOI landing-page URL for 'Naive automated machine learning'?",
+    "ground_truth": "https://doi.org/10.1007/s10994-022-06200-0",
+    "ground_truth_doc_ids": [
+      "10.1007/s10994-022-06200-0"
+    ]
+  },
+  {
+    "id": "q20",
+    "question_type": "factual",
+    "question": "Where is the PDF URL for 'Machine Learning Potential for Serpentines'?",
+    "ground_truth": "https://agupubs.onlinelibrary.wiley.com/doi/pdf/10.1029/2024JH000434",
+    "ground_truth_doc_ids": [
+      "10.1029/2024jh000434"
+    ]
+  },
+  {
+    "id": "q21",
     "question_type": "factual",
     "question": "What is the main point of 'Naive automated machine learning'?",
     "ground_truth": "Abstract An essential task of automated machine learning ( $$\\text {AutoML}$$ AutoML ) is the problem of automatically finding the pipeline with the best generalization performance on a given dataset.",
@@ -81,34 +189,70 @@
     ]
   },
   {
-    "id": "q10",
+    "id": "q22",
     "question_type": "factual",
-    "question": "Who authored 'When physics meets machine learning: a survey of physics-informed machine learning'?",
+    "question": "Name the author(s) of 'When physics meets machine learning: a survey of physics-informed machine learning'.",
     "ground_truth": "Chuizheng Meng, Sam Griesemer, Defu Cao, Sungyong Seo, Yan Liu",
     "ground_truth_doc_ids": [
       "10.1007/s44379-025-00016-0"
     ]
   },
   {
-    "id": "q11",
+    "id": "q23",
     "question_type": "factual",
-    "question": "When was 'When physics meets machine learning: a survey of physics-informed machine learning' published?",
+    "question": "What is the publication date of 'When physics meets machine learning: a survey of physics-informed machine learning'?",
     "ground_truth": "2025-06-01",
     "ground_truth_doc_ids": [
       "10.1007/s44379-025-00016-0"
     ]
   },
   {
-    "id": "q12",
+    "id": "q24",
     "question_type": "factual",
-    "question": "What is the main point of 'When physics meets machine learning: a survey of physics-informed machine learning'?",
+    "question": "Who published 'When physics meets machine learning: a survey of physics-informed machine learning'?",
+    "ground_truth": "Springer Science and Business Media LLC",
+    "ground_truth_doc_ids": [
+      "10.1007/s44379-025-00016-0"
+    ]
+  },
+  {
+    "id": "q25",
+    "question_type": "factual",
+    "question": "Give the DOI for 'When physics meets machine learning: a survey of physics-informed machine learning'.",
+    "ground_truth": "10.1007/s44379-025-00016-0",
+    "ground_truth_doc_ids": [
+      "10.1007/s44379-025-00016-0"
+    ]
+  },
+  {
+    "id": "q26",
+    "question_type": "factual",
+    "question": "Where can the DOI record for 'When physics meets machine learning: a survey of physics-informed machine learning' be found?",
+    "ground_truth": "https://doi.org/10.1007/s44379-025-00016-0",
+    "ground_truth_doc_ids": [
+      "10.1007/s44379-025-00016-0"
+    ]
+  },
+  {
+    "id": "q27",
+    "question_type": "factual",
+    "question": "What PDF link is recorded for 'Approximation of Daily AMS\u201002 Spectra With Machine Learning Methods'?",
+    "ground_truth": "https://agupubs.onlinelibrary.wiley.com/doi/pdf/10.1029/2025JH000676",
+    "ground_truth_doc_ids": [
+      "10.1029/2025jh000676"
+    ]
+  },
+  {
+    "id": "q28",
+    "question_type": "factual",
+    "question": "According to its abstract, what does 'When physics meets machine learning: a survey of physics-informed machine learning' describe?",
     "ground_truth": "Abstract Physics-informed machine learning (PIML), the combination of prior physics knowledge with data-driven machine learning models, has emerged as an effective means of mitigating a shortage of training data, increasing model generalizability, and ensuring physical plausibility of results.",
     "ground_truth_doc_ids": [
       "10.1007/s44379-025-00016-0"
     ]
   },
   {
-    "id": "q13",
+    "id": "q29",
     "question_type": "factual",
     "question": "Who authored 'Automated River Substrate Mapping From Sonar Imagery With Machine Learning'?",
     "ground_truth": "C. S. Bodine, D. Buscombe, T. D. Hocking",
@@ -117,7 +261,7 @@
     ]
   },
   {
-    "id": "q14",
+    "id": "q30",
     "question_type": "factual",
     "question": "When was 'Automated River Substrate Mapping From Sonar Imagery With Machine Learning' published?",
     "ground_truth": "2024-09-01",
@@ -126,7 +270,43 @@
     ]
   },
   {
-    "id": "q15",
+    "id": "q31",
+    "question_type": "factual",
+    "question": "Which publisher is listed for 'Automated River Substrate Mapping From Sonar Imagery With Machine Learning'?",
+    "ground_truth": "American Geophysical Union (AGU)",
+    "ground_truth_doc_ids": [
+      "10.1029/2024jh000135"
+    ]
+  },
+  {
+    "id": "q32",
+    "question_type": "factual",
+    "question": "What DOI identifies 'Automated River Substrate Mapping From Sonar Imagery With Machine Learning'?",
+    "ground_truth": "10.1029/2024jh000135",
+    "ground_truth_doc_ids": [
+      "10.1029/2024jh000135"
+    ]
+  },
+  {
+    "id": "q33",
+    "question_type": "factual",
+    "question": "What is the DOI landing-page URL for 'Automated River Substrate Mapping From Sonar Imagery With Machine Learning'?",
+    "ground_truth": "https://doi.org/10.1029/2024jh000135",
+    "ground_truth_doc_ids": [
+      "10.1029/2024jh000135"
+    ]
+  },
+  {
+    "id": "q34",
+    "question_type": "factual",
+    "question": "Where is the PDF URL for 'Quantitative Characterization of Gravel Bed Structures Using 2DSSFs and Machine Learning\u2010Based Surrogate Surface Generation'?",
+    "ground_truth": "https://agupubs.onlinelibrary.wiley.com/doi/pdf/10.1029/2025JH000835",
+    "ground_truth_doc_ids": [
+      "10.1029/2025jh000835"
+    ]
+  },
+  {
+    "id": "q35",
     "question_type": "factual",
     "question": "What is the main point of 'Automated River Substrate Mapping From Sonar Imagery With Machine Learning'?",
     "ground_truth": "Abstract Knowledge of the variation and distribution of substrates at large spatial extents in aquatic systems, particularly rivers, is severely lacking, impeding species conservation and ecosystem restoration efforts.",
@@ -135,138 +315,66 @@
     ]
   },
   {
-    "id": "q16",
+    "id": "q36",
     "question_type": "factual",
-    "question": "Who authored 'Our Vision for JGR: Machine Learning and Computation'?",
+    "question": "Name the author(s) of 'Our Vision for JGR: Machine Learning and Computation'.",
     "ground_truth": "E. Camporeale, R. Marino, the Editorial Board",
     "ground_truth_doc_ids": [
       "10.1029/2024jh000184"
     ]
   },
   {
-    "id": "q17",
+    "id": "q37",
     "question_type": "factual",
-    "question": "When was 'Our Vision for JGR: Machine Learning and Computation' published?",
+    "question": "What is the publication date of 'Our Vision for JGR: Machine Learning and Computation'?",
     "ground_truth": "2024-03-01",
     "ground_truth_doc_ids": [
       "10.1029/2024jh000184"
     ]
   },
   {
-    "id": "q18",
+    "id": "q38",
     "question_type": "factual",
-    "question": "What is the main point of 'Our Vision for JGR: Machine Learning and Computation'?",
-    "ground_truth": "Abstract This editorial introduces the inaugural issue of the Journal of Geophysical Research: Machine Learning and Computation to the scientific community, elucidating the motivations and vision behind its establishment.",
+    "question": "Who published 'Our Vision for JGR: Machine Learning and Computation'?",
+    "ground_truth": "American Geophysical Union (AGU)",
     "ground_truth_doc_ids": [
       "10.1029/2024jh000184"
     ]
   },
   {
-    "id": "q19",
+    "id": "q39",
     "question_type": "factual",
-    "question": "Who authored 'Machine Learning\u2010Based Hydrofacies Classification: Effects of Noise and Regularization'?",
-    "ground_truth": "Emmanuel Oladeji, Andrew Parsekian, Dario Grana",
+    "question": "Give the DOI for 'Our Vision for JGR: Machine Learning and Computation'.",
+    "ground_truth": "10.1029/2024jh000184",
     "ground_truth_doc_ids": [
-      "10.1029/2024jh000197"
+      "10.1029/2024jh000184"
     ]
   },
   {
-    "id": "q20",
+    "id": "q40",
     "question_type": "factual",
-    "question": "When was 'Machine Learning\u2010Based Hydrofacies Classification: Effects of Noise and Regularization' published?",
-    "ground_truth": "2024-09-01",
+    "question": "Where can the DOI record for 'Our Vision for JGR: Machine Learning and Computation' be found?",
+    "ground_truth": "https://doi.org/10.1029/2024jh000184",
     "ground_truth_doc_ids": [
-      "10.1029/2024jh000197"
+      "10.1029/2024jh000184"
     ]
   },
   {
-    "id": "q21",
+    "id": "q41",
     "question_type": "factual",
-    "question": "What is the main point of 'Machine Learning\u2010Based Hydrofacies Classification: Effects of Noise and Regularization'?",
-    "ground_truth": "Abstract This study utilizes an unsupervised ML approach, the expectation\u2010maximization (EM) algorithm using Gaussian Mixture Models (GMM), to integrate near\u2010surface geophysics measurements for hydrofacies classification.",
+    "question": "What PDF link is recorded for 'A Machine Learning Approach for Volcanic Eruption Mass Estimation'?",
+    "ground_truth": "https://agupubs.onlinelibrary.wiley.com/doi/pdf/10.1029/2026JH001264",
     "ground_truth_doc_ids": [
-      "10.1029/2024jh000197"
+      "10.1029/2026jh001264"
     ]
   },
   {
-    "id": "q22",
+    "id": "q42",
     "question_type": "factual",
-    "question": "Who authored 'Machine Learning Potential for Serpentines'?",
-    "ground_truth": "Hongjin Wang, Chenxing Luo, Renata M. Wentzcovitch",
+    "question": "According to its abstract, what does 'Our Vision for JGR: Machine Learning and Computation' describe?",
+    "ground_truth": "Abstract This editorial introduces the inaugural issue of the Journal of Geophysical Research: Machine Learning and Computation to the scientific community, elucidating the motivations and vision behind its establishment.",
     "ground_truth_doc_ids": [
-      "10.1029/2024jh000434"
-    ]
-  },
-  {
-    "id": "q23",
-    "question_type": "factual",
-    "question": "When was 'Machine Learning Potential for Serpentines' published?",
-    "ground_truth": "2024-12-01",
-    "ground_truth_doc_ids": [
-      "10.1029/2024jh000434"
-    ]
-  },
-  {
-    "id": "q24",
-    "question_type": "factual",
-    "question": "What is the main point of 'Machine Learning Potential for Serpentines'?",
-    "ground_truth": "Abstract Serpentines are layered hydrous magnesium silicates (MgOO) formed through serpentinization, a geochemical process that significantly alters the physical property of the mantle.",
-    "ground_truth_doc_ids": [
-      "10.1029/2024jh000434"
-    ]
-  },
-  {
-    "id": "q25",
-    "question_type": "factual",
-    "question": "Who authored 'Machine Learning Detection of Melting Layers From Radar Observations'?",
-    "ground_truth": "Yan Xie, Fraser King, Claire Pettersen, Mark Flanner",
-    "ground_truth_doc_ids": [
-      "10.1029/2024jh000521"
-    ]
-  },
-  {
-    "id": "q26",
-    "question_type": "factual",
-    "question": "When was 'Machine Learning Detection of Melting Layers From Radar Observations' published?",
-    "ground_truth": "2025-06-01",
-    "ground_truth_doc_ids": [
-      "10.1029/2024jh000521"
-    ]
-  },
-  {
-    "id": "q27",
-    "question_type": "factual",
-    "question": "What is the main point of 'Machine Learning Detection of Melting Layers From Radar Observations'?",
-    "ground_truth": "Abstract Melting layers in the atmosphere signify where falling ice hydrometeors melt into raindrops, and can be identified by discernible radar signatures.",
-    "ground_truth_doc_ids": [
-      "10.1029/2024jh000521"
-    ]
-  },
-  {
-    "id": "q28",
-    "question_type": "factual",
-    "question": "Who authored 'A Review of Machine Learning\u2010Based Ionospheric Spatial and Temporal Modeling'?",
-    "ground_truth": "Shuyin Mao, Manuel Hern\u00e1ndez\u2010Pajares, Benedikt Soja",
-    "ground_truth_doc_ids": [
-      "10.1029/2024jh000555"
-    ]
-  },
-  {
-    "id": "q29",
-    "question_type": "factual",
-    "question": "When was 'A Review of Machine Learning\u2010Based Ionospheric Spatial and Temporal Modeling' published?",
-    "ground_truth": "2025-09-01",
-    "ground_truth_doc_ids": [
-      "10.1029/2024jh000555"
-    ]
-  },
-  {
-    "id": "q30",
-    "question_type": "factual",
-    "question": "What is the main point of 'A Review of Machine Learning\u2010Based Ionospheric Spatial and Temporal Modeling'?",
-    "ground_truth": "Abstract The ionosphere introduces disturbances and errors in radio signals for satellite communication and navigation, requiring precise modeling to mitigate these effects.",
-    "ground_truth_doc_ids": [
-      "10.1029/2024jh000555"
+      "10.1029/2024jh000184"
     ]
   }
 ]
