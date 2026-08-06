@@ -12,7 +12,8 @@
 
 - Samples: 10
 - Retrieval hit rate: 1.0000
-- Mean token F1: 0.1635
+- Mean token F1: 0.1515
+- Mean field-aware score: 0.6833
 - Judge accuracy: 0.9000
 - Mean judge score: 4.8000
 

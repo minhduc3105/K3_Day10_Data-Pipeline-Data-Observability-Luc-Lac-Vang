@@ -7,6 +7,7 @@
     <title>EcoLens · Environmental Research, made traceable</title>
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="test-garden.css" />
+    <link rel="stylesheet" href="edge-cases.css" />
   </head>
   <body>
     <div class="grain" aria-hidden="true"></div>
@@ -14,7 +15,7 @@
     <header class="site-header">
       <a class="brand" href="#top" aria-label="EcoLens home"><span class="brand-mark">✦</span> EcoLens</a>
       <nav aria-label="Điều hướng chính">
-        <a href="#journey">Dòng chảy</a><a href="#test-garden">Test garden</a><a href="#evidence">Minh chứng</a>
+        <a href="#journey">Dòng chảy</a><a href="#edge-cases">Edge cases</a><a href="#evidence">Minh chứng</a>
       </nav>
       <a class="header-cta" href="#evidence">Xem kết quả <span>↘</span></a>
     </header>
@@ -31,7 +32,7 @@
           </div>
           <div class="hero-facts" aria-label="Tóm tắt dữ liệu">
             <div><strong data-count="197">197</strong><span>nghiên cứu được chăm sóc</span></div>
-            <div><strong data-count="42">42</strong><span>câu hỏi frozen để đánh giá</span></div>
+            <div><strong data-count="10">10</strong><span>câu hỏi frozen để đánh giá</span></div>
             <div><strong>384</strong><span>chiều ngữ nghĩa mỗi vector</span></div>
           </div>
         </div>
@@ -82,7 +83,7 @@
           <p>Mỗi câu trả lời factual đi cùng một dấu vết: paper ID, context retrieval và bộ câu hỏi đã được đóng băng. Nhờ vậy, kết quả có thể so sánh công bằng qua từng lần chạy.</p>
           <div class="proof-list">
             <div><span class="proof-icon">✓</span><p><strong>Raw-first provenance</strong><br />Giữ nguyên response Crossref để đối chiếu nguồn.</p></div>
-            <div><span class="proof-icon">✓</span><p><strong>Frozen evaluation</strong><br />42 mẫu, hash cố định, cùng tập câu hỏi cho mọi trạng thái.</p></div>
+            <div><span class="proof-icon">✓</span><p><strong>Frozen evaluation</strong><br />10 mẫu, hash cố định, cùng tập câu hỏi cho mọi trạng thái.</p></div>
             <div><span class="proof-icon">✓</span><p><strong>Repair from source</strong><br />Khôi phục từ raw records, không vá trên dữ liệu đã hỏng.</p></div>
           </div>
         </div>
@@ -94,7 +95,7 @@
           <h2>Câu hỏi có rễ,<br /><em>đáp án có nguồn.</em></h2>
           <p>Bộ test không thay đổi giữa các lần chạy. Hãy rút một hạt giống để xem một sample factual thật, đáp án chuẩn và tài liệu gốc mà nó bám vào.</p>
           <button class="button primary" type="button" id="random-question">Rút một câu hỏi <span>↻</span></button>
-          <p class="frozen-note">Frozen set · <span id="frozen-count">42</span> samples · hash được kiểm soát</p>
+          <p class="frozen-note">Frozen set · <span id="frozen-count">10</span> samples · hash được kiểm soát</p>
         </div>
         <article class="question-card reveal delay-1" aria-live="polite">
           <div class="question-card-top"><span class="question-seed">✣</span><span id="question-id">q1 · factual</span></div>
@@ -102,6 +103,27 @@
           <h3 id="frozen-question">Vấn đề chính mà phần mềm học máy phải đối mặt là gì và tại sao nó khác biệt so với phần mềm thông thường?</h3>
           <div class="answer-root"><p class="question-label">Ground truth</p><p id="ground-truth">Abstract Machine learning software is fundamentally different from most other software in one important respect: it is tightly linked with data.</p></div>
           <a id="ground-doc" href="https://doi.org/10.1002/9781118445112.stat08455" target="_blank" rel="noreferrer">Xem paper gốc <span>↗</span></a>
+        </article>
+      </section>
+
+      <section id="edge-cases" class="edge-cases section-shell">
+        <div class="edge-heading reveal">
+          <div><p class="eyebrow">03 · Edge cases trước tiên</p><h2>Đọc kết quả<br /><em>trước khi đọc điểm.</em></h2></div>
+          <p>Đây là output thật từ ba lần chạy. Mỗi case cho thấy câu trả lời, tài liệu được retrieve và cách metric/judge phản ứng với lỗi dữ liệu hoặc lỗi format.</p>
+        </div>
+        <div class="case-switch reveal" role="tablist" aria-label="Chọn edge case">
+          <button class="active" data-case-id="q1" role="tab" aria-selected="true"><span>01</span> Blank summary</button>
+          <button data-case-id="q2" role="tab" aria-selected="false"><span>02</span> Extra authors</button>
+          <button data-case-id="q3" role="tab" aria-selected="false"><span>03</span> Date format</button>
+        </div>
+        <article class="case-board reveal" aria-live="polite">
+          <div class="case-context"><span id="case-tag">Data corruption · blank summary</span><p class="question-label">Câu hỏi</p><h3 id="case-question">Loading latest evidence…</h3><div class="truth-block"><p class="question-label">Ground truth</p><p id="case-truth">—</p><a id="case-source" href="#" target="_blank" rel="noreferrer">Mở DOI source ↗</a></div></div>
+          <div class="case-outputs">
+            <article class="output-card baseline"><div class="output-heading"><span>Baseline</span><b id="baseline-verdict">—</b></div><p class="output-answer" id="baseline-answer">Loading…</p><div class="output-meta"><span id="baseline-f1">F1 —</span><span id="baseline-docs">Evidence —</span></div></article>
+            <article class="output-card corrupted"><div class="output-heading"><span>Corrupted</span><b id="corrupted-verdict">—</b></div><p class="output-answer" id="corrupted-answer">Loading…</p><div class="output-meta"><span id="corrupted-f1">F1 —</span><span id="corrupted-docs">Evidence —</span></div></article>
+            <article class="output-card repaired"><div class="output-heading"><span>Repaired</span><b id="repaired-verdict">—</b></div><p class="output-answer" id="repaired-answer">Loading…</p><div class="output-meta"><span id="repaired-f1">F1 —</span><span id="repaired-docs">Evidence —</span></div></article>
+          </div>
+          <div class="case-reading"><span>Đọc case</span><p id="case-reading">—</p></div>
         </article>
       </section>
 
@@ -116,17 +138,17 @@
           <button data-state="repaired" role="tab" aria-selected="false"><span></span>Repaired</button>
         </div>
         <div class="metrics-panel reveal" aria-live="polite">
-          <div class="metric-feature"><p>Retrieval hit rate</p><strong id="hit-rate">14.3<span>%</span></strong><div class="waterline"><i id="hit-bar" style="width:14.3%"></i></div><small>Ground-truth document xuất hiện trong context</small></div>
-          <div class="metric-card"><span class="metric-label">Mean token F1</span><strong id="token-f1">0.054</strong><p>Độ chồng lấp từ vựng với câu trả lời chuẩn.</p></div>
-          <div class="metric-card"><span class="metric-label">LLM judge score</span><strong id="judge-score">2.76<span>/5</span></strong><p>OpenRouter đánh giá câu trả lời dựa trên evidence.</p></div>
-          <div class="metric-card ring-card"><span class="metric-label">Agent answers</span><strong id="sample-count">42<span>/42</span></strong><p>Phản hồi từ agent thật, có fallback an toàn.</p></div>
+          <div class="metric-feature"><p>Retrieval hit rate</p><strong id="hit-rate">100.0<span>%</span></strong><div class="waterline"><i id="hit-bar" style="width:100%"></i></div><small>Ground-truth document xuất hiện trong context</small></div>
+          <div class="metric-card"><span class="metric-label">Mean token F1</span><strong id="token-f1">0.164</strong><p>Độ chồng lấp từ vựng với câu trả lời chuẩn.</p></div>
+          <div class="metric-card"><span class="metric-label">LLM judge score</span><strong id="judge-score">4.80<span>/5</span></strong><p>OpenRouter đánh giá câu trả lời dựa trên evidence.</p></div>
+          <div class="metric-card ring-card"><span class="metric-label">Agent answers</span><strong id="sample-count">10<span>/10</span></strong><p>Phản hồi từ agent thật, có fallback an toàn.</p></div>
         </div>
         <div class="comparison reveal">
-          <div class="chart-head"><div><span class="metric-label">So sánh ba mùa dữ liệu</span><h3>Cùng 42 câu hỏi · cùng frozen hash</h3></div><a href="../data/reports/corruption_metrics.svg" target="_blank" rel="noreferrer">Mở biểu đồ đầy đủ ↗</a></div>
+          <div class="chart-head"><div><span class="metric-label">So sánh ba mùa dữ liệu</span><h3>Cùng 10 câu hỏi · cùng frozen hash</h3></div><a href="../data/reports/corruption_metrics.svg" target="_blank" rel="noreferrer">Mở biểu đồ đầy đủ ↗</a></div>
           <div class="mini-chart" aria-label="So sánh điểm judge giữa baseline, corrupted và repaired">
-            <div><i class="bar baseline" style="--height:55.2%"></i><span>Baseline</span><b>2.76</b></div>
-            <div><i class="bar corrupted" style="--height:59.0%"></i><span>Corrupted</span><b>2.95</b></div>
-            <div><i class="bar repaired" style="--height:57.6%"></i><span>Repaired</span><b>2.88</b></div>
+            <div data-chart-state="baseline"><i class="bar baseline" style="--height:96%"></i><span>Baseline</span><b>4.80</b></div>
+            <div data-chart-state="corrupted"><i class="bar corrupted" style="--height:96%"></i><span>Corrupted</span><b>4.80</b></div>
+            <div data-chart-state="repaired"><i class="bar repaired" style="--height:96%"></i><span>Repaired</span><b>4.80</b></div>
           </div>
         </div>
       </section>

@@ -7,7 +7,7 @@
     "ground_truth_doc_ids": [
       "10.1002/9781118445112.stat08455"
     ],
-    "answer": "The development and operation of machine learning software, particularly in the context of MLOps, face unique challenges that necessitate expertise in both statistical methods and software engineering. These challenges include:\n\n1. **Data Dependency**: Machine learning software is heavily influenced by the data used for training models. The behavior of the software is not solely determined by the code but also by the data, which complicates the development process.\n\n2. **Model Behavior**: Unlike traditional software, where behavior is explicitly coded, machine learning models learn from data, meaning that developers must understand statistical principles to interpret and manage model behavior effectively.\n\n3. **Integration of Agile and DevOps**: MLOps combines modern software development practices like Agile and DevOps with machine learning, requiring a blend of skills to manage both the software lifecycle and the statistical modeling lifecycle.\n\n4. **Best Practices**: Implementing best practices for developing machine learning software involves understanding both statistical methodologies and software engineering principles, which can be challenging for teams with expertise in only one area.\n\nThese factors highlight the need for a multidisciplinary approach in MLOps, where both statistical and software engineering skills are essential for successful machine learning software development and operation.",
+    "answer": "The development and operation of machine learning software, particularly in the context of MLOps, face unique challenges that necessitate expertise in both statistical methods and software engineering. These challenges include:\n\n1. **Data Dependency**: Machine learning software is heavily influenced by the data used for training models. The behavior of the software is not solely determined by the code but also by the data, which complicates the development process.\n\n2. **Model Behavior**: Unlike traditional software, where behavior is explicitly coded, machine learning models learn from data, meaning that developers must understand statistical principles to interpret and manage model behavior effectively.\n\n3. **Integration of Agile and DevOps**: MLOps combines modern software development practices like Agile and DevOps with machine learning, requiring a blend of skills to manage the lifecycle of machine learning models alongside traditional software development processes.\n\n4. **Best Practices**: Implementing best practices for developing machine learning software involves understanding both statistical methodologies and software engineering principles, which can be a complex integration.\n\nThese factors highlight the necessity for a multidisciplinary approach in MLOps, where both statistical and engineering expertise are crucial for successful machine learning software development and operation.",
     "answer_mode": "agent",
     "retrieved_doc_ids": [
       "10.1002/9781118445112.stat08455",
@@ -22,11 +22,13 @@
       "Title: Enhancing Software Testing with Machine Learning\nAbstract: Although much has been accomplished, there are many issues related to fully implementing ML in traditional testing frameworks that still need research."
     ],
     "retrieval_hit": true,
-    "token_f1": 0.11940298507462686,
+    "token_f1": 0.10687022900763359,
+    "field_score": 0.10687022900763359,
+    "field_score_method": "token_f1_summary",
     "judge": {
       "score": 5,
       "correct": true,
-      "reasoning": "The model answer accurately identifies and elaborates on the unique challenges in developing and operating machine learning software, emphasizing the importance of both statistical methods and software engineering. It covers key aspects such as data dependency, model behavior, integration of Agile and DevOps, and the need for best practices, aligning well with the reference answer's focus on the data-centric nature of machine learning."
+      "reasoning": "The model answer accurately identifies and elaborates on the unique challenges in developing and operating machine learning software, emphasizing the importance of data dependency, model behavior, integration of Agile and DevOps, and the need for best practices. It aligns well with the reference answer's focus on the data-centric nature of machine learning, thus providing a comprehensive and correct response."
     }
   },
   {
@@ -37,7 +39,7 @@
     "ground_truth_doc_ids": [
       "10.1007/978-1-0716-3195-9_2"
     ],
-    "answer": "The authors who discuss classic machine learning techniques, including supervised methods for classification and regression, as well as strategies to address overfitting, are:\n\n1. **Johann Faouzi** and **Olivier Colliot** in the paper titled \"Classic Machine Learning Methods\" (2023).\n2. **Zhiyuan Wang**, **Sayed Ameenuddin Irfan**, **Christopher Teoh**, and **Priyanka Hriday Bhoyar** in the paper titled \"Introduction to Machine Learning\" (2023).\n3. **Thomas P. Trappenberg** in the paper titled \"Machine learning with sklearn\" (2019).",
+    "answer": "The authors who discuss classic machine learning techniques, including supervised methods for classification and regression, as well as strategies to address overfitting, are:\n\n1. **Johann Faouzi** and **Olivier Colliot** - in the paper titled \"Classic Machine Learning Methods\" (2023).\n2. **Zhiyuan Wang**, **Sayed Ameenuddin Irfan**, **Christopher Teoh**, and **Priyanka Hriday Bhoyar** - in the paper titled \"Introduction to Machine Learning\" (2023).\n3. **Thomas P. Trappenberg** - in the paper titled \"Machine learning with sklearn\" (2019).",
     "answer_mode": "agent",
     "retrieved_doc_ids": [
       "10.1093/oso/9780198828044.003.0003",
@@ -53,10 +55,12 @@
     ],
     "retrieval_hit": true,
     "token_f1": 0.0,
+    "field_score": 1.0,
+    "field_score_method": "author_name_coverage",
     "judge": {
       "score": 3,
       "correct": false,
-      "reasoning": "The model answer includes additional authors beyond the reference answer, which only mentions Johann Faouzi and Olivier Colliot. While the model answer provides relevant information about other authors and their works, it does not strictly adhere to the question's request for the specific authors mentioned in the reference answer."
+      "reasoning": "The model answer includes additional authors and papers that are not mentioned in the reference answer. While it correctly identifies Johann Faouzi and Olivier Colliot, it also introduces other authors who may not be relevant to the specific question about classic machine learning techniques as per the reference answer."
     }
   },
   {
@@ -83,10 +87,12 @@
     ],
     "retrieval_hit": true,
     "token_f1": 0.0,
+    "field_score": 1.0,
+    "field_score_method": "normalized_date_exact",
     "judge": {
       "score": 5,
       "correct": true,
-      "reasoning": "The model answer correctly states the publication date of the paper as April 1, 2023, which matches the reference answer."
+      "reasoning": "The model answer accurately states the publication date of the paper as April 1, 2023, which matches the reference answer."
     }
   },
   {
@@ -113,10 +119,12 @@
     ],
     "retrieval_hit": true,
     "token_f1": 0.35714285714285715,
+    "field_score": 1.0,
+    "field_score_method": "normalized_publisher_exact",
     "judge": {
       "score": 5,
       "correct": true,
-      "reasoning": "The model answer correctly identifies the publisher as Springer Science and Business Media LLC and provides the title of the paper, which aligns with the reference answer."
+      "reasoning": "The model answer correctly identifies the publisher of the paper as Springer Science and Business Media LLC, which matches the reference answer."
     }
   },
   {
@@ -127,7 +135,7 @@
     "ground_truth_doc_ids": [
       "10.1029/2024jh000135"
     ],
-    "answer": "The study addresses the challenge of insufficient knowledge regarding the variation and distribution of substrates in rivers, which hampers species conservation and ecosystem restoration efforts. Traditional methods for generating georeferenced substrate maps from sonar imagery require significant human intervention and expertise, making them less accessible for scientific inquiry.\n\nThe PING-Mapper software improves this process by automating the generation of geospatial benthic data sets from sonar imagery. The latest version (2.0) incorporates machine learning techniques, specifically semantic segmentation with deep neural networks, to reproducibly map substrates over large spatial extents. It provides workflows for creating label-ready sonar data sets, training models with transfer learning, and enhancing interpretability through additional features like masking sonar shadows and correcting attenuation effects. This automation significantly lowers the barrier for researchers to include substrate mapping in aquatic studies.",
+    "answer": "The study addresses the challenge of insufficient knowledge regarding the variation and distribution of substrates in rivers, which hampers species conservation and ecosystem restoration efforts. Existing methods for generating georeferenced substrate maps from side-scan sonar (SSS) data require significant human intervention and expertise, creating a barrier to their adoption in scientific research.\n\nThe PING-Mapper software improves this process by automating the generation of geospatial benthic data sets from SSS imagery. The latest version (2.0) incorporates machine learning techniques, specifically semantic segmentation with deep neural networks, to reproducibly map substrates over large spatial extents. It achieves an overall accuracy of 78% for a six-class substrate model, with further improvements when substrates are grouped into three classes. Additionally, PING-Mapper includes workflows for masking sonar shadows and correcting imagery attenuation, enhancing the interpretability of the data. This automation lowers the barrier for wider inclusion of SSS data in aquatic research.",
     "answer_mode": "agent",
     "retrieved_doc_ids": [
       "10.1029/2024jh000135",
@@ -142,11 +150,13 @@
       "Title: Our Vision for JGR: Machine Learning and Computation\nAbstract: Responding to an unmet demand in the existing worldwide editorial offer, the Journal of Geophysical Research: Machine Learning and Computation aims to serve as an intellectual crucible, fostering collaborations across multiple geophysical disciplines and data scientists. The journal welcomes papers with strong methodological developments that allow for geoscience advancements grounded in specific computational and data\u2010driven methods, leveraging ML as well as innovative computational strategies, and leading to breakthrough discoveries and original scientific outcomes."
     ],
     "retrieval_hit": true,
-    "token_f1": 0.25757575757575757,
+    "token_f1": 0.24817518248175183,
+    "field_score": 0.24817518248175183,
+    "field_score_method": "token_f1_summary",
     "judge": {
       "score": 5,
       "correct": true,
-      "reasoning": "The model answer accurately addresses the challenges in mapping substrate distribution in rivers as outlined in the reference answer. It explains the limitations of traditional methods and details how PING-Mapper software utilizes machine learning techniques to improve the mapping process, including specific features that enhance accessibility and efficiency."
+      "reasoning": "The model answer accurately addresses the challenges in mapping substrate distribution in rivers, highlighting the lack of knowledge and the barriers posed by existing methods. It also correctly explains how PING-Mapper software utilizes machine learning techniques to automate the process, improve accuracy, and enhance data interpretability, aligning well with the reference answer."
     }
   },
   {
@@ -157,7 +167,7 @@
     "ground_truth_doc_ids": [
       "10.1029/2024jh000184"
     ],
-    "answer": "The individuals responsible for establishing the Journal of Geophysical Research: Machine Learning and Computation include E. Camporeale, R. Marino, and the Editorial Board.",
+    "answer": "The individuals responsible for establishing the Journal of Geophysical Research: Machine Learning and Computation are E. Camporeale and R. Marino, along with the Editorial Board.",
     "answer_mode": "agent",
     "retrieved_doc_ids": [
       "10.1029/2024jh000184",
@@ -172,11 +182,13 @@
       "Title: Learning from Machine Learning: Key Takeaways for Machine Learning Applications to Rock Mass Characterization and Classification\nAbstract: ABSTRACT: As the scale of mining projects increase, rock engineers now face the task of analyzing vast amounts of data collected through traditional methods (boreholes) and newer methods (remote sensing). Machine learning (ML) has emerged as a tool that can assist rock engineers with this, allowing for automating and improving rock mass characterization and classification methods. ML has existed for decades, but its application to rock mass characterization and classification is more recent and has significantly increased over the past few years."
     ],
     "retrieval_hit": true,
-    "token_f1": 0.4444444444444444,
+    "token_f1": 0.3448275862068965,
+    "field_score": 0.3448275862068965,
+    "field_score_method": "token_f1_summary",
     "judge": {
       "score": 5,
       "correct": true,
-      "reasoning": "The model answer accurately lists the individuals responsible for establishing the journal, matching the reference answer perfectly."
+      "reasoning": "The model answer accurately identifies E. Camporeale, R. Marino, and the Editorial Board as the individuals responsible for establishing the journal, matching the reference answer."
     }
   },
   {
@@ -203,6 +215,8 @@
     ],
     "retrieval_hit": true,
     "token_f1": 0.0,
+    "field_score": 1.0,
+    "field_score_method": "normalized_date_exact",
     "judge": {
       "score": 5,
       "correct": true,
@@ -233,10 +247,12 @@
     ],
     "retrieval_hit": true,
     "token_f1": 0.19354838709677416,
+    "field_score": 1.0,
+    "field_score_method": "normalized_publisher_exact",
     "judge": {
       "score": 5,
       "correct": true,
-      "reasoning": "The model answer accurately identifies the publisher as the American Geophysical Union (AGU), which is the same as the reference answer."
+      "reasoning": "The model answer accurately states that the research was published by the American Geophysical Union (AGU), which is the same as the reference answer."
     }
   },
   {
@@ -247,7 +263,7 @@
     "ground_truth_doc_ids": [
       "10.1029/2024jh000521"
     ],
-    "answer": "The study utilizes a binary semantic segmentation U-Net model to enhance the detection of melting layers from radar observations. This machine learning approach offers significant improvements over traditional methods, which typically rely on fixed thresholds or a priori assumptions that lack robustness across diverse weather conditions. Specifically, the U-Net model achieves a 57% increase in the Probability of Detection and improves the mean Dice-S\u00f8rensen coefficient from 0.69 to 0.91. Additionally, it provides information on detection uncertainty through ensemble predictions, making it applicable to complex weather scenarios.",
+    "answer": "The study utilizes a binary semantic segmentation U-Net model to enhance the detection of melting layers from radar observations. This machine learning approach offers significant improvements over traditional methods, which typically rely on fixed thresholds or a priori assumptions that lack robustness across diverse weather conditions. The U-Net model achieves a 57% increase in the Probability of Detection and improves the mean Dice-S\u00f8rensen coefficient from 0.69 to 0.91. Additionally, it provides information on detection uncertainty through ensemble predictions, making it applicable to complex weather scenarios.",
     "answer_mode": "agent",
     "retrieved_doc_ids": [
       "10.1029/2024jh000521",
@@ -262,11 +278,13 @@
       "Title: Process\u2010Based Machine Learning Observationally Constrains Future Regional Warming Projections. Authors: Sophie Wilkinson, Peer Nowack, Manoj Joshi. Publisher: American Geophysical Union (AGU). Published: 2025-06-01. Categories: . DOI: 10.1029/2025jh000698."
     ],
     "retrieval_hit": true,
-    "token_f1": 0.13186813186813187,
+    "token_f1": 0.13333333333333333,
+    "field_score": 0.13333333333333333,
+    "field_score_method": "token_f1_summary",
     "judge": {
       "score": 5,
       "correct": true,
-      "reasoning": "The model answer accurately identifies the machine learning approach (U-Net) used in the study and details the improvements it offers over traditional methods, including specific metrics that demonstrate its effectiveness."
+      "reasoning": "The model answer accurately describes the machine learning approach (U-Net) used in the study and highlights the improvements it offers over traditional methods, including specific metrics that demonstrate its effectiveness."
     }
   },
   {
@@ -293,6 +311,8 @@
     ],
     "retrieval_hit": true,
     "token_f1": 0.13114754098360654,
+    "field_score": 1.0,
+    "field_score_method": "author_name_coverage",
     "judge": {
       "score": 5,
       "correct": true,

@@ -101,7 +101,10 @@ class LocalEmbeddingIndex:
             paper_id = _text(row.get("paper_id"))
             title = _text(row.get("title"))
             summary = _text(row.get("summary"))
-            if not paper_id or not title:
+            # The clean-data contract requires both title and summary. If a
+            # corrupted record loses its summary, it must not enter retrieval
+            # with title-only metadata pretending to be valid evidence.
+            if not paper_id or not title or not summary:
                 continue
             metadata = {
                 "paper_id": paper_id,

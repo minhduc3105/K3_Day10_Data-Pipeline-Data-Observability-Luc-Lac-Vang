@@ -7,7 +7,7 @@
     "ground_truth_doc_ids": [
       "10.1002/9781118445112.stat08455"
     ],
-    "answer": "The development and operation of machine learning software, particularly in the context of MLOps, face unique challenges that necessitate expertise in both statistical methods and software engineering. These challenges include:\n\n1. **Data Dependency**: Machine learning software is heavily influenced by the data used for training models. The behavior of the software is not solely determined by the code but also by the data, which complicates the development process.\n\n2. **Model Behavior**: Unlike traditional software, where behavior is explicitly coded, machine learning models learn from data, leading to behavior that can be less predictable and harder to debug.\n\n3. **Integration of Agile and DevOps**: MLOps combines principles from Agile and DevOps, requiring a seamless integration of statistical modeling with software development practices, which can be complex.\n\n4. **Best Practices**: There is a need for established best practices that address the unique aspects of machine learning, which differ from conventional software engineering practices.\n\nThese factors highlight the necessity for a multidisciplinary approach that encompasses both statistical knowledge and software engineering skills to effectively tackle the challenges in MLOps.",
+    "answer": "The development and operation of machine learning software, particularly in the context of MLOps, face unique challenges that necessitate expertise in both statistical methods and software engineering. These challenges include:\n\n1. **Data Dependency**: Machine learning software is heavily influenced by the data used for training models. The behavior of the software is not solely determined by the code but also by the data, which complicates the development process.\n\n2. **Model Behavior**: Unlike traditional software, where behavior is explicitly coded, machine learning models learn from data, meaning that developers must understand statistical principles to interpret and manage model behavior effectively.\n\n3. **Integration of Agile and DevOps**: MLOps combines modern software development practices like Agile and DevOps with machine learning, requiring a blend of skills to ensure that probabilistic models are effectively integrated into software systems.\n\n4. **Best Practices**: There are specific best practices for developing machine learning software that require both statistical knowledge (to understand model performance and validation) and software engineering skills (to implement robust and maintainable code).\n\nThese factors highlight the interdisciplinary nature of MLOps, where statistical and engineering expertise is crucial for successful machine learning software development and operation.",
     "answer_mode": "agent",
     "retrieved_doc_ids": [
       "10.1002/9781118445112.stat08455",
@@ -22,11 +22,13 @@
       "Title: Enhancing Software Testing with Machine Learning\nAbstract: Although much has been accomplished, there are many issues related to fully implementing ML in traditional testing frameworks that still need research."
     ],
     "retrieval_hit": true,
-    "token_f1": 0.10937500000000001,
+    "token_f1": 0.1037037037037037,
+    "field_score": 0.1037037037037037,
+    "field_score_method": "token_f1_summary",
     "judge": {
       "score": 5,
       "correct": true,
-      "reasoning": "The model answer accurately identifies and elaborates on the unique challenges in the development and operation of machine learning software, particularly in the context of MLOps. It effectively highlights the importance of data dependency, model behavior, integration of Agile and DevOps, and the need for best practices, all of which align with the reference answer's emphasis on the link between machine learning software and data."
+      "reasoning": "The model answer accurately captures the unique challenges in MLOps, emphasizing the importance of data dependency, understanding model behavior, integration of Agile and DevOps, and adherence to best practices. It effectively highlights the need for both statistical and software engineering expertise, aligning well with the reference answer's focus on the data-centric nature of machine learning software."
     }
   },
   {
@@ -53,6 +55,8 @@
     ],
     "retrieval_hit": true,
     "token_f1": 0.0,
+    "field_score": 1.0,
+    "field_score_method": "author_name_coverage",
     "judge": {
       "score": 3,
       "correct": false,
@@ -83,6 +87,8 @@
     ],
     "retrieval_hit": true,
     "token_f1": 0.0,
+    "field_score": 1.0,
+    "field_score_method": "normalized_date_exact",
     "judge": {
       "score": 5,
       "correct": true,
@@ -113,6 +119,8 @@
     ],
     "retrieval_hit": true,
     "token_f1": 0.35714285714285715,
+    "field_score": 1.0,
+    "field_score_method": "normalized_publisher_exact",
     "judge": {
       "score": 5,
       "correct": true,
@@ -127,7 +135,7 @@
     "ground_truth_doc_ids": [
       "10.1029/2024jh000135"
     ],
-    "answer": "The study addresses the challenge of insufficient knowledge regarding the variation and distribution of substrates in rivers, which hampers species conservation and ecosystem restoration efforts. Traditional methods for generating georeferenced substrate maps from sonar imagery require significant human intervention and expertise, making them less accessible for scientific inquiry.\n\nThe PING-Mapper software improves this process by automating the generation of geospatial benthic data sets from sonar imagery. The latest version (2.0) incorporates machine learning techniques, specifically semantic segmentation with deep neural networks, to reproducibly map substrates over large spatial extents. It also includes features for creating label-ready sonar data sets, training models with transfer learning, and enhancing data interpretability through additional workflows. This automation significantly lowers the barrier for researchers to include substrate mapping in aquatic studies.",
+    "answer": "The study addresses the challenge of insufficient knowledge regarding the variation and distribution of substrates in rivers, which hampers species conservation and ecosystem restoration efforts. Existing methods for generating georeferenced substrate maps from side-scan sonar (SSS) data require significant human intervention and expertise, creating a barrier to their adoption in scientific research.\n\nThe PING-Mapper software improves this process by providing an open-source, Python-based tool that automates the generation of geospatial benthic data sets from SSS instruments. The latest version incorporates machine learning techniques, specifically semantic segmentation with deep neural networks, to reproducibly map substrates over large spatial extents. This approach enhances the accuracy of substrate classification, achieving an overall accuracy of 78% for a six-class model and 87% when substrates are grouped into three classes. Additionally, it includes workflows for masking sonar shadows and correcting imagery attenuation, thereby improving interpretability and facilitating broader use in aquatic research.",
     "answer_mode": "agent",
     "retrieved_doc_ids": [
       "10.1029/2024jh000135",
@@ -142,11 +150,13 @@
       "Title: Our Vision for JGR: Machine Learning and Computation\nAbstract: Responding to an unmet demand in the existing worldwide editorial offer, the Journal of Geophysical Research: Machine Learning and Computation aims to serve as an intellectual crucible, fostering collaborations across multiple geophysical disciplines and data scientists. The journal welcomes papers with strong methodological developments that allow for geoscience advancements grounded in specific computational and data\u2010driven methods, leveraging ML as well as innovative computational strategies, and leading to breakthrough discoveries and original scientific outcomes."
     ],
     "retrieval_hit": true,
-    "token_f1": 0.2677165354330709,
+    "token_f1": 0.23943661971830985,
+    "field_score": 0.23943661971830985,
+    "field_score_method": "token_f1_summary",
     "judge": {
       "score": 5,
       "correct": true,
-      "reasoning": "The model answer accurately addresses the challenges in mapping substrate distribution in rivers, highlighting the lack of knowledge and the limitations of traditional methods. It also correctly explains how PING-Mapper software utilizes machine learning techniques to automate and improve the mapping process, making it more accessible for researchers."
+      "reasoning": "The model answer accurately addresses the challenges in mapping substrate distribution in rivers as outlined in the reference answer. It highlights the lack of knowledge and the barriers posed by existing methods. Furthermore, it effectively explains how PING-Mapper improves the process through automation and machine learning techniques, providing specific details about accuracy and additional functionalities."
     }
   },
   {
@@ -157,7 +167,7 @@
     "ground_truth_doc_ids": [
       "10.1029/2024jh000184"
     ],
-    "answer": "The individuals responsible for establishing the Journal of Geophysical Research: Machine Learning and Computation include E. Camporeale and R. Marino, along with the Editorial Board.",
+    "answer": "The individuals responsible for establishing the Journal of Geophysical Research: Machine Learning and Computation are E. Camporeale and R. Marino, along with the Editorial Board.",
     "answer_mode": "agent",
     "retrieved_doc_ids": [
       "10.1029/2024jh000184",
@@ -173,10 +183,12 @@
     ],
     "retrieval_hit": true,
     "token_f1": 0.3448275862068965,
+    "field_score": 0.3448275862068965,
+    "field_score_method": "token_f1_summary",
     "judge": {
       "score": 5,
       "correct": true,
-      "reasoning": "The model answer accurately lists E. Camporeale, R. Marino, and the Editorial Board as the individuals responsible for establishing the journal, matching the reference answer."
+      "reasoning": "The model answer accurately identifies E. Camporeale, R. Marino, and the Editorial Board as the individuals responsible for establishing the journal, matching the reference answer perfectly."
     }
   },
   {
@@ -203,6 +215,8 @@
     ],
     "retrieval_hit": true,
     "token_f1": 0.0,
+    "field_score": 1.0,
+    "field_score_method": "normalized_date_exact",
     "judge": {
       "score": 5,
       "correct": true,
@@ -233,10 +247,12 @@
     ],
     "retrieval_hit": true,
     "token_f1": 0.19354838709677416,
+    "field_score": 1.0,
+    "field_score_method": "normalized_publisher_exact",
     "judge": {
       "score": 5,
       "correct": true,
-      "reasoning": "The model answer accurately identifies the publisher as the American Geophysical Union (AGU), which is the same as the reference answer."
+      "reasoning": "The model answer accurately states that the research was published by the American Geophysical Union (AGU), which is the same as the reference answer."
     }
   },
   {
@@ -247,7 +263,7 @@
     "ground_truth_doc_ids": [
       "10.1029/2024jh000521"
     ],
-    "answer": "The study utilizes a binary semantic segmentation U-Net model to enhance the detection of melting layers from radar observations. This machine learning approach offers significant improvements over traditional methods, which typically rely on fixed thresholds or a priori assumptions that lack robustness across diverse weather conditions. Specifically, the U-Net model achieves a 57% increase in the Probability of Detection and improves the mean Dice-S\u00f8rensen coefficient from 0.69 to 0.91. Additionally, it provides information on detection uncertainty through ensemble predictions, making it applicable to complex weather scenarios.",
+    "answer": "The study utilizes a binary semantic segmentation U-Net model to enhance the detection of melting layers from radar observations. This machine learning approach offers significant improvements over traditional methods, which rely on fixed thresholds and a priori assumptions. Specifically, the U-Net model achieves a 57% increase in the Probability of Detection and improves the mean Dice-S\u00f8rensen coefficient from 0.69 to 0.91. Additionally, it effectively detects melting layers under complex weather conditions and provides information on detection uncertainty through ensemble predictions.",
     "answer_mode": "agent",
     "retrieved_doc_ids": [
       "10.1029/2024jh000521",
@@ -262,11 +278,13 @@
       "Title: Process\u2010Based Machine Learning Observationally Constrains Future Regional Warming Projections. Authors: Sophie Wilkinson, Peer Nowack, Manoj Joshi. Publisher: American Geophysical Union (AGU). Published: 2025-06-01. Categories: . DOI: 10.1029/2025jh000698."
     ],
     "retrieval_hit": true,
-    "token_f1": 0.13186813186813187,
+    "token_f1": 0.14285714285714285,
+    "field_score": 0.14285714285714285,
+    "field_score_method": "token_f1_summary",
     "judge": {
       "score": 5,
       "correct": true,
-      "reasoning": "The model answer accurately identifies the machine learning approach (U-Net) used in the study and explains its advantages over traditional methods, including specific performance metrics and the ability to handle detection uncertainty."
+      "reasoning": "The model answer accurately identifies the machine learning approach (U-Net) used in the study and details the improvements it offers over traditional methods, including specific metrics that demonstrate its effectiveness."
     }
   },
   {
@@ -277,7 +295,7 @@
     "ground_truth_doc_ids": [
       "10.1029/2024jh000555"
     ],
-    "answer": "The researchers who reviewed the application of machine learning techniques in modeling the ionosphere, focusing on parameters like vertical total electron content and F2-layer critical frequency, are:\n\n- Shuyin Mao\n- Manuel Hern\u00e1ndez\u2010Pajares\n- Benedikt Soja\n\nThis information is from the paper titled \"A Review of Machine Learning\u2010Based Ionospheric Spatial and Temporal Modeling,\" published by the American Geophysical Union (AGU) on September 1, 2025.",
+    "answer": "The researchers who reviewed the application of machine learning techniques in modeling the ionosphere, focusing on parameters like vertical total electron content and F2-layer critical frequency, are Shuyin Mao, Manuel Hern\u00e1ndez\u2010Pajares, and Benedikt Soja. Their review is titled \"A Review of Machine Learning\u2010Based Ionospheric Spatial and Temporal Modeling,\" published by the American Geophysical Union (AGU) on September 1, 2025.",
     "answer_mode": "agent",
     "retrieved_doc_ids": [
       "10.1029/2024jh000555",
@@ -292,11 +310,13 @@
       "Title: Improving Terrestrial Carbon Flux Simulations With Machine Learning and Global Earth Observations\nAuthors: Christian Seiler\nPublisher: Copernicus GmbH\nPublished: 2025-06-16\nCategories: \nDOI: 10.5194/egusphere-2025-2517\nAbstract: Abstract. The land carbon cycle can act as both a negative and positive climate feedback. Currently, it serves as a negative feedback, absorbing about one-third of anthropogenic CO2 emissions. However, multi-model studies project a weakening of this sink, with the potential for a future shift to a carbon source. Significant inter-model differences persist, limiting confidence in these projections. Some of these discrepancies may arise from parameter uncertainty. Advances in artificial intelligence, computing, and Earth observations now offer new opportunities to better constrain key model parameters. While previous studies have shown that parameter optimization can substantially improve model performance, they have not explored its impact on the future carbon balance. To address this gap, I use a machine learning algorithm to optimize 28 model parameters based on 13 global Earth observation datasets. The resulting parameter set is then applied in carbon cycle simulations under historical conditions and a high-emissions future scenario. Results show that optimization significantly improves model performance, particularly for gross primary productivity (GPP), leaf area index, and sensible heat flux. Globally, optimized net biome productivity is lower than in the default simulation (33 % lower from 1960 to 2022 and 43 % lower from 2015 to 2100) due to reduced GPP and increased autotrophic respiration. Regionally, optimization tends to weaken both carbon sinks and sources, reducing the contrast between them. In conclusion, parameter tuning can substantially alter historical and future carbon fluxes, with effects comparable to adding new processes. To reduce inter-model spread, modeling groups should integrate advanced parameter optimization frameworks into their model development cycle."
     ],
     "retrieval_hit": true,
-    "token_f1": 0.13333333333333333,
+    "token_f1": 0.17857142857142858,
+    "field_score": 1.0,
+    "field_score_method": "author_name_coverage",
     "judge": {
       "score": 5,
       "correct": true,
-      "reasoning": "The model answer accurately lists the researchers as Shuyin Mao, Manuel Hern\u00e1ndez\u2010Pajares, and Benedikt Soja, which matches the reference answer. Additionally, it provides context about the paper and its publication date, enhancing the completeness of the response."
+      "reasoning": "The model answer accurately lists the researchers as Shuyin Mao, Manuel Hern\u00e1ndez\u2010Pajares, and Benedikt Soja, and it provides additional context about their review, including the title and publication date, which enhances the completeness of the answer."
     }
   }
 ]

@@ -22,7 +22,7 @@
     },
     "summary_min_length": {
       "passed": false,
-      "observed_below_100_chars": 1
+      "observed_below_100_chars": 4
     }
   }
 }

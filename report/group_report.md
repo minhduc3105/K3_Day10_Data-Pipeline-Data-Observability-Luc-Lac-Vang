@@ -76,9 +76,11 @@ Ground truth và ground_truth_doc_ids được copy từ clean data. Mỗi câu 
 
 | State | Samples | Retrieval hit rate | Mean token F1 | Judge accuracy | Mean judge score |
 |---|---:|---:|---:|---:|---:|
-| Baseline | 10 | 1.0000 | 0.1635 | 0.9000 | 4.80/5 |
-| Corrupted | 10 | 1.0000 | 0.1508 | 0.9000 | 4.80/5 |
-| Repaired | 10 | 1.0000 | 0.1538 | 0.9000 | 4.80/5 |
+| Baseline | 10 | 1.0000 | 0.1515 | 0.9000 | 4.80/5 |
+| Corrupted | 10 | 0.6000 | 0.1202 | 0.7000 | 3.80/5 |
+| Repaired | 10 | 1.0000 | 0.1560 | 0.9000 | 4.80/5 |
+
+**Latest evidence.** All three runs use frozen-set SHA-256 `c0302193f620f9de2618a45b2fb24f8858f781482309b4b680286628182b54bb`. Corrupting four frozen documents with blank summaries removes them from the index: retrieval drops by 0.4000, token F1 by 0.0313, and judge accuracy by 0.2000. Repair rebuilds from `data/raw/crossref_records.json`; retrieval and judge accuracy return exactly to baseline. The small F1 difference (+0.0045) is from LLM wording, not a different corpus or test set.
 
 Bằng chứng nằm trong data/results/baseline_metrics.json, corrupted_metrics.json, repaired_metrics.json và data/reports/corruption_report.md.
 

@@ -51,10 +51,15 @@ def corrupt_clean_dataframe(
     if not target_ids:
         raise ValueError("No frozen-test document IDs were found in the clean dataframe.")
 
-    selected = [target_ids[index % len(target_ids)] for index in range(4)]
-    blank_id, stale_id, duplicate_id, noise_id = selected
+    # Blank several frozen documents, not just one. A document with no summary
+    # has no usable retrieval context and is intentionally excluded by the
+    # indexer; this makes the downstream retrieval impact measurable.
+    blank_ids = target_ids[: min(4, len(target_ids))]
+    stale_id = target_ids[4 % len(target_ids)]
+    duplicate_id = target_ids[5 % len(target_ids)]
+    noise_id = target_ids[6 % len(target_ids)]
 
-    blank_mask = corrupted["paper_id"] == blank_id
+    blank_mask = corrupted["paper_id"].isin(blank_ids)
     corrupted.loc[blank_mask, "summary"] = ""
 
     stale_mask = corrupted["paper_id"] == stale_id
@@ -76,7 +81,12 @@ def corrupt_clean_dataframe(
         "frozen_test_set": str(test_set_path) if test_set_path else None,
         "frozen_doc_ids_available": target_ids,
         "scenarios": [
-            {"name": "blank_summary", "paper_ids": [blank_id], "rows_affected": int(blank_mask.sum())},
+            {
+                "name": "blank_summary",
+                "paper_ids": blank_ids,
+                "rows_affected": int(blank_mask.sum()),
+                "retrieval_expectation": "Documents without a summary are excluded from the retrieval index.",
+            },
             {
                 "name": "stale_date",
                 "paper_ids": [stale_id],

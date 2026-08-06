@@ -5,11 +5,13 @@ import hashlib
 import json
 from statistics import mean
 import os
+import re
 import sys
 import types
 from typing import Any
 
 from datasets import Dataset
+import pandas as pd
 from pydantic import BaseModel, Field
 
 from core.config import Settings
@@ -46,6 +48,32 @@ def _token_f1(reference: str, prediction: str) -> float:
     precision = overlap / len(pred_set)
     recall = overlap / len(ref_set)
     return 2 * precision * recall / (precision + recall)
+
+
+def _normalized_text(value: str) -> str:
+    return re.sub(r"[^a-z0-9]+", " ", normalize_whitespace(value).casefold()).strip()
+
+
+def _field_aware_score(question: str, reference: str, prediction: str) -> tuple[float, str]:
+    """Score dates/authors/publishers by their factual field, not formatting."""
+    question_text = question.casefold()
+    reference_text = _normalized_text(reference)
+    prediction_text = _normalized_text(prediction)
+    if any(phrase in question_text for phrase in ("publication date", "when was", "published on", "ngày xuất bản")):
+        patterns = re.findall(
+            r"\b\d{4}-\d{2}-\d{2}\b|\b(?:january|february|march|april|may|june|july|august|september|october|november|december)\s+\d{1,2},?\s+\d{4}\b",
+            prediction,
+            flags=re.IGNORECASE,
+        )
+        target = pd.to_datetime(reference, errors="coerce")
+        candidates = [pd.to_datetime(value, errors="coerce") for value in patterns]
+        return (1.0 if not pd.isna(target) and any(value == target for value in candidates if not pd.isna(value)) else 0.0), "normalized_date_exact"
+    if any(phrase in question_text for phrase in ("who authored", "who are the authors", "who are the researchers", "tác giả")):
+        expected_names = [name.strip() for name in reference_text.split(" ") if len(name) > 2]
+        return (1.0 if expected_names and all(name in prediction_text for name in expected_names) else 0.0), "author_name_coverage"
+    if "publisher" in question_text or "nhà xuất bản" in question_text:
+        return (1.0 if reference_text and reference_text in prediction_text else 0.0), "normalized_publisher_exact"
+    return _token_f1(reference, prediction), "token_f1_summary"
 
 
 def _judge_answer(settings: Settings, question: str, reference: str, prediction: str) -> JudgeVerdict:
@@ -142,6 +170,7 @@ def evaluate_pipeline(
                 agent_error = str(error)
         judge = _skipped_judge() if skip_judge else _judge_answer(settings, item["question"], item["ground_truth"], answer)
         retrieval_hit = any(doc_id in item["ground_truth_doc_ids"] for doc_id in result.retrieved_doc_ids)
+        field_score, field_score_method = _field_aware_score(item["question"], item["ground_truth"], answer)
         answers.append(
             {
                 "id": item["id"],
@@ -155,6 +184,8 @@ def evaluate_pipeline(
                 "retrieved_contexts": result.retrieved_contexts,
                 "retrieval_hit": retrieval_hit,
                 "token_f1": _token_f1(item["ground_truth"], answer),
+                "field_score": field_score,
+                "field_score_method": field_score_method,
                 "judge": judge.model_dump(),
             }
         )
@@ -163,6 +194,7 @@ def evaluate_pipeline(
         "samples": len(answers),
         "retrieval_hit_rate": mean(1.0 if item["retrieval_hit"] else 0.0 for item in answers),
         "mean_token_f1": mean(item["token_f1"] for item in answers),
+        "mean_field_score": mean(item["field_score"] for item in answers),
         "judge_accuracy": mean(1.0 if item["judge"]["correct"] else 0.0 for item in answers),
         "mean_judge_score": mean(item["judge"]["score"] for item in answers),
         "frozen_test_set_hash": frozen_test_set_hash,

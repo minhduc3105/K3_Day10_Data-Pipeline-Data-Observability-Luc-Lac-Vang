@@ -1,7 +1,8 @@
 {
   "samples": 10,
   "retrieval_hit_rate": 1.0,
-  "mean_token_f1": 0.1537811831081064,
+  "mean_token_f1": 0.1560087725297113,
+  "mean_field_score": 0.6830825052486053,
   "judge_accuracy": 0.9,
   "mean_judge_score": 4.8,
   "frozen_test_set_hash": "c0302193f620f9de2618a45b2fb24f8858f781482309b4b680286628182b54bb",

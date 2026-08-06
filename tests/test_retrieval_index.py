@@ -27,3 +27,10 @@ def test_index_builds_paper_metadata_and_abstract_chunks() -> None:
     assert {"paper", "metadata", "abstract"} <= chunk_types
     assert all(document["paper_id"] == "10.1000/example" for document in documents)
     assert any("Publisher: Open Science Press" in document["content"] for document in documents)
+
+
+def test_index_excludes_records_without_retrieval_context() -> None:
+    dataframe = pd.DataFrame(
+        [{"paper_id": "10.1000/blank", "title": "Lost summary", "summary": "", "authors_joined": "A", "categories_joined": "", "published": "", "comment": "", "abs_url": "", "pdf_url": ""}]
+    )
+    assert LocalEmbeddingIndex._build_documents(dataframe) == []

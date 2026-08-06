@@ -29,6 +29,7 @@ def generate_phase1_report(
         f"- Samples: {metrics['samples']}",
         f"- Retrieval hit rate: {metrics['retrieval_hit_rate']:.4f}",
         f"- Mean token F1: {metrics['mean_token_f1']:.4f}",
+        f"- Mean field-aware score: {metrics.get('mean_field_score', metrics['mean_token_f1']):.4f}",
         f"- Judge accuracy: {metrics['judge_accuracy']:.4f}",
         f"- Mean judge score: {metrics['mean_judge_score']:.4f}",
         "",
@@ -74,13 +75,13 @@ def generate_corruption_report(
     lines = [
         "# Corruption Comparison Report",
         "",
-        "| State | Samples | Retrieval hit rate | Mean token F1 | Judge accuracy |",
-        "| --- | ---: | ---: | ---: | ---: |",
+        "| State | Samples | Retrieval hit rate | Mean token F1 | Field-aware score | Judge accuracy |",
+        "| --- | ---: | ---: | ---: | ---: | ---: |",
     ]
     for name, metrics, _, _ in states:
         lines.append(
             f"| {name} | {metrics['samples']} | {metrics['retrieval_hit_rate']:.4f} | "
-            f"{metrics['mean_token_f1']:.4f} | {metrics['judge_accuracy']:.4f} |"
+            f"{metrics['mean_token_f1']:.4f} | {metrics.get('mean_field_score', metrics['mean_token_f1']):.4f} | {metrics['judge_accuracy']:.4f} |"
         )
 
     lines.extend(["", "## Data quality and freshness", "", "| State | Valid | Rows | Duplicate rows | Stale rows | Missing dates |", "| --- | --- | ---: | ---: | ---: | ---: |"])

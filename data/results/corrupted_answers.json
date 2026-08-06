@@ -7,26 +7,28 @@
     "ground_truth_doc_ids": [
       "10.1002/9781118445112.stat08455"
     ],
-    "answer": "The development and operation of machine learning software within the context of MLOps face unique challenges that require expertise in both statistical methods and software engineering. Key challenges include:\n\n1. **Integration of ML with Business Objectives**: Successful implementation of machine learning must align with organizational goals, which can be challenging for data scientists who typically focus on technical aspects rather than business dynamics (Kampakis, 2023).\n\n2. **Complexity of Data Management**: Effective data strategy and management are crucial, as the quality and structure of data directly impact model performance. This requires statistical knowledge to understand data distributions and software engineering skills to manage data pipelines (Kampakis, 2023).\n\n3. **Model Deployment and Monitoring**: Transitioning from model development to deployment involves ensuring that models perform well in production environments. This includes monitoring for model drift and maintaining performance over time, which necessitates both statistical analysis and robust software engineering practices (Scutari & Malvestio, 2023).\n\n4. **Variability Management in Software Systems**: Integrating machine learning components into existing software systems complicates variability management, especially in software product lines. This requires a deep understanding of both ML and software engineering principles to effectively manage and reuse components (Cobaleda & Carvajal, 2025).\n\nThese challenges highlight the interdisciplinary nature of MLOps, necessitating collaboration between data scientists and software engineers to ensure successful machine learning applications.",
+    "answer": "The development and operation of machine learning software within the context of MLOps face unique challenges that require expertise in both statistical methods and software engineering. Key challenges include:\n\n1. **Integration of ML with Software Engineering**: The incorporation of machine learning components into software systems complicates traditional software engineering practices, particularly in managing variability and reuse in software product lines (SPLs). This complexity arises from the need to model and manage the variability introduced by ML components effectively (Cobaleda & Carvajal, 2025).\n\n2. **Alignment with Business Objectives**: Successful application of machine learning in organizations necessitates a deep understanding of business objectives and organizational dynamics. Data scientists often focus on technical details, which can lead to a disconnect with the broader organizational goals, making it essential to bridge this gap (Kampakis, 2023).\n\n3. **Continuous Integration and Deployment**: MLOps emphasizes the need for tools and frameworks that support the continuous integration and deployment of ML workflows. This requires a robust understanding of both software engineering practices and the statistical methods underlying machine learning to ensure scalability and reproducibility (Rane et al., 2024).\n\nThese challenges highlight the interdisciplinary nature of MLOps, necessitating collaboration between data scientists and software engineers to effectively implement machine learning solutions in real-world applications.",
     "answer_mode": "agent",
     "retrieved_doc_ids": [
-      "10.1002/9781118445112.stat08455",
       "10.4018/978-1-7998-9220-5.ch104",
       "10.70593/978-81-981271-4-3_4",
-      "10.52783/kjml.250"
+      "10.52783/kjml.250",
+      "10.4018/978-1-7998-9220-5.ch054"
     ],
     "retrieved_contexts": [
-      "Title: Developing and Running Machine Learning Software: Machine Learning Operations (MLOps). Authors: Marco Scutari, Mauro Malvestio. Publisher: Wiley. Published: 2023-11-28. Categories: . DOI: 10.1002/9781118445112.stat08455.",
       "Title: Machine Learning in the Real World\nAbstract: Most data scientists and machine learning practitioners focus on algorithm development and implementation. However, the proper and successful application of data science in an organisation cannot be separated from business objectives and organisational dynamics. This way of thinking, however, can feel foreign to many data scientists who focus mostly on technical details. The goal of this article is to outline some of the considerations that a data scientist needs to take into account when implementing data science within an organisation. More specifically, this article discusses the topics of data strategy, data science processes, and some recent developments like MLOps.",
       "Title: Tools and frameworks for machine learning and deep learning: A review\nAbstract: In addition, the study explores the significance of MLOps tools such as MLflow and Kubeflow, which support the continuous integration and deployment of ML workflows, guaranteeing scalability and reproducibility. This research offers valuable insights into the current ML and DL frameworks landscape by examining the strengths and limitations of these tools, helping researchers and industry professionals choose the right tools for their AI projects.",
-      "Title: Enhancing Software Testing with Machine Learning\nAbstract: Although much has been accomplished, there are many issues related to fully implementing ML in traditional testing frameworks that still need research."
+      "Title: Enhancing Software Testing with Machine Learning\nAbstract: Although much has been accomplished, there are many issues related to fully implementing ML in traditional testing frameworks that still need research.",
+      "Title: Machine Learning Algorithms\nAbstract: Finally, challenges of employing machine learning (ML) for business purposes have been discussed. However, there is not just one practical and efficient method to \u200eapply to all data sets, and the appropriate algorithm may differ based on various factors in a study."
     ],
-    "retrieval_hit": true,
-    "token_f1": 0.07547169811320754,
+    "retrieval_hit": false,
+    "token_f1": 0.0945945945945946,
+    "field_score": 0.0945945945945946,
+    "field_score_method": "token_f1_summary",
     "judge": {
-      "score": 5,
+      "score": 4,
       "correct": true,
-      "reasoning": "The model answer effectively addresses the unique challenges in MLOps by highlighting the need for expertise in both statistical methods and software engineering. It covers key aspects such as alignment with business objectives, data management, model deployment, and variability management, all of which are critical in the development and operation of machine learning software. The answer is comprehensive and accurately reflects the complexities involved."
+      "reasoning": "The model answer effectively identifies and elaborates on several unique challenges in the development and operation of machine learning software within MLOps, including integration with software engineering, alignment with business objectives, and continuous integration and deployment. It captures the interdisciplinary nature of MLOps and the need for collaboration between data scientists and software engineers. However, it could be more concise and directly address the core aspect of the reference answer regarding the tight link with data."
     }
   },
   {
@@ -37,26 +39,28 @@
     "ground_truth_doc_ids": [
       "10.1007/978-1-0716-3195-9_2"
     ],
-    "answer": "The authors who discuss classic machine learning techniques, including supervised methods for classification and regression, as well as strategies to address overfitting, are:\n\n1. **Johann Faouzi** and **Olivier Colliot** in the paper titled \"Classic Machine Learning Methods.\"\n2. **Zhiyuan Wang**, **Sayed Ameenuddin Irfan**, **Christopher Teoh**, and **Priyanka Hriday Bhoyar** in the paper titled \"Introduction to Machine Learning.\"\n3. **Thomas P. Trappenberg** in the paper titled \"Machine learning with sklearn.\"",
+    "answer": "The authors who discuss classic machine learning techniques, including supervised methods for classification and regression, as well as strategies to address overfitting, include:\n\n1. **Zhiyuan Wang, Sayed Ameenuddin Irfan, Christopher Teoh, Priyanka Hriday Bhoyar** - In their work titled \"Introduction to Machine Learning,\" they cover fundamental concepts such as supervised learning, regression, classification, and overfitting.\n\n2. **Thomas P. Trappenberg** - In \"Machine learning with sklearn,\" he demonstrates classic machine learning algorithms and discusses evaluation techniques relevant to addressing overfitting.\n\n3. **Damian Alberto** - In \"Classification and Machine Learning,\" he addresses classification concepts and various machine learning techniques.\n\n4. **Deepti Chopra, Roopal Khurana** - In \"Introduction To Machine Learning,\" they discuss machine learning concepts, including issues related to in-sample and out-of-sample errors, which are relevant to overfitting.",
     "answer_mode": "agent",
     "retrieved_doc_ids": [
       "10.1093/oso/9780198828044.003.0003",
-      "10.1007/978-1-0716-3195-9_2",
       "10.2174/9789815136982123010002",
-      "10.58830/ozgur.pub1236.c5001"
+      "10.58830/ozgur.pub1236.c5001",
+      "10.55529/jaimlnn.31.39.46"
     ],
     "retrieved_contexts": [
       "Title: Machine learning with sklearn\nAuthors: Thomas P. Trappenberg\nPublisher: Oxford University Press\nPublished: 2019-11-28\nCategories: \nDOI: 10.1093/oso/9780198828044.003.0003\nAbstract: This chapter\u2019s goal is to show how to apply machine learning algorithms in a general setting using some classic methods. In particular, it demonstrates how to apply three important machine learning algorithms, a support vector classifier (SVC), a random forest classifier (RFC), and a multilayer perceptron (MLP). While many of the methods studied later go beyond these now classic methods, this does not mean that these methods are obsolete. Also, the algorithms discussed here provide some form of baseline to discuss advanced methods like probabilistic reasoning and deep learning. The aim here is to demonstrate that applying machine learning methods based on machine learning libraries is not very difficult. It offers an opportunity to discuss evaluation techniques that are very important in practice.",
-      "Title: Classic Machine Learning Methods\nAbstract: Abstract In this chapter, we present the main classic machine learning methods. A large part of the chapter is devoted to supervised learning techniques for classification and regression, including nearest neighbor methods, linear and logistic regressions, support vector machines, and tree-based algorithms. We also describe the problem of overfitting as well as strategies to overcome it. We finally provide a brief overview of unsupervised learning methods, namely, for clustering and dimensionality reduction. The chapter does not cover neural networks and deep learning as these will be presented in Chaps. 3, 4, 5, and 6.",
       "Title: Introduction to Machine Learning\nAuthors: Zhiyuan Wang, Sayed Ameenuddin Irfan, Christopher Teoh, Priyanka Hriday Bhoyar\nPublisher: BENTHAM SCIENCE PUBLISHERS\nPublished: 2023-08-28\nCategories: \nDOI: 10.2174/9789815136982123010002\nAbstract: Machine learning, a rapidly growing subfield of computer science, has had a significant impact on many industries and our lives. This chapter discusses the brief history of machine learning, its widespread adoption as a de facto feature, and fundamental concepts such as supervised and unsupervised learning, regression and classification, and underfitting and overfitting. We also emphasize the importance of understanding machine learning through numerical examples, which can bridge the gap between abstract mathematical theories and practical applications of machine learning algorithms. By developing a strong foundation in machine learning, readers/students can harness its potential to address challenges and opportunities across diverse sectors.",
-      "Title: Concepts of Machine Learning\nAbstract: The chapter also explains core concepts related to model training, generalization, overfitting, and the bias\u2013variance tradeoff, which are critical for understanding model performance and reliability. In addition, fundamental ideas in optimization and model evaluation are presented, including cost functions, gradient-based learning, and standard performance metrics. Ethical and practical considerations, such as data bias, interpretability, and privacy, are briefly addressed to emphasize responsible use of machine learning technologies. Overall, this chapter establishes a conceptual framework that enables readers to better understand, design, and critically evaluate machine learning systems."
+      "Title: Concepts of Machine Learning\nAbstract: The chapter also explains core concepts related to model training, generalization, overfitting, and the bias\u2013variance tradeoff, which are critical for understanding model performance and reliability. In addition, fundamental ideas in optimization and model evaluation are presented, including cost functions, gradient-based learning, and standard performance metrics. Ethical and practical considerations, such as data bias, interpretability, and privacy, are briefly addressed to emphasize responsible use of machine learning technologies. Overall, this chapter establishes a conceptual framework that enables readers to better understand, design, and critically evaluate machine learning systems.",
+      "Title: Machine Learning in Modern World. Authors: Archana V. Publisher: HM Publishers. Published: 2023-01-11. Categories: . DOI: 10.55529/jaimlnn.31.39.46."
     ],
-    "retrieval_hit": true,
+    "retrieval_hit": false,
     "token_f1": 0.0,
+    "field_score": 0.0,
+    "field_score_method": "author_name_coverage",
     "judge": {
-      "score": 3,
+      "score": 2,
       "correct": false,
-      "reasoning": "The model answer includes additional authors and papers that are not mentioned in the reference answer. While it correctly identifies Johann Faouzi and Olivier Colliot, it also introduces other authors who may not be relevant to the question, which detracts from its accuracy."
+      "reasoning": "The model answer provides a list of authors and their works related to machine learning techniques, but it does not include the specific authors mentioned in the reference answer (Johann Faouzi, Olivier Colliot). Therefore, while the model answer discusses relevant topics, it does not directly answer the question as posed."
     }
   },
   {
@@ -67,26 +71,28 @@
     "ground_truth_doc_ids": [
       "10.1007/s10994-022-06200-0"
     ],
-    "answer": "The paper titled \"Naive automated machine learning,\" which discusses Naive AutoML and focuses on optimizing machine learning pipeline components in isolation, was published on April 1, 2023.",
+    "answer": "The publication date of the paper discussing Naive AutoML, which focuses on optimizing machine learning pipeline components in isolation, is not found in the indexed corpus. Therefore, I cannot provide that information.",
     "answer_mode": "agent",
     "retrieved_doc_ids": [
-      "10.1007/s10994-022-06200-0",
       "10.1093/oso/9780190941659.003.0001",
       "10.1093/oso/9780190941659.001.0001",
-      "10.70593/978-81-981271-4-3_4"
+      "10.70593/978-81-981271-4-3_4",
+      "10.4018/978-1-6684-6291-1.ch004"
     ],
     "retrieved_contexts": [
-      "Title: Naive automated machine learning\nAbstract: We present $$\\text {Naive AutoML}$$ Naive AutoML, an approach that precisely realizes such an in-isolation optimization of the different components of a pre-defined pipeline scheme. The returned pipeline is obtained by just taking the best algorithm of each slot. The isolated optimization leads to substantially reduced search spaces, and, surprisingly, this approach yields comparable and sometimes even better performance than current state-of-the-art optimizers.",
       "Title: Why Use Automated Machine Learning?\nAbstract: The section covers the eight criteria considered essential for AutoML to have significant impact: accuracy, productivity, ease of use, understanding and learning, resource availability, process transparency, generalization, and recommended actions.",
       "Title: Automated Machine Learning for Business\nAbstract: In Automated Machine Learning for Business, we teach the machine learning process using a new development in data science: automated machine learning. AutoML, when implemented properly, makes machine learning accessible to most people because it removes the need for years of experience in the most arcane aspects of data science, such as the math, statistics, and computer science skills required to become a top contender in traditional machine learning. Anyone trained in the use of AutoML can use it to test their ideas and support the quality of those ideas during presentations to management and stakeholder groups.",
-      "Title: Tools and frameworks for machine learning and deep learning: A review\nAbstract: Furthermore, cutting-edge resources such as Hugging Face Transformers for simplifying natural language processing duties and NVIDIA's RAPIDS suite for speeding up data science processes are praised for their inventive impacts. The research delves into incorporating these tools with cloud services such as Google Cloud AI, Amazon SageMaker, and Microsoft Azure ML, highlighting how they help make high-performance computing resources more accessible. The discussion revolves around how automated machine learning (AutoML) frameworks like Google's AutoML and H2O.ai ease the process of model selection and hyperparameter tuning, making it more accessible to non-experts."
+      "Title: Tools and frameworks for machine learning and deep learning: A review\nAbstract: Furthermore, cutting-edge resources such as Hugging Face Transformers for simplifying natural language processing duties and NVIDIA's RAPIDS suite for speeding up data science processes are praised for their inventive impacts. The research delves into incorporating these tools with cloud services such as Google Cloud AI, Amazon SageMaker, and Microsoft Azure ML, highlighting how they help make high-performance computing resources more accessible. The discussion revolves around how automated machine learning (AutoML) frameworks like Google's AutoML and H2O.ai ease the process of model selection and hyperparameter tuning, making it more accessible to non-experts.",
+      "Title: Classification and Machine Learning\nAbstract: The manual classification of a large amount of textual materials are very costly in time and personnel. For this reason, a lot of research has been devoted to the problem of automatic classification and work on the subject dates from 1960. A lot of text classification software has appeared. For some tasks, automatic classifiers perform almost as well as humans, but for others, the gap is still large. These systems are directly related to machine learning. It aims to achieve tasks normally affordable only by humans. There are generally two types of learning: learning \u201cby heart,\u201d which consists of storing information as is, and learning generalization, where we learn from examples."
     ],
-    "retrieval_hit": true,
+    "retrieval_hit": false,
     "token_f1": 0.0,
+    "field_score": 0.0,
+    "field_score_method": "normalized_date_exact",
     "judge": {
-      "score": 5,
-      "correct": true,
-      "reasoning": "The model answer accurately states the publication date of the paper as April 1, 2023, which matches the reference answer."
+      "score": 1,
+      "correct": false,
+      "reasoning": "The model answer fails to provide the correct publication date, which is explicitly stated in the reference answer as 2023-04-01. Instead, it incorrectly claims that the information is not available."
     }
   },
   {
@@ -97,26 +103,28 @@
     "ground_truth_doc_ids": [
       "10.1007/s44379-025-00016-0"
     ],
-    "answer": "The paper titled \"When physics meets machine learning: a survey of physics-informed machine learning\" was published by Springer Science and Business Media LLC.",
+    "answer": "The paper titled \"Discrepancy Modeling with Physics Informed Machine Learning,\" which explores the integration of physics knowledge with machine learning to enhance model generalizability and address data limitations, was published by Cassyni.",
     "answer_mode": "agent",
     "retrieved_doc_ids": [
-      "10.1007/s44379-025-00016-0",
       "10.52843/cassyni.ftzlk9",
       "10.5821/dissertation-2117-348901",
-      "10.3390/make1010001"
+      "10.3390/make1010001",
+      "10.1029/2024jh000184"
     ],
     "retrieved_contexts": [
-      "Title: When physics meets machine learning: a survey of physics-informed machine learning\nAuthors: Chuizheng Meng, Sam Griesemer, Defu Cao, Sungyong Seo, Yan Liu\nPublisher: Springer Science and Business Media LLC\nPublished: 2025-06-01\nCategories: \nDOI: 10.1007/s44379-025-00016-0\nAbstract: Abstract Physics-informed machine learning (PIML), the combination of prior physics knowledge with data-driven machine learning models, has emerged as an effective means of mitigating a shortage of training data, increasing model generalizability, and ensuring physical plausibility of results. In this paper, we survey a wide variety of recent works in PIML and summarize them from three key aspects: 1) motivations of PIML, 2) physics knowledge in PIML, and 3) methods of physics knowledge integration in PIML. We additionally discuss current challenges and corresponding research opportunities in PIML.",
       "Title: Discrepancy Modeling with Physics Informed Machine Learning\nAbstract: This video describes how to combine machine learning with classical physics models to correct for discrepancies in the data (e.g., from nonlinear friction, wind resistance, etc.). Several examples are covered, from modern robotics, to classical connections with Galileo v. Aristotle, and Kepler v. Ptolemy. The examples in this video highlight work and discussions with Prof. Nathan Kutz, especially connections to classical scientific discoveries. SLB acknowledges support from the National Science Foundation AI Institute in Dynamic Systems (grant number 2112085).",
       "Title: Machine learning for quantum physics and quantum physics for machine learning\nAuthors: Patrick Huembeli\nPublisher: Universitat Polit\u00e8cnica de Catalunya\nPublished: \nCategories: \nDOI: 10.5821/dissertation-2117-348901\nAbstract: Research at the intersection of machine learning (ML) and quantum physics is a recent growing field due to the enormous expectations and the success of both fields. ML is arguably one of the most promising technologies that has and will continue to disrupt many aspects of our lives. The way we do research is almost certainly no exception and ML, with its unprecedented ability to find hidden patterns in data, will be assisting future scientific discoveries. Quantum physics on the other side, even though it is sometimes not entirely intuitive, is one of the most successful physical theories and we are on the verge of adopting some quantum technologies in our daily life. Quantum many-body physics is a subfield of quantum physics where we study the collective behavior of particles or atoms and the emergence of phenomena that are due to this collective behavior, such as phases of matter. The study of phase transitions of these systems often requires some intuition of how we can quantify the order parameter of a phase. ML algorithms can imitate something similar to intuition by inferring knowledge from example data. They can, therefore, discover patterns that are invisible to the human eye, which makes them excellent candidates to study phase transitions. At the same time, quantum devices are known to be able to perform some computational task exponentially faster than classical computers and they are able to produce data patterns that are hard to simulate on classical computers. Therefore, there is the hope that ML algorithms run on quantum devices show an advantage over their classical analog. This thesis is devoted to study two different paths along the front lines of ML and quantum physics. On one side, we study the use of neural networks (NN) to classify phases of mater in many-body quantum systems. On the other side, we study ML algorithms that run on quantum computers. The connection between ML for quantum physics and quantum physics for ML in this thesis is an emerging subfield in ML, the interpretability of learning algorithms. A crucial ingredient in the study of phase transitions with NNs is a better understanding of the predictions of the NN, to eventually infer a model of the quantum system and interpretability can assist us in this endeavor. The interpretability method that we study analyzes the influence of the training points on a test prediction and it depends on the curvature of the NN loss landscape. This further inspired an in-depth study of the loss of quantum machine learning (QML) applications which we as well will discuss. In this thesis, we give answers to the questions of how we can leverage NNs to classify phases of matter and we use a method that allows to do domain adaptation to transfer the learned \"intuition\" from systems without noise onto systems with noise. To map the phase diagram of quantum many-body systems in a fully unsupervised manner, we study a method known from anomaly detection that allows us to reduce the human input to a mini mum. We will as well use interpretability methods to study NNs that are trained to distinguish phases of matter to understand if the NNs are learning something similar to an order parameter and if their way of learning can be made more accessible to humans. And finally, inspired by the interpretability of classical NNs, we develop tools to study the loss landscapes of variational quantum circuits to identify possible differences between classical and quantum ML algorithms that might be leveraged for a quantum advantage. La investigaci\u00f3n en la intersecci\u00f3n del aprendizaje autom\u00e1tico (machine learning, ML) y la f\u00edsica cu\u00e1ntica es una \u00e1rea en crecimiento reciente debido al \u00e9xito y las enormes expectativas de ambas \u00e1reas. ML es posiblemente una de las tecnolog\u00edas m\u00e1s prometedoras que ha alterado y seguir\u00e1 alterando muchos aspectos de nuestras vidas. Es casi seguro que la forma en que investigamos no es una excepci\u00f3n y el ML, con su capacidad sin precedentes para encontrar patrones ocultos en los datos ayudar\u00e1 a futuros descubrimientos cient\u00edficos. La f\u00edsica cu\u00e1ntica, por otro lado, aunque a veces no es del todo intuitiva, es una de las teor\u00edas f\u00edsicas m\u00e1s exitosas, y adem\u00e1s estamos a punto de adoptar algunas tecnolog\u00edas cu\u00e1nticas en nuestra vida diaria. La f\u00edsica cu\u00e1ntica de los muchos cuerpos (many-body) es una sub\u00e1rea de la f\u00edsica cu\u00e1ntica donde estudiamos el comportamiento colectivo de part\u00edculas o \u00e1tomos y la aparici\u00f3n de fen\u00f3menos que se deben a este comportamiento colectivo, como las fases de la materia. El estudio de las transiciones de fase de estos sistemas a menudo requiere cierta intuici\u00f3n de c\u00f3mo podemos cuantificar el par\u00e1metro de orden de una fase. Los algoritmos de ML pueden imitar algo similar a la intuici\u00f3n al inferir conocimientos a partir de datos de ejemplo. Por lo tanto, pueden descubrir patrones que son invisibles para el ojo humano, lo que los convierte en excelentes candidatos para estudiar las transiciones de fase. Al mismo tiempo, se sabe que los dispositivos cu\u00e1nticos pueden realizar algunas tareas computacionales exponencialmente m\u00e1s r\u00e1pido que los ordenadores cl\u00e1sicos y pueden producir patrones de datos que son dif\u00edciles de simular en los ordenadores cl\u00e1sicos. Por lo tanto, existe la esperanza de que los algoritmos ML que se ejecutan en dispositivos cu\u00e1nticos muestren una ventaja sobre su anal\u00f3gico cl\u00e1sico. Estudiamos dos caminos diferentes a lo largo de la vanguardia del ML y la f\u00edsica cu\u00e1ntica. Por un lado, estudiamos el uso de redes neuronales (neural network, NN) para clasificar las fases de la materia en sistemas cu\u00e1nticos de muchos cuerpos. Por otro lado, estudiamos los algoritmos ML que se ejecutan en ordenadores cu\u00e1nticos. La conexi\u00f3n entre ML para la f\u00edsica cu\u00e1ntica y la f\u00edsica cu\u00e1ntica para ML en esta tesis es un sub\u00e1rea emergente en ML: la interpretabilidad de los algoritmos de aprendizaje. Un ingrediente crucial en el estudio de las transiciones de fase con NN es una mejor comprensi\u00f3n de las predicciones de la NN, para inferir un modelo del sistema cu\u00e1ntico. As\u00ed pues, la interpretabilidad de la NN puede ayudarnos en este esfuerzo. El estudio de la interpretabilitad inspir\u00f3 adem\u00e1s un estudio en profundidad de la p\u00e9rdida de aplicaciones de aprendizaje autom\u00e1tico cu\u00e1ntico (quantum machine learning, QML) que tambi\u00e9n discutiremos. En esta tesis damos respuesta a las preguntas de c\u00f3mo podemos aprovechar las NN para clasificar las fases de la materia y utilizamos un m\u00e9todo que permite hacer una adaptaci\u00f3n de dominio para transferir la \"intuici\u00f3n\" aprendida de sistemas sin ruido a sistemas con ruido. Para mapear el diagrama de fase de los sistemas cu\u00e1nticos de muchos cuerpos de una manera totalmente no supervisada, estudiamos un m\u00e9todo conocido de detecci\u00f3n de anomal\u00edas que nos permite reducir la entrada humana al m\u00ednimo. Tambi\u00e9n usaremos m\u00e9todos de interpretabilidad para estudiar las NN que est\u00e1n entrenadas para distinguir fases de la materia para comprender si las NN est\u00e1n aprendiendo algo similar a un par\u00e1metro de orden y si su forma de aprendizaje puede ser m\u00e1s accesible para los humanos. Y finalmente, inspirados por la interpretabilidad de las NN cl\u00e1sicas, desarrollamos herramientas para estudiar los paisajes de p\u00e9rdida de los circuitos cu\u00e1nticos variacionales para identificar posibles diferencias entre los algoritmos ML cl\u00e1sicos y cu\u00e1nticos que podr\u00edan aprovecharse para obtener una ventaja cu\u00e1ntica.",
-      "Title: Introduction to MAchine Learning & Knowledge Extraction (MAKE)\nAuthors: Andreas Holzinger\nPublisher: MDPI AG\nPublished: 2017-07-03\nCategories: \nDOI: 10.3390/make1010001\nAbstract: The grand goal of Machine Learning is to develop software which can learn from previous experience\u2014similar to how we humans do. Ultimately, to reach a level of usable intelligence, we need (1) to learn from prior data, (2) to extract knowledge, (3) to generalize\u2014i.e., guessing where probability function mass/density concentrates, (4) to fight the curse of dimensionality, and (5) to disentangle underlying explanatory factors of the data\u2014i.e., to make sense of the data in the context of an application domain. To address these challenges and to ensure successful machine learning applications in various domains an integrated machine learning approach is important. This requires a concerted international effort without boundaries, supporting collaborative, cross-domain, interdisciplinary and transdisciplinary work of experts from seven sections, ranging from data pre-processing to data visualization, i.e., to map results found in arbitrarily high dimensional spaces into the lower dimensions to make it accessible, usable and useful to the end user. An integrated machine learning approach needs also to consider issues of privacy, data protection, safety, security, user acceptance and social implications. This paper is the inaugural introduction to the new journal of MAchine Learning & Knowledge Extraction (MAKE). The goal is to provide an incomplete, personally biased, but consistent introduction into the concepts of MAKE and a brief overview of some selected topics to stimulate future research in the international research community."
+      "Title: Introduction to MAchine Learning & Knowledge Extraction (MAKE)\nAuthors: Andreas Holzinger\nPublisher: MDPI AG\nPublished: 2017-07-03\nCategories: \nDOI: 10.3390/make1010001\nAbstract: The grand goal of Machine Learning is to develop software which can learn from previous experience\u2014similar to how we humans do. Ultimately, to reach a level of usable intelligence, we need (1) to learn from prior data, (2) to extract knowledge, (3) to generalize\u2014i.e., guessing where probability function mass/density concentrates, (4) to fight the curse of dimensionality, and (5) to disentangle underlying explanatory factors of the data\u2014i.e., to make sense of the data in the context of an application domain. To address these challenges and to ensure successful machine learning applications in various domains an integrated machine learning approach is important. This requires a concerted international effort without boundaries, supporting collaborative, cross-domain, interdisciplinary and transdisciplinary work of experts from seven sections, ranging from data pre-processing to data visualization, i.e., to map results found in arbitrarily high dimensional spaces into the lower dimensions to make it accessible, usable and useful to the end user. An integrated machine learning approach needs also to consider issues of privacy, data protection, safety, security, user acceptance and social implications. This paper is the inaugural introduction to the new journal of MAchine Learning & Knowledge Extraction (MAKE). The goal is to provide an incomplete, personally biased, but consistent introduction into the concepts of MAKE and a brief overview of some selected topics to stimulate future research in the international research community.",
+      "Title: Our Vision for JGR: Machine Learning and Computation\nAbstract: Responding to an unmet demand in the existing worldwide editorial offer, the Journal of Geophysical Research: Machine Learning and Computation aims to serve as an intellectual crucible, fostering collaborations across multiple geophysical disciplines and data scientists. The journal welcomes papers with strong methodological developments that allow for geoscience advancements grounded in specific computational and data\u2010driven methods, leveraging ML as well as innovative computational strategies, and leading to breakthrough discoveries and original scientific outcomes."
     ],
-    "retrieval_hit": true,
-    "token_f1": 0.35714285714285715,
+    "retrieval_hit": false,
+    "token_f1": 0.058823529411764705,
+    "field_score": 0.0,
+    "field_score_method": "normalized_publisher_exact",
     "judge": {
-      "score": 5,
-      "correct": true,
-      "reasoning": "The model answer correctly identifies the publisher as Springer Science and Business Media LLC, which matches the reference answer."
+      "score": 1,
+      "correct": false,
+      "reasoning": "The model answer incorrectly states that the publisher is Cassyni, while the reference answer correctly identifies the publisher as Springer Science and Business Media LLC."
     }
   },
   {
@@ -127,7 +135,7 @@
     "ground_truth_doc_ids": [
       "10.1029/2024jh000135"
     ],
-    "answer": "The study addresses the challenge of insufficient knowledge regarding the variation and distribution of substrates in rivers, which hampers species conservation and ecosystem restoration efforts. Traditional methods for generating georeferenced substrate maps from sonar imagery require significant human intervention and expertise, making them less accessible for scientific inquiry.\n\nThe PING-Mapper software improves this process by automating the generation of geospatial benthic data sets from sonar imagery. The latest version (2.0) incorporates machine learning techniques, specifically semantic segmentation with deep neural networks, to reproducibly map substrates over large spatial extents. It also includes workflows for creating training sets, model training with transfer learning, and additional functionalities to enhance data interpretability. This automation significantly lowers the barrier for researchers to include substrate mapping in aquatic studies.",
+    "answer": "The study addresses the challenge of insufficient knowledge regarding the variation and distribution of substrates in rivers, which hampers species conservation and ecosystem restoration efforts. Existing methods for generating georeferenced substrate maps from side-scan sonar (SSS) data require significant human intervention and expertise, creating a barrier to their adoption in scientific research.\n\nThe PING-Mapper software improves this process by automating the generation of geospatial benthic data sets from SSS imagery. The latest version (2.0) incorporates machine learning techniques, specifically semantic segmentation with deep neural networks, to reproducibly map substrates over large spatial extents. It achieves an overall accuracy of 78% for a six-class substrate model, with further improvements when substrates are grouped into three classes. Additionally, PING-Mapper includes workflows for masking sonar shadows and correcting imagery attenuation, enhancing the interpretability of the data. This automation lowers the barrier for researchers to include substrate mapping in aquatic studies.",
     "answer_mode": "agent",
     "retrieved_doc_ids": [
       "10.1029/2024jh000135",
@@ -142,11 +150,13 @@
       "Title: Our Vision for JGR: Machine Learning and Computation\nAbstract: Responding to an unmet demand in the existing worldwide editorial offer, the Journal of Geophysical Research: Machine Learning and Computation aims to serve as an intellectual crucible, fostering collaborations across multiple geophysical disciplines and data scientists. The journal welcomes papers with strong methodological developments that allow for geoscience advancements grounded in specific computational and data\u2010driven methods, leveraging ML as well as innovative computational strategies, and leading to breakthrough discoveries and original scientific outcomes."
     ],
     "retrieval_hit": true,
-    "token_f1": 0.27199999999999996,
+    "token_f1": 0.2446043165467626,
+    "field_score": 0.2446043165467626,
+    "field_score_method": "token_f1_summary",
     "judge": {
       "score": 5,
       "correct": true,
-      "reasoning": "The model answer accurately addresses the challenges in mapping substrate distribution in rivers, highlighting the lack of knowledge and the limitations of traditional methods. It also correctly explains how PING-Mapper software utilizes machine learning techniques to automate and improve the mapping process, making it more accessible for researchers."
+      "reasoning": "The model answer accurately addresses the challenges in mapping substrate distribution in rivers, highlighting the lack of knowledge and the barriers posed by existing methods. It also correctly explains how PING-Mapper software utilizes machine learning techniques to automate the mapping process, improve accuracy, and enhance data interpretability, aligning well with the reference answer."
     }
   },
   {
@@ -173,6 +183,8 @@
     ],
     "retrieval_hit": true,
     "token_f1": 0.3448275862068965,
+    "field_score": 0.3448275862068965,
+    "field_score_method": "token_f1_summary",
     "judge": {
       "score": 5,
       "correct": true,
@@ -203,6 +215,8 @@
     ],
     "retrieval_hit": true,
     "token_f1": 0.0,
+    "field_score": 1.0,
+    "field_score_method": "normalized_date_exact",
     "judge": {
       "score": 5,
       "correct": true,
@@ -233,10 +247,12 @@
     ],
     "retrieval_hit": true,
     "token_f1": 0.19354838709677416,
+    "field_score": 1.0,
+    "field_score_method": "normalized_publisher_exact",
     "judge": {
       "score": 5,
       "correct": true,
-      "reasoning": "The model answer accurately states that the research was published by the American Geophysical Union (AGU), which is the same as the reference answer."
+      "reasoning": "The model answer accurately identifies the publisher as the American Geophysical Union (AGU), which is the same as the reference answer."
     }
   },
   {
@@ -247,7 +263,7 @@
     "ground_truth_doc_ids": [
       "10.1029/2024jh000521"
     ],
-    "answer": "The study utilizes a binary semantic segmentation U-Net model to enhance the detection of melting layers from radar observations. This machine learning approach offers significant improvements over traditional methods, which typically rely on fixed thresholds or a priori assumptions that lack robustness across diverse weather conditions. Specifically, the U-Net model achieves a 57% increase in the Probability of Detection and improves the mean Dice-S\u00f8rensen coefficient from 0.69 to 0.91. Additionally, it provides information on detection uncertainty through ensemble predictions, making it applicable to complex weather scenarios.",
+    "answer": "The study utilizes a binary semantic segmentation U-Net model to enhance the detection of melting layers from radar observations. This machine learning approach offers significant improvements over traditional methods, which rely on fixed thresholds or a priori assumptions that lack robustness across diverse weather conditions. The U-Net model achieves a 57% increase in the Probability of Detection and improves the mean Dice-S\u00f8rensen coefficient from 0.69 to 0.91. Additionally, it provides information on detection uncertainty through ensemble predictions, making it applicable to complex weather scenarios.",
     "answer_mode": "agent",
     "retrieved_doc_ids": [
       "10.1029/2024jh000521",
@@ -262,11 +278,13 @@
       "Title: Process\u2010Based Machine Learning Observationally Constrains Future Regional Warming Projections. Authors: Sophie Wilkinson, Peer Nowack, Manoj Joshi. Publisher: American Geophysical Union (AGU). Published: 2025-06-01. Categories: . DOI: 10.1029/2025jh000698."
     ],
     "retrieval_hit": true,
-    "token_f1": 0.13186813186813187,
+    "token_f1": 0.1348314606741573,
+    "field_score": 0.1348314606741573,
+    "field_score_method": "token_f1_summary",
     "judge": {
       "score": 5,
       "correct": true,
-      "reasoning": "The model answer accurately identifies the machine learning approach (U-Net) used in the study and details the improvements it offers over traditional methods, including specific metrics that demonstrate its effectiveness."
+      "reasoning": "The model answer accurately identifies the machine learning approach (U-Net) used in the study and explains its advantages over traditional methods, including specific performance improvements and the ability to handle detection uncertainty."
     }
   },
   {
@@ -277,7 +295,7 @@
     "ground_truth_doc_ids": [
       "10.1029/2024jh000555"
     ],
-    "answer": "The researchers who reviewed the application of machine learning techniques in modeling the ionosphere, focusing on parameters like vertical total electron content and F2-layer critical frequency, are:\n\n- Shuyin Mao\n- Manuel Hern\u00e1ndez\u2010Pajares\n- Benedikt Soja\n\nThis information is from the paper titled \"A Review of Machine Learning\u2010Based Ionospheric Spatial and Temporal Modeling,\" published by the American Geophysical Union (AGU) on September 1, 2025.",
+    "answer": "The researchers who reviewed the application of machine learning techniques in modeling the ionosphere, particularly focusing on parameters like vertical total electron content and F2-layer critical frequency, are:\n\n- Shuyin Mao\n- Manuel Hern\u00e1ndez\u2010Pajares\n- Benedikt Soja\n\nThis information is from the paper titled \"A Review of Machine Learning\u2010Based Ionospheric Spatial and Temporal Modeling,\" published by the American Geophysical Union (AGU) on September 1, 2025.",
     "answer_mode": "agent",
     "retrieved_doc_ids": [
       "10.1029/2024jh000555",
@@ -292,11 +310,13 @@
       "Title: Improving Terrestrial Carbon Flux Simulations With Machine Learning and Global Earth Observations\nAuthors: Christian Seiler\nPublisher: Copernicus GmbH\nPublished: 2025-06-16\nCategories: \nDOI: 10.5194/egusphere-2025-2517\nAbstract: Abstract. The land carbon cycle can act as both a negative and positive climate feedback. Currently, it serves as a negative feedback, absorbing about one-third of anthropogenic CO2 emissions. However, multi-model studies project a weakening of this sink, with the potential for a future shift to a carbon source. Significant inter-model differences persist, limiting confidence in these projections. Some of these discrepancies may arise from parameter uncertainty. Advances in artificial intelligence, computing, and Earth observations now offer new opportunities to better constrain key model parameters. While previous studies have shown that parameter optimization can substantially improve model performance, they have not explored its impact on the future carbon balance. To address this gap, I use a machine learning algorithm to optimize 28 model parameters based on 13 global Earth observation datasets. The resulting parameter set is then applied in carbon cycle simulations under historical conditions and a high-emissions future scenario. Results show that optimization significantly improves model performance, particularly for gross primary productivity (GPP), leaf area index, and sensible heat flux. Globally, optimized net biome productivity is lower than in the default simulation (33 % lower from 1960 to 2022 and 43 % lower from 2015 to 2100) due to reduced GPP and increased autotrophic respiration. Regionally, optimization tends to weaken both carbon sinks and sources, reducing the contrast between them. In conclusion, parameter tuning can substantially alter historical and future carbon fluxes, with effects comparable to adding new processes. To reduce inter-model spread, modeling groups should integrate advanced parameter optimization frameworks into their model development cycle."
     ],
     "retrieval_hit": true,
-    "token_f1": 0.13333333333333333,
+    "token_f1": 0.13114754098360654,
+    "field_score": 1.0,
+    "field_score_method": "author_name_coverage",
     "judge": {
       "score": 5,
       "correct": true,
-      "reasoning": "The model answer accurately lists the researchers as Shuyin Mao, Manuel Hern\u00e1ndez\u2010Pajares, and Benedikt Soja, which matches the reference answer. Additionally, it provides context about the paper and its publication date, enhancing the completeness of the response."
+      "reasoning": "The model answer accurately lists the researchers as stated in the reference answer and provides additional context about the source of the information, confirming its correctness."
     }
   }
 ]

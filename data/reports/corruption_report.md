@@ -1,10 +1,10 @@
 # Corruption Comparison Report
 
-| State | Samples | Retrieval hit rate | Mean token F1 | Judge accuracy |
-| --- | ---: | ---: | ---: | ---: |
-| Baseline | 10 | 1.0000 | 0.1635 | 0.9000 |
-| Corrupted | 10 | 1.0000 | 0.1508 | 0.9000 |
-| Repaired | 10 | 1.0000 | 0.1538 | 0.9000 |
+| State | Samples | Retrieval hit rate | Mean token F1 | Field-aware score | Judge accuracy |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Baseline | 10 | 1.0000 | 0.1515 | 0.6833 | 0.9000 |
+| Corrupted | 10 | 0.6000 | 0.1202 | 0.3819 | 0.7000 |
+| Repaired | 10 | 1.0000 | 0.1560 | 0.6831 | 0.9000 |
 
 ## Data quality and freshness
 

@@ -1642,7 +1642,7 @@
   {
     "paper_id": "10.1007/s10994-022-06200-0",
     "title": "Naive automated machine learning",
-    "summary": "Abstract An essential task of automated machine learning ( $$\\text {AutoML}$$ AutoML ) is the problem of automatically finding the pipeline with the best generalization performance on a given dataset. This problem has been addressed with sophisticated $$\\text {black-box}$$ black-box optimization techniques such as Bayesian optimization, grammar-based genetic algorithms, and tree search algorithms. Most of the current approaches are motivated by the assumption that optimizing the components of a pipeline in isolation may yield sub-optimal results. We present $$\\text {Naive AutoML}$$ Naive AutoML, an approach that precisely realizes such an in-isolation optimization of the different components of a pre-defined pipeline scheme. The returned pipeline is obtained by just taking the best algorithm of each slot. The isolated optimization leads to substantially reduced search spaces, and, surprisingly, this approach yields comparable and sometimes even better performance than current state-of-the-art optimizers.",
+    "summary": "",
     "authors": [
       "Felix Mohr",
       "Marcel Wever"
@@ -1658,7 +1658,7 @@
     "categories_joined": "",
     "summary_chars": 1019,
     "age_days": 1223.0,
-    "text_for_embedding": "Title: Naive automated machine learning | Authors: Felix Mohr, Marcel Wever | Summary: Abstract An essential task of automated machine learning ( $$\\text {AutoML}$$ AutoML ) is the problem of automatically finding the pipeline with the best generalization performance on a given dataset. This problem has been addressed with sophisticated $$\\text {black-box}$$ black-box optimization techniques such as Bayesian optimization, grammar-based genetic algorithms, and tree search algorithms. Most of the current approaches are motivated by the assumption that optimizing the components of a pipeline in isolation may yield sub-optimal results. We present $$\\text {Naive AutoML}$$ Naive AutoML, an approach that precisely realizes such an in-isolation optimization of the different components of a pre-defined pipeline scheme. The returned pipeline is obtained by just taking the best algorithm of each slot. The isolated optimization leads to substantially reduced search spaces, and, surprisingly, this approach yields comparable and sometimes even better performance than current state-of-the-art optimizers."
+    "text_for_embedding": "Title: Naive automated machine learning | Authors: Felix Mohr, Marcel Wever | Summary: "
   },
   {
     "paper_id": "10.4018/978-1-6684-6291-1.ch059",
@@ -3234,14 +3234,14 @@
   {
     "paper_id": "10.1007/978-1-0716-3195-9_2",
     "title": "Classic Machine Learning Methods",
-    "summary": "Abstract In this chapter, we present the main classic machine learning methods. A large part of the chapter is devoted to supervised learning techniques for classification and regression, including nearest neighbor methods, linear and logistic regressions, support vector machines, and tree-based algorithms. We also describe the problem of overfitting as well as strategies to overcome it. We finally provide a brief overview of unsupervised learning methods, namely, for clustering and dimensionality reduction. The chapter does not cover neural networks and deep learning as these will be presented in Chaps. 3, 4, 5, and 6.",
+    "summary": "",
     "authors": [
       "Johann Faouzi",
       "Olivier Colliot"
     ],
     "categories": [],
     "primary_category": "",
-    "published": "2000-01-01",
+    "published": "2023-01-01",
     "updated": "2026-07-22",
     "abs_url": "https://doi.org/10.1007/978-1-0716-3195-9_2",
     "pdf_url": "",
@@ -3249,8 +3249,8 @@
     "authors_joined": "Johann Faouzi, Olivier Colliot",
     "categories_joined": "",
     "summary_chars": 627,
-    "age_days": 9714.0,
-    "text_for_embedding": "Title: Classic Machine Learning Methods | Authors: Johann Faouzi, Olivier Colliot | Summary: Abstract In this chapter, we present the main classic machine learning methods. A large part of the chapter is devoted to supervised learning techniques for classification and regression, including nearest neighbor methods, linear and logistic regressions, support vector machines, and tree-based algorithms. We also describe the problem of overfitting as well as strategies to overcome it. We finally provide a brief overview of unsupervised learning methods, namely, for clustering and dimensionality reduction. The chapter does not cover neural networks and deep learning as these will be presented in Chaps. 3, 4, 5, and 6."
+    "age_days": 1313.0,
+    "text_for_embedding": "Title: Classic Machine Learning Methods | Authors: Johann Faouzi, Olivier Colliot | Summary: "
   },
   {
     "paper_id": "10.36647/ciml/04.02.a002",
@@ -3396,7 +3396,7 @@
     "categories_joined": "",
     "summary_chars": 1917,
     "age_days": 704.0,
-    "text_for_embedding": "Title: Machine Learning\u2010Based Hydrofacies Classification: Effects of Noise and Regularization | Authors: Emmanuel Oladeji, Andrew Parsekian, Dario Grana | Summary: Abstract This study utilizes an unsupervised ML approach, the expectation\u2010maximization (EM) algorithm using Gaussian Mixture Models (GMM), to integrate near\u2010surface geophysics measurements for hydrofacies classification. We examined the impact of noise and noise estimation on classification across two synthetic models with varying lateral heterogeneity, simulating and inverting resistivity and seismic data with noise levels ranging from minimal to very high. The algorithm proved robust in accurately reconstructing hydrofacies when noise was correctly estimated or not significantly underestimated, showing minimal misclassification in shallow hydrofacies. However, severe underestimation of noise during inversion led to increased misclassifications and artifact\u2010laden hydrofacies models, especially in shallow regions. Higher lateral heterogeneity lessened the negative impact of noise, slightly improving algorithm performance when noise was correctly estimated. We also explored the influence of geophysical measurement uncertainties on classification uncertainty through hydrofacies probability maps, noting the greatest impact when noise was underestimated. Additionally, we investigated the effect of the regularization trade\u2010off parameter on the hydrofacies classification and show how the performance of the algorithm can be evaluated in the absence of ground truth data using the average silhouette score of the classification with data obtained from a basement complex field site. We found that moderate regularization ( \u03bb = 200) yielded the best hydrofacies model, as indicated by the highest average silhouette score. Our findings underscore the effectiveness of unsupervised ML for facies classification and emphasizes the critical role of accurate noise characterization in geophysical data processing for enhancing the integration of subsurface heterogeneity information into hydrological models."
+    "text_for_embedding": "Title: Machine Learning\u2010Based Hydrofacies Classification: Effects of Noise and Regularization | Authors: Emmanuel Oladeji, Andrew Parsekian, Dario Grana | Summary: Abstract This study utilizes an unsupervised ML approach, the expectation\u2010maximization (EM) algorithm using Gaussian Mixture Models (GMM), to integrate near\u2010surface geophysics measurements for hydrofacies classification. We examined the impact of noise and noise estimation on classification across two synthetic models with varying lateral heterogeneity, simulating and inverting resistivity and seismic data with noise levels ranging from minimal to very high. The algorithm proved robust in accurately reconstructing hydrofacies when noise was correctly estimated or not significantly underestimated, showing minimal misclassification in shallow hydrofacies. However, severe underestimation of noise during inversion led to increased misclassifications and artifact\u2010laden hydrofacies models, especially in shallow regions. Higher lateral heterogeneity lessened the negative impact of noise, slightly improving algorithm performance when noise was correctly estimated. We also explored the influence of geophysical measurement uncertainties on classification uncertainty through hydrofacies probability maps, noting the greatest impact when noise was underestimated. Additionally, we investigated the effect of the regularization trade\u2010off parameter on the hydrofacies classification and show how the performance of the algorithm can be evaluated in the absence of ground truth data using the average silhouette score of the classification with data obtained from a basement complex field site. We found that moderate regularization ( \u03bb = 200) yielded the best hydrofacies model, as indicated by the highest average silhouette score. Our findings underscore the effectiveness of unsupervised ML for facies classification and emphasizes the critical role of accurate noise characterization in geophysical data processing for enhancing the integration of subsurface heterogeneity information into hydrological models. [CORRUPTION_NOISE] lorem-ipsum ### unrelated-token-98765"
   },
   {
     "paper_id": "10.70675/2182b7a8zb67dz4845z9cb4z0f38acf7b0d1",
@@ -3471,7 +3471,7 @@
     ],
     "categories": [],
     "primary_category": "",
-    "published": "2024-09-01",
+    "published": "2000-01-01",
     "updated": "2026-06-08",
     "abs_url": "https://doi.org/10.1029/2024jh000135",
     "pdf_url": "",
@@ -3479,7 +3479,7 @@
     "authors_joined": "C. S. Bodine, D. Buscombe, T. D. Hocking",
     "categories_joined": "",
     "summary_chars": 1949,
-    "age_days": 704.0,
+    "age_days": 9714.0,
     "text_for_embedding": "Title: Automated River Substrate Mapping From Sonar Imagery With Machine Learning | Authors: C. S. Bodine, D. Buscombe, T. D. Hocking | Summary: Abstract Knowledge of the variation and distribution of substrates at large spatial extents in aquatic systems, particularly rivers, is severely lacking, impeding species conservation and ecosystem restoration efforts. Recreation\u2010grade side\u2010scan sonar (SSS) instruments have demonstrated their unparalleled value as a low\u2010cost scientific instrument capable of efficient and rapid imaging of the benthic environment. However, existing methods for generating georeferenced data sets from these instruments, especially substrate maps, remain a barrier of adoption for scientific inquiry due to the high degree of human intervention and required expertise. To address this shortcoming, we introduced PING\u2010Mapper, an open\u2010source and freely available Python\u2010based software for automatically generating geospatial benthic data sets from popular Humminbird \u00ae instruments reproducibly. The previously released Version 1.0 of the software provided automated workflows for exporting georeferenced sonar imagery. This study extends functionality with version 2.0 by incorporating semantic segmentation with deep neural networks to reproducibly map substrates at large spatial extents. We present a novel approach for generating label\u2010ready sonar data sets, creating label\u2010image training sets, and model training with transfer learning; all with open\u2010source tools. The six\u2010class substrate model achieves an overall accuracy of 78% and the best performing class achieves 91%. Grouping substrates into three classes further improves the overall accuracy (87%) and best performing class accuracy (94%). Additional workflows enable masking sonar shadows, calculating independent bed picks and correcting attenuation effects in the imagery to improve interpretability. This software provides an improved mechanism for automatically mapping substrate distribution from recreation\u2010grade SSS systems, thereby lowering the barrier for inclusion in wider aquatic research."
   },
   {
@@ -3756,7 +3756,7 @@
   {
     "paper_id": "10.1007/s44379-025-00016-0",
     "title": "When physics meets machine learning: a survey of physics-informed machine learning",
-    "summary": "Abstract Physics-informed machine learning (PIML), the combination of prior physics knowledge with data-driven machine learning models, has emerged as an effective means of mitigating a shortage of training data, increasing model generalizability, and ensuring physical plausibility of results. In this paper, we survey a wide variety of recent works in PIML and summarize them from three key aspects: 1) motivations of PIML, 2) physics knowledge in PIML, and 3) methods of physics knowledge integration in PIML. We additionally discuss current challenges and corresponding research opportunities in PIML.",
+    "summary": "",
     "authors": [
       "Chuizheng Meng",
       "Sam Griesemer",
@@ -3775,7 +3775,7 @@
     "categories_joined": "",
     "summary_chars": 605,
     "age_days": 431.0,
-    "text_for_embedding": "Title: When physics meets machine learning: a survey of physics-informed machine learning | Authors: Chuizheng Meng, Sam Griesemer, Defu Cao, Sungyong Seo, Yan Liu | Summary: Abstract Physics-informed machine learning (PIML), the combination of prior physics knowledge with data-driven machine learning models, has emerged as an effective means of mitigating a shortage of training data, increasing model generalizability, and ensuring physical plausibility of results. In this paper, we survey a wide variety of recent works in PIML and summarize them from three key aspects: 1) motivations of PIML, 2) physics knowledge in PIML, and 3) methods of physics knowledge integration in PIML. We additionally discuss current challenges and corresponding research opportunities in PIML. [CORRUPTION_NOISE] lorem-ipsum ### unrelated-token-98765"
+    "text_for_embedding": "Title: When physics meets machine learning: a survey of physics-informed machine learning | Authors: Chuizheng Meng, Sam Griesemer, Defu Cao, Sungyong Seo, Yan Liu | Summary: "
   },
   {
     "paper_id": "10.71443/9789349552395-18",
@@ -4093,24 +4093,25 @@
     "text_for_embedding": "Title: AUTOMATON | Authors: Adam Palmquist, Isak Barbopoulos, Miralem Helmefalk | Summary: This article displays a design ethnographic case study on an ongoing machine learning project at a Scandinavian gamification start-up company. From late 2020 until early 2021, the project produced a machine learning proof of concept, later implemented in the gamification start-up\u00b4s application programming interface to offer smart gamification. The initial results show promise in using prediction models to automate the cluster model selection affording more functional, autonomous, and scalable user segments that are faster to implement. The finding provides opportunities for gamification (e.g., in learning analytics and health informatics). An identified challenge was performance; the neural networks required hyperparameter fine-tuning, which is time-consuming and limits scalability. Interesting further investigations should consider the neural network fine-tuning process, but also attempt to verify the effectiveness of the cluster models selection compared with a control group."
   },
   {
-    "paper_id": "10.1007/s10994-022-06200-0",
-    "title": "Naive automated machine learning",
-    "summary": "Abstract An essential task of automated machine learning ( $$\\text {AutoML}$$ AutoML ) is the problem of automatically finding the pipeline with the best generalization performance on a given dataset. This problem has been addressed with sophisticated $$\\text {black-box}$$ black-box optimization techniques such as Bayesian optimization, grammar-based genetic algorithms, and tree search algorithms. Most of the current approaches are motivated by the assumption that optimizing the components of a pipeline in isolation may yield sub-optimal results. We present $$\\text {Naive AutoML}$$ Naive AutoML, an approach that precisely realizes such an in-isolation optimization of the different components of a pre-defined pipeline scheme. The returned pipeline is obtained by just taking the best algorithm of each slot. The isolated optimization leads to substantially reduced search spaces, and, surprisingly, this approach yields comparable and sometimes even better performance than current state-of-the-art optimizers.",
+    "paper_id": "10.1029/2024jh000184",
+    "title": "Our Vision for JGR: Machine Learning and Computation",
+    "summary": "Abstract This editorial introduces the inaugural issue of the Journal of Geophysical Research: Machine Learning and Computation to the scientific community, elucidating the motivations and vision behind its establishment. The landscape of computational tools for geoscientists has undergone a rapid transformation in the last decade, akin to a new scientific revolution challenging the traditional scientific method. The paradigm shift emphasizes the integration of data\u2010driven methods and the possibility of predicting and/or reproducing the evolution of natural phenomena with computers as the fourth pillar of scientific discovery, sparking debates on trustworthiness, and ethical implications. The data science revolution is fueled by the convergence of advancements, including the big\u2010data revolution, GPU market expansion, and significant investments in Artificial Intelligence and high performance computing by both institutional and private players. This transformation has given rise to a trans\u2010disciplinary community that has investigated a wide range of questions under the lens of machine learning (ML) approaches and has generally advanced the field of computational methods within the broader geosciences community, the core of the American Geophysical Union (AGU) membership. Responding to an unmet demand in the existing worldwide editorial offer, the Journal of Geophysical Research: Machine Learning and Computation aims to serve as an intellectual crucible, fostering collaborations across multiple geophysical disciplines and data scientists. The journal welcomes papers with strong methodological developments that allow for geoscience advancements grounded in specific computational and data\u2010driven methods, leveraging ML as well as innovative computational strategies, and leading to breakthrough discoveries and original scientific outcomes. Authors are encouraged to balance succinctness in introducing methods with a thorough exploration of the novelty of the work proposed and its future applications placing special emphasis on the connection between the data science approach and the scientific outcome, considering a broad readership. Emphasis on result reproducibility aligns with AGU guidance, inviting active participation from the community in shaping geophysical research in the era of machine learning and computation.",
     "authors": [
-      "Felix Mohr",
-      "Marcel Wever"
+      "E. Camporeale",
+      "R. Marino",
+      "the Editorial Board"
     ],
     "categories": [],
     "primary_category": "",
-    "published": "2023-04-01",
-    "updated": "2026-07-23",
-    "abs_url": "https://doi.org/10.1007/s10994-022-06200-0",
-    "pdf_url": "https://link.springer.com/content/pdf/10.1007/s10994-022-06200-0.pdf",
-    "comment": "Springer Science and Business Media LLC",
-    "authors_joined": "Felix Mohr, Marcel Wever",
+    "published": "2024-03-01",
+    "updated": "2026-05-21",
+    "abs_url": "https://doi.org/10.1029/2024jh000184",
+    "pdf_url": "",
+    "comment": "American Geophysical Union (AGU)",
+    "authors_joined": "E. Camporeale, R. Marino, the Editorial Board",
     "categories_joined": "",
-    "summary_chars": 1019,
-    "age_days": 1223.0,
-    "text_for_embedding": "Title: Naive automated machine learning | Authors: Felix Mohr, Marcel Wever | Summary: Abstract An essential task of automated machine learning ( $$\\text {AutoML}$$ AutoML ) is the problem of automatically finding the pipeline with the best generalization performance on a given dataset. This problem has been addressed with sophisticated $$\\text {black-box}$$ black-box optimization techniques such as Bayesian optimization, grammar-based genetic algorithms, and tree search algorithms. Most of the current approaches are motivated by the assumption that optimizing the components of a pipeline in isolation may yield sub-optimal results. We present $$\\text {Naive AutoML}$$ Naive AutoML, an approach that precisely realizes such an in-isolation optimization of the different components of a pre-defined pipeline scheme. The returned pipeline is obtained by just taking the best algorithm of each slot. The isolated optimization leads to substantially reduced search spaces, and, surprisingly, this approach yields comparable and sometimes even better performance than current state-of-the-art optimizers."
+    "summary_chars": 2354,
+    "age_days": 888.0,
+    "text_for_embedding": "Title: Our Vision for JGR: Machine Learning and Computation | Authors: E. Camporeale, R. Marino, the Editorial Board | Summary: Abstract This editorial introduces the inaugural issue of the Journal of Geophysical Research: Machine Learning and Computation to the scientific community, elucidating the motivations and vision behind its establishment. The landscape of computational tools for geoscientists has undergone a rapid transformation in the last decade, akin to a new scientific revolution challenging the traditional scientific method. The paradigm shift emphasizes the integration of data\u2010driven methods and the possibility of predicting and/or reproducing the evolution of natural phenomena with computers as the fourth pillar of scientific discovery, sparking debates on trustworthiness, and ethical implications. The data science revolution is fueled by the convergence of advancements, including the big\u2010data revolution, GPU market expansion, and significant investments in Artificial Intelligence and high performance computing by both institutional and private players. This transformation has given rise to a trans\u2010disciplinary community that has investigated a wide range of questions under the lens of machine learning (ML) approaches and has generally advanced the field of computational methods within the broader geosciences community, the core of the American Geophysical Union (AGU) membership. Responding to an unmet demand in the existing worldwide editorial offer, the Journal of Geophysical Research: Machine Learning and Computation aims to serve as an intellectual crucible, fostering collaborations across multiple geophysical disciplines and data scientists. The journal welcomes papers with strong methodological developments that allow for geoscience advancements grounded in specific computational and data\u2010driven methods, leveraging ML as well as innovative computational strategies, and leading to breakthrough discoveries and original scientific outcomes. Authors are encouraged to balance succinctness in introducing methods with a thorough exploration of the novelty of the work proposed and its future applications placing special emphasis on the connection between the data science approach and the scientific outcome, considering a broad readership. Emphasis on result reproducibility aligns with AGU guidance, inviting active participation from the community in shaping geophysical research in the era of machine learning and computation."
   }
 ]
