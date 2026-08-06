@@ -7,14 +7,12 @@ import sys
 import types
 from typing import Any
 
-from datasets import Dataset
 from pydantic import BaseModel, Field
 
 from core.config import Settings
 from core.utils import normalize_whitespace, read_json, write_json
 from retrieval.embeddings import MiniLMEmbeddings
 from retrieval.index import LocalEmbeddingIndex
-from retrieval.llm import build_llm
 from retrieval.qa import answer_question
 
 
@@ -59,6 +57,8 @@ Return:
 - short reasoning
 """.strip()
     try:
+        from retrieval.llm import build_llm
+
         llm = build_llm(settings=settings, temperature=0.0).with_structured_output(JudgeVerdict)
         return llm.invoke(prompt)
     except Exception:
@@ -80,6 +80,7 @@ def _run_ragas(settings: Settings, answers: list[dict[str, Any]]) -> dict[str, A
             sys.modules["langchain_community.chat_models.vertexai"] = shim
         from ragas import evaluate
         from ragas.metrics import answer_relevancy, context_precision, context_recall, faithfulness
+        from datasets import Dataset
 
         dataset = Dataset.from_dict(
             {

@@ -1,15 +1,20 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+import math
 from pathlib import Path
 from typing import Any
 
-import chromadb
 import pandas as pd
 
 from core.config import Settings
 from core.utils import read_json, safe_slug, write_json
 from retrieval.embeddings import MiniLMEmbeddings
+
+try:
+    import chromadb
+except ModuleNotFoundError:
+    chromadb = None
 
 
 @dataclass(frozen=True)
@@ -33,10 +38,13 @@ class LocalEmbeddingIndex:
         self.collection_name = collection_name
         self.documents = documents
         self.persist_path = persist_path
-        self.embedding_backend = "chroma"
         self.embedding_model = MiniLMEmbeddings(settings.embedding_model)
-        self.client = chromadb.PersistentClient(path=str(persist_path))
-        self.collection = self.client.get_collection(name=collection_name)
+        self.embedding_backend = "chroma" if chromadb is not None and self.embedding_model.backend == "sentence-transformers" else self.embedding_model.backend
+        self.client = None
+        self.collection = None
+        if chromadb is not None and self.embedding_model.backend == "sentence-transformers":
+            self.client = chromadb.PersistentClient(path=str(persist_path))
+            self.collection = self.client.get_collection(name=collection_name)
         self.documents_by_paper_id = {document["paper_id"].lower(): document for document in documents}
         self.documents_by_title = {document["title"].lower(): document for document in documents}
 
@@ -93,28 +101,34 @@ class LocalEmbeddingIndex:
         persist_path.mkdir(parents=True, exist_ok=True)
 
         embedding_model = MiniLMEmbeddings(settings.embedding_model)
-        client = chromadb.PersistentClient(path=str(persist_path))
-        try:
-            client.delete_collection(name=collection_name)
-        except Exception:
-            pass
-        collection = client.create_collection(
-            name=collection_name,
-            configuration={"hnsw": {"space": "cosine"}},
-        )
         embeddings = embedding_model.embed_documents([document["content"] for document in documents])
-        collection.add(
-            ids=[document["record_id"] for document in documents],
-            embeddings=embeddings,
-            documents=[document["content"] for document in documents],
-            metadatas=[document["metadata"] for document in documents],
-        )
+        backend = "chroma"
+        if chromadb is not None and embedding_model.backend == "sentence-transformers":
+            client = chromadb.PersistentClient(path=str(persist_path))
+            try:
+                client.delete_collection(name=collection_name)
+            except Exception:
+                pass
+            collection = client.create_collection(
+                name=collection_name,
+                configuration={"hnsw": {"space": "cosine"}},
+            )
+            collection.add(
+                ids=[document["record_id"] for document in documents],
+                embeddings=embeddings,
+                documents=[document["content"] for document in documents],
+                metadatas=[document["metadata"] for document in documents],
+            )
+        else:
+            backend = embedding_model.backend
+            for document, embedding in zip(documents, embeddings, strict=False):
+                document["embedding"] = embedding
 
         manifest_path = embeddings_output_path or settings.paths.embeddings_json
         write_json(
             manifest_path,
             {
-                "backend": "chroma",
+                "backend": backend,
                 "embedding_model": settings.embedding_model,
                 "persist_path": str(persist_path),
                 "collection_name": collection_name,
@@ -138,8 +152,33 @@ class LocalEmbeddingIndex:
             persist_path=Path(payload["persist_path"]),
         )
 
+    @staticmethod
+    def _cosine_similarity(left: list[float], right: list[float]) -> float:
+        numerator = sum(a * b for a, b in zip(left, right, strict=False))
+        left_norm = math.sqrt(sum(a * a for a in left)) or 1.0
+        right_norm = math.sqrt(sum(b * b for b in right)) or 1.0
+        return numerator / (left_norm * right_norm)
+
     def search(self, query: str, top_k: int | None = None) -> list[SearchResult]:
         query_embedding = self.embedding_model.embed_query(query)
+        if self.collection is None:
+            scored = []
+            for document in self.documents:
+                embedding = document.get("embedding")
+                if not embedding:
+                    embedding = self.embedding_model.embed_query(document["content"])
+                    document["embedding"] = embedding
+                scored.append(
+                    SearchResult(
+                        paper_id=str(document["paper_id"]),
+                        title=str(document["title"]),
+                        score=max(0.0, self._cosine_similarity(query_embedding, embedding)),
+                        content=str(document["content"]),
+                        metadata=dict(document["metadata"]),
+                    )
+                )
+            return sorted(scored, key=lambda item: item.score, reverse=True)[: (top_k or self.settings.top_k)]
+
         results = self.collection.query(
             query_embeddings=[query_embedding],
             n_results=top_k or self.settings.top_k,

@@ -1,0 +1,54 @@
+{
+  "report_name": "repaired_quality",
+  "generated_at": "2026-08-06T05:20:33.809546+00:00",
+  "total_rows": 24,
+  "passed": true,
+  "checks": [
+    {
+      "name": "row_count_positive",
+      "passed": true,
+      "details": {
+        "total_rows": 24
+      }
+    },
+    {
+      "name": "paper_id_not_null",
+      "passed": true,
+      "details": {
+        "non_null": 24,
+        "total_rows": 24
+      }
+    },
+    {
+      "name": "paper_id_unique",
+      "passed": true,
+      "details": {
+        "duplicate_rows": 0
+      }
+    },
+    {
+      "name": "title_not_blank",
+      "passed": true,
+      "details": {
+        "non_blank": 24,
+        "total_rows": 24
+      }
+    },
+    {
+      "name": "summary_min_length",
+      "passed": true,
+      "details": {
+        "min_chars": 40,
+        "short_rows": 0
+      }
+    },
+    {
+      "name": "freshness_threshold",
+      "passed": true,
+      "details": {
+        "threshold_days": 180,
+        "stale_rows": 0
+      }
+    }
+  ]
+}
