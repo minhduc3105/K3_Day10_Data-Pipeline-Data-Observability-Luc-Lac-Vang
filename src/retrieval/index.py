@@ -97,7 +97,7 @@ class LocalEmbeddingIndex:
         Every chunk therefore repeats the title and retains the same paper_id.
         """
         documents: list[dict[str, Any]] = []
-        for row in df.to_dict(orient="records"):
+        for row_index, row in enumerate(df.to_dict(orient="records")):
             paper_id = _text(row.get("paper_id"))
             title = _text(row.get("title"))
             summary = _text(row.get("summary"))
@@ -114,11 +114,15 @@ class LocalEmbeddingIndex:
                 "abs_url": _text(row.get("abs_url")),
                 "pdf_url": _text(row.get("pdf_url")),
             }
+            # ``paper_id`` intentionally stays unchanged for quality/corruption
+            # checks. Chroma's internal IDs must still be unique for duplicate
+            # rows, so the physical row index is added only to record_id.
+            record_key = f"{paper_id}::row::{row_index}"
 
             def add_chunk(chunk_type: str, chunk_index: int, content: str) -> None:
                 documents.append(
                     {
-                        "record_id": f"{paper_id}::{chunk_type}::{chunk_index}",
+                        "record_id": f"{record_key}::{chunk_type}::{chunk_index}",
                         "paper_id": paper_id,
                         "title": title,
                         "content": content,

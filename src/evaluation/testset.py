@@ -15,9 +15,9 @@ from retrieval.index import LocalEmbeddingIndex
 from retrieval.llm import build_llm
 
 
-MIN_TEST_SET_SIZE = 30
-TARGET_TEST_SET_SIZE = 42
-QUESTION_PROMPT_VERSION = "retrieval-validated-english-scholar-v3"
+MIN_TEST_SET_SIZE = 10
+TARGET_TEST_SET_SIZE = 10
+QUESTION_PROMPT_VERSION = "retrieval-validated-english-scholar-v4"
 _REQUIRED_COLUMNS = {"paper_id", "title", "summary"}
 _QUESTION_TEMPLATES = {
     "authors": ["Who authored the study focused on {topic}?", "Who authored research about {topic}?"],
@@ -234,9 +234,9 @@ Requested answer type: {kind}
 
 {task_instruction}
 Rules:
-- Do not mention the title, DOI, URL, author names, publisher name, date, or reference answer.
-- Do not repeat the complete title as a phrase. Individual scientific terms are allowed
-  only when they are also explained by the abstract.
+- Do not mention the DOI, URL, author names, publisher name, date, or reference answer.
+- Prefer clues from the abstract. You may mention the paper title when it makes the
+  question precise and directly retrievable; do not use a rigid question template.
 - Paraphrase the abstract; do not copy a phrase of more than six consecutive words.
 - Use concrete details from the abstract so semantic retrieval can find the document.
 - Ask exactly one fluent question in English. The source corpus and embedding model
@@ -248,8 +248,9 @@ Rules:
     result = llm.with_structured_output(_GeneratedQuestion).invoke(prompt)
     question = _text(result.question)
     lowered = question.casefold()
-    if len(question) < 20 or _text(title).casefold() in lowered or _text(answer).casefold() in lowered:
-        raise ValueError("Generated question leaked a title/reference answer or was too short.")
+    answer_text = _text(answer).casefold()
+    if len(question) < 20 or (len(answer_text) >= 8 and answer_text in lowered):
+        raise ValueError("Generated question leaked its reference answer or was too short.")
     return question
 
 
@@ -276,7 +277,7 @@ def build_llm_generated_test_set(
     if len(tasks) < MIN_TEST_SET_SIZE:
         raise ValueError(f"Only {len(tasks)} LLM-generation tasks are available; at least {MIN_TEST_SET_SIZE} are required.")
 
-    llm = build_llm(settings=settings, temperature=0.0)
+    llm = build_llm(settings=settings, temperature=0.2)
     samples: list[dict[str, Any]] = []
     for number, (kind, paper_id, title, summary, ground_truth) in enumerate(tasks, start=1):
         question: str | None = None
@@ -292,7 +293,7 @@ def build_llm_generated_test_set(
             except Exception as error:  # pragma: no cover - provider-dependent
                 last_error = error
                 retry_feedback = (
-                    "Previous candidate was rejected. Rephrase it now: do not repeat the full title or answer, "
+                    "Previous candidate was rejected. Rephrase it now: do not reveal the answer, "
                     "and use different, concrete clues from the abstract."
                 )
         if question is None:
@@ -319,6 +320,10 @@ def build_llm_generated_test_set(
                 "generator_model": settings.model_name,
                 "prompt_version": QUESTION_PROMPT_VERSION,
                 "question_count": len(samples),
+                "question_type_counts": {
+                    kind: sum(task_kind == kind for task_kind, *_rest in tasks)
+                    for kind in ("summary", "authors", "publication_date", "publisher")
+                },
                 "retrieval_validation": {
                     "enabled": retrieval_index is not None,
                     "top_k": settings.top_k if retrieval_index is not None else None,

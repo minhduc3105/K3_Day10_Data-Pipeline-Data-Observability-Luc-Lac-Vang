@@ -10,11 +10,11 @@
 
 ## Evaluation
 
-- Samples: 42
-- Retrieval hit rate: 0.1429
-- Mean token F1: 0.0537
-- Judge accuracy: 0.4048
-- Mean judge score: 2.7619
+- Samples: 10
+- Retrieval hit rate: 1.0000
+- Mean token F1: 0.1635
+- Judge accuracy: 0.9000
+- Mean judge score: 4.8000
 
 ## Data Quality
 

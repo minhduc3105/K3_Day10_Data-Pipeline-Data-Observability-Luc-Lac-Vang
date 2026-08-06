@@ -3,9 +3,9 @@ from __future__ import annotations
 from dataclasses import replace
 
 from core.config import load_settings
-from core.utils import now_utc
+from core.utils import now_utc, read_json
 from evaluation.metrics import evaluate_pipeline
-from evaluation.testset import build_llm_generated_test_set
+from evaluation.testset import TARGET_TEST_SET_SIZE, build_llm_generated_test_set
 from ingestion.cleaning import build_clean_dataframe, save_clean_artifacts
 from ingestion.crossref import fetch_source_records, load_raw_records
 from observability.quality import build_freshness_report, run_data_quality_checks
@@ -38,7 +38,14 @@ def main(
     save_clean_artifacts(cleaned, settings)
     index = LocalEmbeddingIndex.build(cleaned, settings)
 
-    if refresh_testset or settings.refresh_test_set or not settings.paths.eval_testset.exists() or not settings.paths.eval_testset_provenance.exists():
+    existing_test_count = len(read_json(settings.paths.eval_testset)) if settings.paths.eval_testset.exists() else 0
+    if (
+        refresh_testset
+        or settings.refresh_test_set
+        or not settings.paths.eval_testset.exists()
+        or not settings.paths.eval_testset_provenance.exists()
+        or existing_test_count > TARGET_TEST_SET_SIZE
+    ):
         build_llm_generated_test_set(
             cleaned,
             settings.paths.eval_testset,

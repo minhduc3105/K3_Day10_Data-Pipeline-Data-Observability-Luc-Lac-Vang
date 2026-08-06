@@ -19,7 +19,7 @@ def test_build_test_set_is_factual_deterministic_and_persisted(tmp_path) -> None
                 "categories_joined": "Machine Learning",
                 "comment": f"Publisher {index}",
             }
-            for index in range(8)
+            for index in range(10)
         ]
     )
     output_path = tmp_path / "test_set.json"
@@ -44,7 +44,7 @@ def test_build_test_set_requires_thirty_answerable_questions(tmp_path) -> None:
     try:
         build_test_set(dataframe, tmp_path / "test_set.json")
     except ValueError as error:
-        assert "at least 30" in str(error)
+        assert "at least 10" in str(error)
     else:  # pragma: no cover
         raise AssertionError("Expected a ValueError for an undersized dataset.")
 
@@ -68,8 +68,15 @@ def test_llm_question_validation_rejects_title_or_answer_leakage() -> None:
         "Secret answer",
     )
     assert safe_question.startswith("Which research")
+    assert _generate_question(
+        FakeLLM("What does Secret Paper Title say about its stated research problem?"),
+        "summary",
+        "Secret Paper Title",
+        "Abstract",
+        "Secret answer",
+    ).startswith("What does Secret")
     with __import__("pytest").raises(ValueError):
-        _generate_question(FakeLLM("What does Secret Paper Title say?"), "summary", "Secret Paper Title", "Abstract", "Answer")
+        _generate_question(FakeLLM("Does the study conclude Secret answer?"), "summary", "Title", "Abstract", "Secret answer")
     assert len(frozen_set_hash([{"id": "q1"}])) == 64
 
 

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-06T04:48:54.702780+00:00",
+  "generated_at": "2026-08-06T05:42:36.620646+00:00",
   "source_rows": 197,
   "corrupted_rows": 198,
   "frozen_test_set": "D:\\Projects\\K3_Day10_Data-Pipeline-Data-Observability-Luc-Lac-Vang\\data\\eval\\test_set.json",
@@ -13,8 +13,7 @@
     "10.1029/2024jh000197",
     "10.1029/2024jh000434",
     "10.1029/2024jh000521",
-    "10.1029/2024jh000555",
-    "10.1029/2025jh000676"
+    "10.1029/2024jh000555"
   ],
   "scenarios": [
     {

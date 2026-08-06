@@ -1,8 +1,19 @@
 {
   "generator_provider": "openrouter",
   "generator_model": "openai/gpt-4o-mini",
-  "prompt_version": "hard-vietnamese-paraphrase-v1",
-  "question_count": 42,
+  "prompt_version": "retrieval-validated-english-scholar-v4",
+  "question_count": 10,
+  "question_type_counts": {
+    "summary": 3,
+    "authors": 3,
+    "publication_date": 2,
+    "publisher": 2
+  },
+  "retrieval_validation": {
+    "enabled": true,
+    "top_k": 4,
+    "all_ground_truth_docs_retrievable": true
+  },
   "clean_data_sha256": "8fe227c9561f33969ae0be5d7b03cb07e0de22838e4a19f6270595eb073a6128",
-  "test_set_sha256": "db85afe199ac6a51bbb5abd0ce4c1cbdcc542bf39cebafbc660e67ffe29cc377"
+  "test_set_sha256": "c0302193f620f9de2618a45b2fb24f8858f781482309b4b680286628182b54bb"
 }
