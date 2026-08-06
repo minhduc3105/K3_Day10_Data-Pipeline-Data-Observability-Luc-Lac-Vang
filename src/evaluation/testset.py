@@ -11,12 +11,13 @@ from pydantic import BaseModel, Field
 
 from core.config import Settings
 from core.utils import first_sentence, normalize_whitespace, write_json
+from retrieval.index import LocalEmbeddingIndex
 from retrieval.llm import build_llm
 
 
 MIN_TEST_SET_SIZE = 30
 TARGET_TEST_SET_SIZE = 42
-QUESTION_PROMPT_VERSION = "hard-vietnamese-paraphrase-v1"
+QUESTION_PROMPT_VERSION = "retrieval-validated-english-scholar-v3"
 _REQUIRED_COLUMNS = {"paper_id", "title", "summary"}
 _QUESTION_TEMPLATES = {
     "authors": ["Who authored the study focused on {topic}?", "Who authored research about {topic}?"],
@@ -180,7 +181,7 @@ def build_test_set(df: pd.DataFrame, output_path: Path | str) -> list[dict[str, 
 
 
 def _hard_question_tasks(df: pd.DataFrame, count: int) -> list[tuple[str, str, str, str, str]]:
-    """Select diverse answer fields while keeping every reference data-backed."""
+    """Choose one varied, answerable fact per paper before revisiting any paper."""
     eligible = df.copy()
     for column in _REQUIRED_COLUMNS:
         eligible[column] = eligible[column].map(_text)
@@ -189,42 +190,34 @@ def _hard_question_tasks(df: pd.DataFrame, count: int) -> list[tuple[str, str, s
     ].drop_duplicates(subset="paper_id", keep="first")
     eligible = eligible.sort_values("paper_id", kind="stable").reset_index(drop=True)
 
-    task_sources: dict[str, list[tuple[str, str, str, str]]] = {
-        "summary": [],
-        "authors": [],
-        "publication_date": [],
-        "publisher": [],
-    }
-    for _, row in eligible.iterrows():
-        paper_id, title, summary = row["paper_id"], row["title"], row["summary"]
-        first_summary_sentence = first_sentence(summary)
-        if first_summary_sentence:
-            task_sources["summary"].append((paper_id, title, summary, first_summary_sentence))
-        for kind, field in (("authors", "authors_joined"), ("publication_date", "published"), ("publisher", "comment")):
-            answer = _text(row.get(field, ""))
-            if answer:
-                task_sources[kind].append((paper_id, title, summary, answer))
-
+    field_options = (
+        ("summary", ""),
+        ("authors", "authors_joined"),
+        ("publication_date", "published"),
+        ("publisher", "comment"),
+    )
     tasks: list[tuple[str, str, str, str, str]] = []
-    offsets = {kind: 0 for kind in task_sources}
-    while len(tasks) < count:
-        added_in_round = False
-        for kind, candidates in task_sources.items():
-            offset = offsets[kind]
-            if offset >= len(candidates):
-                continue
-            paper_id, title, summary, answer = candidates[offset]
-            tasks.append((kind, paper_id, title, summary, answer))
-            offsets[kind] += 1
-            added_in_round = True
-            if len(tasks) == count:
-                return tasks
-        if not added_in_round:
-            break
+    for row_number, (_, row) in enumerate(eligible.iterrows()):
+        preferred = row_number % len(field_options)
+        for shift in range(len(field_options)):
+            kind, field = field_options[(preferred + shift) % len(field_options)]
+            answer = first_sentence(_text(row["summary"])) if kind == "summary" else _text(row.get(field, ""))
+            if answer:
+                tasks.append((kind, row["paper_id"], row["title"], row["summary"], answer))
+                break
+        if len(tasks) == count:
+            return tasks
     return tasks
 
 
-def _generate_question(llm, kind: str, title: str, summary: str, answer: str) -> str:
+def _generate_question(
+    llm,
+    kind: str,
+    title: str,
+    summary: str,
+    answer: str,
+    retry_feedback: str = "",
+) -> str:
     task_instruction = {
         "summary": "Ask about the central problem, method, finding, or application described in the abstract.",
         "authors": "Ask who conducted the work, using research details from the abstract as the clue.",
@@ -232,7 +225,7 @@ def _generate_question(llm, kind: str, title: str, summary: str, answer: str) ->
         "publisher": "Ask which publisher issued the work, using research details from the abstract as the clue.",
     }[kind]
     prompt = f"""
-Create one difficult but answerable factual question for a scholarly RAG benchmark.
+Create one difficult but answerable factual question for an English scholarly RAG benchmark.
 
 Paper title (context only; never reveal it): {title}
 Abstract: {summary}
@@ -242,11 +235,15 @@ Requested answer type: {kind}
 {task_instruction}
 Rules:
 - Do not mention the title, DOI, URL, author names, publisher name, date, or reference answer.
+- Do not repeat the complete title as a phrase. Individual scientific terms are allowed
+  only when they are also explained by the abstract.
 - Paraphrase the abstract; do not copy a phrase of more than six consecutive words.
 - Use concrete details from the abstract so semantic retrieval can find the document.
-- Ask exactly one fluent question in Vietnamese. Do not retain distinctive English
-  phrases from the title or abstract; translate and paraphrase the concepts.
+- Ask exactly one fluent question in English. The source corpus and embedding model
+  are English, so retain two to four distinctive scientific terms from the abstract
+  while still paraphrasing the wording.
 - Return only the question.
+{retry_feedback}
 """.strip()
     result = llm.with_structured_output(_GeneratedQuestion).invoke(prompt)
     question = _text(result.question)
@@ -256,12 +253,19 @@ Rules:
     return question
 
 
+def _is_retrievable(question: str, paper_id: str, index: LocalEmbeddingIndex | None) -> bool:
+    if index is None:
+        return True
+    return paper_id in {result.paper_id for result in index.search(question, top_k=index.settings.top_k)}
+
+
 def build_llm_generated_test_set(
     df: pd.DataFrame,
     output_path: Path | str,
     settings: Settings,
     question_count: int = TARGET_TEST_SET_SIZE,
     provenance_path: Path | str | None = None,
+    retrieval_index: LocalEmbeddingIndex | None = None,
 ) -> list[dict[str, Any]]:
     """Freeze hard, non-template questions generated by the configured LLM.
 
@@ -277,12 +281,20 @@ def build_llm_generated_test_set(
     for number, (kind, paper_id, title, summary, ground_truth) in enumerate(tasks, start=1):
         question: str | None = None
         last_error: Exception | None = None
-        for _ in range(3):
+        retry_feedback = ""
+        for _ in range(5):
             try:
-                question = _generate_question(llm, kind, title, summary, ground_truth)
+                candidate = _generate_question(llm, kind, title, summary, ground_truth, retry_feedback)
+                if not _is_retrievable(candidate, paper_id, retrieval_index):
+                    raise ValueError("Generated question did not retrieve its ground-truth paper in top-k.")
+                question = candidate
                 break
             except Exception as error:  # pragma: no cover - provider-dependent
                 last_error = error
+                retry_feedback = (
+                    "Previous candidate was rejected. Rephrase it now: do not repeat the full title or answer, "
+                    "and use different, concrete clues from the abstract."
+                )
         if question is None:
             raise RuntimeError(f"Could not generate a valid hard question for {paper_id}.") from last_error
         samples.append(
@@ -307,6 +319,11 @@ def build_llm_generated_test_set(
                 "generator_model": settings.model_name,
                 "prompt_version": QUESTION_PROMPT_VERSION,
                 "question_count": len(samples),
+                "retrieval_validation": {
+                    "enabled": retrieval_index is not None,
+                    "top_k": settings.top_k if retrieval_index is not None else None,
+                    "all_ground_truth_docs_retrievable": retrieval_index is not None,
+                },
                 "clean_data_sha256": clean_hash,
                 "test_set_sha256": frozen_set_hash(samples),
             },

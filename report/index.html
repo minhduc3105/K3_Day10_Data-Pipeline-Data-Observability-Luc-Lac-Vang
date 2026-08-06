@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="EcoLens — environmental research data pipeline dashboard." />
+    <title>EcoLens · Environmental Research, made traceable</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="test-garden.css" />
+  </head>
+  <body>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="cloud cloud-one" aria-hidden="true"></div><div class="cloud cloud-two" aria-hidden="true"></div>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="EcoLens home"><span class="brand-mark">✦</span> EcoLens</a>
+      <nav aria-label="Điều hướng chính">
+        <a href="#journey">Dòng chảy</a><a href="#test-garden">Test garden</a><a href="#evidence">Minh chứng</a>
+      </nav>
+      <a class="header-cta" href="#evidence">Xem kết quả <span>↘</span></a>
+    </header>
+
+    <main id="top">
+      <section class="hero section-shell">
+        <div class="hero-copy reveal">
+          <p class="eyebrow"><span class="pulse"></span> Environmental research intelligence</p>
+          <h1>Tri thức khoa học,<br /><em>được chăm sóc</em> như<br />một hệ sinh thái.</h1>
+          <p class="hero-text">Một pipeline nhẹ, có thể truy vết, biến nghiên cứu Crossref thành tri thức sẵn sàng cho cộng đồng — từ hạt dữ liệu thô tới câu trả lời có căn cứ.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#journey">Khám phá dòng chảy <span>→</span></a>
+            <button class="button quiet" type="button" data-open-modal>Vì sao điều này quan trọng?</button>
+          </div>
+          <div class="hero-facts" aria-label="Tóm tắt dữ liệu">
+            <div><strong data-count="197">197</strong><span>nghiên cứu được chăm sóc</span></div>
+            <div><strong data-count="42">42</strong><span>câu hỏi frozen để đánh giá</span></div>
+            <div><strong>384</strong><span>chiều ngữ nghĩa mỗi vector</span></div>
+          </div>
+        </div>
+        <div class="hero-image-wrap reveal delay-1">
+          <img src="assets/wetland-hero.webp" width="1440" height="960" alt="Đường gỗ giữa vùng đất ngập nước được phục hồi" fetchpriority="high" />
+          <div class="image-note"><span class="note-leaf">⌁</span><span>Những hệ sinh thái khỏe mạnh<br />bắt đầu từ tri thức đáng tin.</span></div>
+          <span class="sun-orb" aria-hidden="true"></span>
+        </div>
+        <a class="scroll-cue" href="#journey" aria-label="Cuộn đến dòng chảy"><span>Cuộn để khám phá</span><i></i></a>
+      </section>
+
+      <section id="journey" class="journey section-shell">
+        <div class="section-heading reveal">
+          <p class="eyebrow">01 · Dòng chảy sống</p>
+          <h2>Từ nguồn mạch<br />đến <em>hiểu biết.</em></h2>
+          <p>Thiết kế theo nhịp tự nhiên: mỗi lớp đều rõ nguồn gốc, có không gian kiểm chứng và tiếp nối lớp trước.</p>
+        </div>
+        <div class="river-path" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+        <div class="flow-grid">
+          <article class="flow-card reveal">
+            <div class="step-number">01</div><div class="flow-icon source">⌇</div>
+            <h3>Thu thập</h3><p>Crossref API với retry và backoff. Giữ cả phản hồi nguyên bản lẫn records phẳng cho audit.</p>
+            <a href="../data/raw/crossref_records.json" target="_blank" rel="noreferrer">Mở raw records <span>↗</span></a>
+          </article>
+          <article class="flow-card reveal delay-1">
+            <div class="step-number">02</div><div class="flow-icon clean">✤</div>
+            <h3>Làm sạch</h3><p>Gỡ XML, chuẩn hóa tác giả, category và freshness để văn bản có thể được đọc lại một cách tử tế.</p>
+            <a href="../data/clean/papers_clean.json" target="_blank" rel="noreferrer">Mở clean data <span>↗</span></a>
+          </article>
+          <article class="flow-card reveal delay-2">
+            <div class="step-number">03</div><div class="flow-icon index">◌</div>
+            <h3>Kết nối</h3><p>MiniLM tạo vector 384 chiều; ChromaDB tìm những tài liệu gần nghĩa, không chỉ gần từ khóa.</p>
+            <a href="#evidence">Xem retrieval <span>↓</span></a>
+          </article>
+          <article class="flow-card reveal delay-3">
+            <div class="step-number">04</div><div class="flow-icon assess">✦</div>
+            <h3>Nuôi dưỡng</h3><p>Test set frozen, LLM judge, quality checks và repair giúp hệ thống biết lúc nào cần được chăm sóc.</p>
+            <a href="../data/eval/test_set_provenance.json" target="_blank" rel="noreferrer">Xem provenance <span>↗</span></a>
+          </article>
+        </div>
+      </section>
+
+      <section id="impact" class="impact section-shell">
+        <div class="impact-image reveal"><img src="assets/wetland-hero.webp" loading="lazy" width="1440" height="960" alt="Cây cỏ và mặt nước của hệ sinh thái đất ngập nước" /></div>
+        <div class="impact-copy reveal delay-1">
+          <p class="eyebrow">02 · Tác động có thể nhìn thấy</p>
+          <h2>Không chỉ trả lời.<br /><em>Biết lý do</em> để tin.</h2>
+          <p>Mỗi câu trả lời factual đi cùng một dấu vết: paper ID, context retrieval và bộ câu hỏi đã được đóng băng. Nhờ vậy, kết quả có thể so sánh công bằng qua từng lần chạy.</p>
+          <div class="proof-list">
+            <div><span class="proof-icon">✓</span><p><strong>Raw-first provenance</strong><br />Giữ nguyên response Crossref để đối chiếu nguồn.</p></div>
+            <div><span class="proof-icon">✓</span><p><strong>Frozen evaluation</strong><br />42 mẫu, hash cố định, cùng tập câu hỏi cho mọi trạng thái.</p></div>
+            <div><span class="proof-icon">✓</span><p><strong>Repair from source</strong><br />Khôi phục từ raw records, không vá trên dữ liệu đã hỏng.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="test-garden" class="test-garden section-shell">
+        <div class="test-garden-copy reveal">
+          <p class="eyebrow">02.5 · Vườn câu hỏi đóng băng</p>
+          <h2>Câu hỏi có rễ,<br /><em>đáp án có nguồn.</em></h2>
+          <p>Bộ test không thay đổi giữa các lần chạy. Hãy rút một hạt giống để xem một sample factual thật, đáp án chuẩn và tài liệu gốc mà nó bám vào.</p>
+          <button class="button primary" type="button" id="random-question">Rút một câu hỏi <span>↻</span></button>
+          <p class="frozen-note">Frozen set · <span id="frozen-count">42</span> samples · hash được kiểm soát</p>
+        </div>
+        <article class="question-card reveal delay-1" aria-live="polite">
+          <div class="question-card-top"><span class="question-seed">✣</span><span id="question-id">q1 · factual</span></div>
+          <p class="question-label">Câu hỏi được gieo</p>
+          <h3 id="frozen-question">Vấn đề chính mà phần mềm học máy phải đối mặt là gì và tại sao nó khác biệt so với phần mềm thông thường?</h3>
+          <div class="answer-root"><p class="question-label">Ground truth</p><p id="ground-truth">Abstract Machine learning software is fundamentally different from most other software in one important respect: it is tightly linked with data.</p></div>
+          <a id="ground-doc" href="https://doi.org/10.1002/9781118445112.stat08455" target="_blank" rel="noreferrer">Xem paper gốc <span>↗</span></a>
+        </article>
+      </section>
+
+      <section id="evidence" class="evidence section-shell">
+        <div class="evidence-top reveal">
+          <div><p class="eyebrow">03 · Khu vườn minh chứng</p><h2>Sức khỏe của<br /><em>một hệ thống.</em></h2></div>
+          <p class="evidence-intro">Những con số dưới đây đến từ lần chạy hiện tại. Chuyển trạng thái để quan sát cùng một frozen set đi qua baseline, dữ liệu hỏng và bản repair.</p>
+        </div>
+        <div class="metric-switch reveal" role="tablist" aria-label="Chọn trạng thái đo lường">
+          <button class="active" data-state="baseline" role="tab" aria-selected="true"><span></span>Baseline</button>
+          <button data-state="corrupted" role="tab" aria-selected="false"><span></span>Corrupted</button>
+          <button data-state="repaired" role="tab" aria-selected="false"><span></span>Repaired</button>
+        </div>
+        <div class="metrics-panel reveal" aria-live="polite">
+          <div class="metric-feature"><p>Retrieval hit rate</p><strong id="hit-rate">14.3<span>%</span></strong><div class="waterline"><i id="hit-bar" style="width:14.3%"></i></div><small>Ground-truth document xuất hiện trong context</small></div>
+          <div class="metric-card"><span class="metric-label">Mean token F1</span><strong id="token-f1">0.054</strong><p>Độ chồng lấp từ vựng với câu trả lời chuẩn.</p></div>
+          <div class="metric-card"><span class="metric-label">LLM judge score</span><strong id="judge-score">2.76<span>/5</span></strong><p>OpenRouter đánh giá câu trả lời dựa trên evidence.</p></div>
+          <div class="metric-card ring-card"><span class="metric-label">Agent answers</span><strong id="sample-count">42<span>/42</span></strong><p>Phản hồi từ agent thật, có fallback an toàn.</p></div>
+        </div>
+        <div class="comparison reveal">
+          <div class="chart-head"><div><span class="metric-label">So sánh ba mùa dữ liệu</span><h3>Cùng 42 câu hỏi · cùng frozen hash</h3></div><a href="../data/reports/corruption_metrics.svg" target="_blank" rel="noreferrer">Mở biểu đồ đầy đủ ↗</a></div>
+          <div class="mini-chart" aria-label="So sánh điểm judge giữa baseline, corrupted và repaired">
+            <div><i class="bar baseline" style="--height:55.2%"></i><span>Baseline</span><b>2.76</b></div>
+            <div><i class="bar corrupted" style="--height:59.0%"></i><span>Corrupted</span><b>2.95</b></div>
+            <div><i class="bar repaired" style="--height:57.6%"></i><span>Repaired</span><b>2.88</b></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="stewardship section-shell">
+        <div class="stewardship-copy reveal"><p class="eyebrow">04 · Canh gác dữ liệu</p><h2>Quan sát những<br /><em>thay đổi nhỏ.</em></h2><p>Corruption chủ động làm lộ các điểm yếu — blank summary, stale date, duplicate ID và embedding noise — trước khi chúng ảnh hưởng đến một quyết định thật.</p></div>
+        <div class="garden-grid reveal delay-1">
+          <div class="garden-stat"><span>197</span><p>records sạch</p><i class="sprout">⌇</i></div>
+          <div class="garden-stat"><span>4</span><p>kịch bản corruption</p><i class="sprout">✣</i></div>
+          <div class="garden-stat"><span>1</span><p>nguồn repair đáng tin</p><i class="sprout">≈</i></div>
+          <a class="garden-link" href="../data/results/corruption_log.json" target="_blank" rel="noreferrer">Đọc nhật ký thay đổi <span>↗</span></a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <a class="brand" href="#top"><span class="brand-mark">✦</span> EcoLens</a>
+      <p>Designed to be light on the web, and gentle on the world.</p>
+      <div><a href="../data/reports/phase1_report.md" target="_blank" rel="noreferrer">Baseline report</a><a href="../data/reports/corruption_report.md" target="_blank" rel="noreferrer">Comparison report</a></div>
+    </footer>
+
+    <dialog class="why-dialog" id="why-dialog">
+      <button class="dialog-close" aria-label="Đóng" data-close-modal>×</button><p class="eyebrow">Một hệ sinh thái dữ liệu</p><h2>Thông tin tốt là<br /><em>hạ tầng của hy vọng.</em></h2><p>Khi nghiên cứu có nguồn gốc rõ ràng, được kiểm tra và có thể phục hồi, cộng đồng có thể dùng nó để đặt những câu hỏi tốt hơn về thế giới tự nhiên.</p><a class="button primary" href="#evidence" data-close-modal>Xem minh chứng →</a>
+    </dialog>
+    <script src="app.js"></script>
+  </body>
+</html>

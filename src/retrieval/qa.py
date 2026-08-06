@@ -18,13 +18,13 @@ class AnswerResult:
 
 
 def _extract_answer(question: str, top_result: SearchResult) -> str:
-    lowered = question.lower()
+    lowered = question.casefold()
     metadata = top_result.metadata
-    if "who authored" in lowered or "list the authors" in lowered:
+    if any(phrase in lowered for phrase in ("who authored", "list the authors", "who conducted", "tác giả", "ai là những người")):
         return metadata["authors_joined"]
-    if "when was" in lowered or "publication date" in lowered or "published on" in lowered:
+    if any(phrase in lowered for phrase in ("when was", "publication date", "published on", "ngày xuất bản", "xuất bản vào ngày")):
         return metadata["published"]
-    if "what categories" in lowered:
+    if any(phrase in lowered for phrase in ("what categories", "which subjects", "danh mục", "chủ đề")):
         return metadata["categories_joined"]
     if "publisher" in lowered or "nhà xuất bản" in lowered:
         return str(metadata.get("publisher", ""))
@@ -37,18 +37,12 @@ def answer_question(question: str, settings: Settings, index: LocalEmbeddingInde
     retrieved = index.search(question, top_k=top_k)
     if exact:
         exact_result = SearchResult(
-            paper_id=exact["paper_id"],
-            title=exact["title"],
-            score=1.0,
-            content=exact["content"],
-            metadata=exact["metadata"],
+            paper_id=exact["paper_id"], title=exact["title"], score=1.0,
+            content=exact["content"], metadata=exact["metadata"],
         )
-        deduped = [exact_result] + [item for item in retrieved if item.paper_id != exact_result.paper_id]
-        retrieved = deduped[: (top_k or settings.top_k)]
-    if not retrieved:
-        answer = "I don't know from the indexed corpus."
-    else:
-        answer = _extract_answer(question, retrieved[0])
+        retrieved = [exact_result] + [item for item in retrieved if item.paper_id != exact_result.paper_id]
+        retrieved = retrieved[: (top_k or settings.top_k)]
+    answer = _extract_answer(question, retrieved[0]) if retrieved else "I don't know from the indexed corpus."
     return AnswerResult(
         question=question,
         answer=answer,

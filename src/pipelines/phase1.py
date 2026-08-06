@@ -44,6 +44,7 @@ def main(
             settings.paths.eval_testset,
             settings,
             provenance_path=settings.paths.eval_testset_provenance,
+            retrieval_index=index,
         )
 
     evaluation = evaluate_pipeline(

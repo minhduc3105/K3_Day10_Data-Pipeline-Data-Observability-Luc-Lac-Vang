@@ -4,7 +4,7 @@ import json
 
 import pandas as pd
 
-from evaluation.testset import MIN_TEST_SET_SIZE, _generate_question, build_test_set, frozen_set_hash
+from evaluation.testset import MIN_TEST_SET_SIZE, _generate_question, _is_retrievable, build_test_set, frozen_set_hash
 
 
 def test_build_test_set_is_factual_deterministic_and_persisted(tmp_path) -> None:
@@ -71,3 +71,14 @@ def test_llm_question_validation_rejects_title_or_answer_leakage() -> None:
     with __import__("pytest").raises(ValueError):
         _generate_question(FakeLLM("What does Secret Paper Title say?"), "summary", "Secret Paper Title", "Abstract", "Answer")
     assert len(frozen_set_hash([{"id": "q1"}])) == 64
+
+
+def test_retrieval_validation_requires_ground_truth_document() -> None:
+    class FakeIndex:
+        settings = type("Settings", (), {"top_k": 4})()
+
+        def search(self, *_args, **_kwargs):
+            return [type("Result", (), {"paper_id": "10.1/right"})()]
+
+    assert _is_retrievable("A grounded query", "10.1/right", FakeIndex())
+    assert not _is_retrievable("A grounded query", "10.1/wrong", FakeIndex())
