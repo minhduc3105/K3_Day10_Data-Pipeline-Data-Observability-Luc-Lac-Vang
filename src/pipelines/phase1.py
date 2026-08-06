@@ -1,9 +1,11 @@
 from __future__ import annotations
 
+from dataclasses import replace
+
 from core.config import load_settings
 from core.utils import now_utc
 from evaluation.metrics import evaluate_pipeline
-from evaluation.testset import build_test_set
+from evaluation.testset import build_llm_generated_test_set
 from ingestion.cleaning import build_clean_dataframe, save_clean_artifacts
 from ingestion.crossref import fetch_source_records, load_raw_records
 from observability.quality import build_freshness_report, run_data_quality_checks
@@ -11,11 +13,23 @@ from observability.reporting import generate_phase1_report
 from retrieval.index import LocalEmbeddingIndex
 
 
-def main() -> None:
+def main(
+    refresh_source: bool = False,
+    refresh_testset: bool = False,
+    skip_judge: bool = False,
+    provider: str | None = None,
+    model: str | None = None,
+) -> None:
     """Run the reproducible baseline pipeline from raw data through reporting."""
     settings = load_settings()
+    if provider or model:
+        settings = replace(
+            settings,
+            llm_provider=provider or settings.llm_provider,
+            model_name=model or settings.model_name,
+        )
 
-    if settings.refresh_source or not settings.paths.raw_records_json.exists():
+    if refresh_source or settings.refresh_source or not settings.paths.raw_records_json.exists():
         records = fetch_source_records(settings)
     else:
         records = load_raw_records(settings.paths.raw_records_json)
@@ -24,8 +38,13 @@ def main() -> None:
     save_clean_artifacts(cleaned, settings)
     index = LocalEmbeddingIndex.build(cleaned, settings)
 
-    if settings.refresh_test_set or not settings.paths.eval_testset.exists():
-        build_test_set(cleaned, settings.paths.eval_testset)
+    if refresh_testset or settings.refresh_test_set or not settings.paths.eval_testset.exists() or not settings.paths.eval_testset_provenance.exists():
+        build_llm_generated_test_set(
+            cleaned,
+            settings.paths.eval_testset,
+            settings,
+            provenance_path=settings.paths.eval_testset_provenance,
+        )
 
     evaluation = evaluate_pipeline(
         settings=settings,
@@ -33,6 +52,7 @@ def main() -> None:
         test_set_path=settings.paths.eval_testset,
         metrics_output_path=settings.paths.baseline_metrics,
         answers_output_path=settings.paths.baseline_answers,
+        skip_judge=skip_judge,
     )
     quality = run_data_quality_checks(cleaned, settings, report_name="baseline_quality")
     freshness = build_freshness_report(cleaned, settings, settings.paths.freshness_report)

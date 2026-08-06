@@ -97,7 +97,7 @@ def _normalize_categories(value: object) -> list[str]:
 
 
 def _normalize_date_column(values: pd.Series) -> tuple[pd.Series, pd.Series]:
-    parsed = pd.to_datetime(values, errors="coerce", utc=True)
+    parsed = pd.to_datetime(values, errors="coerce", format="mixed", utc=True)
     return parsed.dt.strftime("%Y-%m-%d").fillna(""), parsed
 
 

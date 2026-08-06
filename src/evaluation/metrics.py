@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+import hashlib
+import json
 from statistics import mean
 import os
 import sys
@@ -13,6 +15,7 @@ from pydantic import BaseModel, Field
 from core.config import Settings
 from core.utils import normalize_whitespace, read_json, write_json
 from retrieval.embeddings import MiniLMEmbeddings
+from retrieval.agent import build_agent, run_agent_question
 from retrieval.index import LocalEmbeddingIndex
 from retrieval.llm import build_llm
 from retrieval.qa import answer_question
@@ -70,6 +73,10 @@ Return:
         )
 
 
+def _skipped_judge() -> JudgeVerdict:
+    return JudgeVerdict(score=1, correct=False, reasoning="LLM judge was skipped by CLI configuration.")
+
+
 def _run_ragas(settings: Settings, answers: list[dict[str, Any]]) -> dict[str, Any]:
     if os.getenv("RUN_RAGAS", "").lower() not in {"1", "true", "yes"}:
         return {"skipped": "Set RUN_RAGAS=1 to enable the slower Ragas pass."}
@@ -106,13 +113,34 @@ def evaluate_pipeline(
     test_set_path,
     metrics_output_path,
     answers_output_path,
+    use_agent: bool = True,
+    skip_judge: bool = False,
 ) -> EvaluationBundle:
     test_set = read_json(test_set_path)
     answers: list[dict[str, Any]] = []
+    serialized_test_set = json.dumps(test_set, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+    frozen_test_set_hash = hashlib.sha256(serialized_test_set.encode("utf-8")).hexdigest()
+    agent = None
+    agent_error = ""
+    if use_agent:
+        try:
+            agent = build_agent(settings, index)
+        except Exception as error:  # pragma: no cover - provider-dependent
+            agent_error = str(error)
 
     for item in test_set:
         result = answer_question(item["question"], settings=settings, index=index)
-        judge = _judge_answer(settings, item["question"], item["ground_truth"], result.answer)
+        answer = result.answer
+        answer_mode = "heuristic_fallback"
+        if agent is not None:
+            try:
+                agent_answer = run_agent_question(agent, item["question"])
+                if isinstance(agent_answer, str) and agent_answer.strip():
+                    answer = agent_answer.strip()
+                    answer_mode = "agent"
+            except Exception as error:  # pragma: no cover - provider-dependent
+                agent_error = str(error)
+        judge = _skipped_judge() if skip_judge else _judge_answer(settings, item["question"], item["ground_truth"], answer)
         retrieval_hit = any(doc_id in item["ground_truth_doc_ids"] for doc_id in result.retrieved_doc_ids)
         answers.append(
             {
@@ -121,11 +149,12 @@ def evaluate_pipeline(
                 "question": item["question"],
                 "ground_truth": item["ground_truth"],
                 "ground_truth_doc_ids": item["ground_truth_doc_ids"],
-                "answer": result.answer,
+                "answer": answer,
+                "answer_mode": answer_mode,
                 "retrieved_doc_ids": result.retrieved_doc_ids,
                 "retrieved_contexts": result.retrieved_contexts,
                 "retrieval_hit": retrieval_hit,
-                "token_f1": _token_f1(item["ground_truth"], result.answer),
+                "token_f1": _token_f1(item["ground_truth"], answer),
                 "judge": judge.model_dump(),
             }
         )
@@ -136,6 +165,15 @@ def evaluate_pipeline(
         "mean_token_f1": mean(item["token_f1"] for item in answers),
         "judge_accuracy": mean(1.0 if item["judge"]["correct"] else 0.0 for item in answers),
         "mean_judge_score": mean(item["judge"]["score"] for item in answers),
+        "frozen_test_set_hash": frozen_test_set_hash,
+        "frozen_test_set_samples": len(test_set),
+        "agent_enabled": agent is not None,
+        "agent_error": agent_error or None,
+        "judge_mode": "skipped" if skip_judge else "llm_with_heuristic_fallback",
+        "answer_mode_counts": {
+            "agent": sum(item["answer_mode"] == "agent" for item in answers),
+            "heuristic_fallback": sum(item["answer_mode"] == "heuristic_fallback" for item in answers),
+        },
     }
     summary["ragas"] = _run_ragas(settings, answers)
 

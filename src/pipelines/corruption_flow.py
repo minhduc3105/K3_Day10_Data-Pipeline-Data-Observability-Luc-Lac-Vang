@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from dataclasses import replace
 import json
 
 import pandas as pd
@@ -22,15 +23,21 @@ def _save_dataframe(df: pd.DataFrame, csv_path, json_path) -> None:
 
 def _load_corrupted_csv(path) -> pd.DataFrame:
     dataframe = pd.read_csv(path)
-    for column in ("paper_id", "title", "summary", "authors_joined", "categories_joined", "abs_url", "pdf_url", "text_for_embedding"):
+    for column in ("paper_id", "title", "summary", "authors_joined", "categories_joined", "comment", "abs_url", "pdf_url", "text_for_embedding"):
         if column in dataframe:
             dataframe[column] = dataframe[column].fillna("").astype(str)
     return dataframe
 
 
-def main() -> None:
+def main(skip_judge: bool = False, provider: str | None = None, model: str | None = None) -> None:
     """Run controlled corruption, repair from raw data, and compare all states."""
     settings = load_settings()
+    if provider or model:
+        settings = replace(
+            settings,
+            llm_provider=provider or settings.llm_provider,
+            model_name=model or settings.model_name,
+        )
     if not settings.paths.baseline_metrics.exists():
         raise FileNotFoundError("Baseline metrics are missing. Run script/run_phase1.py before the corruption flow.")
     if not settings.paths.clean_json.exists() or not settings.paths.eval_testset.exists():
@@ -57,6 +64,7 @@ def main() -> None:
         settings.paths.eval_testset,
         settings.paths.corrupted_metrics,
         settings.paths.corrupted_answers,
+        skip_judge=skip_judge,
     )
     corrupted_quality = run_data_quality_checks(corrupted_from_csv, settings, report_name="corrupted_quality")
     corrupted_freshness = build_freshness_report(
@@ -79,6 +87,7 @@ def main() -> None:
         settings.paths.eval_testset,
         settings.paths.repaired_metrics,
         settings.paths.repaired_answers,
+        skip_judge=skip_judge,
     )
     repaired_quality = run_data_quality_checks(repaired_dataframe, settings, report_name="repaired_quality")
     repaired_freshness = build_freshness_report(
@@ -92,8 +101,10 @@ def main() -> None:
         baseline_metrics=read_json(settings.paths.baseline_metrics),
         corrupted_metrics=corrupted_evaluation.summary,
         repaired_metrics=repaired_evaluation.summary,
+        baseline_quality=read_json(settings.paths.quality_dir / "baseline_quality.json"),
         corrupted_quality=corrupted_quality,
         repaired_quality=repaired_quality,
+        baseline_freshness=read_json(settings.paths.freshness_report),
         corrupted_freshness=corrupted_freshness,
         repaired_freshness=repaired_freshness,
     )

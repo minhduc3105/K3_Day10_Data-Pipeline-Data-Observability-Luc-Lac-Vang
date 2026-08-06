@@ -1,33 +1,72 @@
 from __future__ import annotations
 
+import hashlib
+import json
 from pathlib import Path
+import re
 from typing import Any
 
 import pandas as pd
+from pydantic import BaseModel, Field
 
+from core.config import Settings
 from core.utils import first_sentence, normalize_whitespace, write_json
+from retrieval.llm import build_llm
 
 
 MIN_TEST_SET_SIZE = 30
 TARGET_TEST_SET_SIZE = 42
+QUESTION_PROMPT_VERSION = "hard-vietnamese-paraphrase-v1"
 _REQUIRED_COLUMNS = {"paper_id", "title", "summary"}
 _QUESTION_TEMPLATES = {
-    "authors": ["Who authored '{title}'?", "Name the author(s) of '{title}'."],
-    "publication_date": ["When was '{title}' published?", "What is the publication date of '{title}'?"],
-    "categories": ["What categories does '{title}' belong to?", "Which subjects are listed for '{title}'?"],
-    "publisher": ["Which publisher is listed for '{title}'?", "Who published '{title}'?"],
-    "doi": ["What DOI identifies '{title}'?", "Give the DOI for '{title}'."],
-    "landing_page": [
-        "What is the DOI landing-page URL for '{title}'?",
-        "Where can the DOI record for '{title}' be found?",
+    "authors": ["Who authored the study focused on {topic}?", "Who authored research about {topic}?"],
+    "publication_date": [
+        "When was the study about {topic} published?",
+        "What is the publication date of the work on {topic}?",
     ],
-    "pdf_url": ["Where is the PDF URL for '{title}'?", "What PDF link is recorded for '{title}'?"],
-    "summary": ["What is the main point of '{title}'?", "According to its abstract, what does '{title}' describe?"],
+    "categories": ["What categories apply to research on {topic}?", "Which subjects are listed for the work on {topic}?"],
+    "publisher": ["Which publisher is listed for the work on {topic}?", "Who published the study about {topic}?"],
+    "doi": ["What DOI identifies the research on {topic}?", "Give the DOI for the study about {topic}."],
+    "landing_page": [
+        "What is the DOI landing-page URL for research on {topic}?",
+        "Where can the DOI record for the study about {topic} be found?",
+    ],
+    "pdf_url": ["Where is the PDF URL for the work on {topic}?", "What PDF link is recorded for research about {topic}?"],
+    "summary": ["What is the main point of research on {topic}?", "According to its abstract, what does the study about {topic} describe?"],
 }
+_GENERIC_TOPIC_WORDS = {
+    "a", "an", "and", "application", "applications", "based", "data", "for", "in", "learning", "machine",
+    "of", "on", "paper", "research", "study", "system", "the", "to", "using", "with",
+}
+
+
+class _GeneratedQuestion(BaseModel):
+    question: str = Field(description="One natural-language factual question.")
 
 
 def _text(value: object) -> str:
     return normalize_whitespace(value) if isinstance(value, str) else ""
+
+
+def frozen_set_hash(samples: list[dict[str, Any]]) -> str:
+    serialized = json.dumps(samples, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+    return hashlib.sha256(serialized.encode("utf-8")).hexdigest()
+
+
+def _topic_anchor(row: pd.Series) -> str:
+    """Create a short semantic topic without exposing the full paper title."""
+    def meaningful_words(value: str) -> list[str]:
+        return [
+            word
+            for word in re.findall(r"[\w-]+", value.lower())
+            if len(word) > 2 and not word.isdigit() and word not in _GENERIC_TOPIC_WORDS
+        ]
+
+    title_words = meaningful_words(_text(row["title"]))
+    if len(title_words) >= 2:
+        return " ".join(title_words[:5])
+    summary_words = meaningful_words(first_sentence(_text(row["summary"])))
+    return " ".join(summary_words[:5]) or "the paper's research problem"
 
 
 def _question_candidates(row: pd.Series) -> dict[str, str]:
@@ -100,9 +139,10 @@ def build_test_set(df: pd.DataFrame, output_path: Path | str) -> list[dict[str, 
         "summary": [],
     }
     for _, row in eligible.iterrows():
+        topic = _topic_anchor(row)
         for kind, ground_truth in _question_candidates(row).items():
             template = _QUESTION_TEMPLATES[kind][len(candidates_by_kind[kind]) % len(_QUESTION_TEMPLATES[kind])]
-            candidates_by_kind[kind].append((template.format(title=row["title"]), ground_truth, row["paper_id"]))
+            candidates_by_kind[kind].append((template.format(topic=topic), ground_truth, row["paper_id"]))
 
     available_candidates = sum(len(candidates) for candidates in candidates_by_kind.values())
     target_size = min(TARGET_TEST_SET_SIZE, available_candidates)
@@ -137,3 +177,138 @@ def build_test_set(df: pd.DataFrame, output_path: Path | str) -> list[dict[str, 
         if not added_in_round:  # pragma: no cover - guarded by available_candidates above
             break
     raise RuntimeError("Evaluation-set generation stopped before reaching its target size.")
+
+
+def _hard_question_tasks(df: pd.DataFrame, count: int) -> list[tuple[str, str, str, str, str]]:
+    """Select diverse answer fields while keeping every reference data-backed."""
+    eligible = df.copy()
+    for column in _REQUIRED_COLUMNS:
+        eligible[column] = eligible[column].map(_text)
+    eligible = eligible.loc[
+        (eligible["paper_id"] != "") & (eligible["title"] != "") & (eligible["summary"] != "")
+    ].drop_duplicates(subset="paper_id", keep="first")
+    eligible = eligible.sort_values("paper_id", kind="stable").reset_index(drop=True)
+
+    task_sources: dict[str, list[tuple[str, str, str, str]]] = {
+        "summary": [],
+        "authors": [],
+        "publication_date": [],
+        "publisher": [],
+    }
+    for _, row in eligible.iterrows():
+        paper_id, title, summary = row["paper_id"], row["title"], row["summary"]
+        first_summary_sentence = first_sentence(summary)
+        if first_summary_sentence:
+            task_sources["summary"].append((paper_id, title, summary, first_summary_sentence))
+        for kind, field in (("authors", "authors_joined"), ("publication_date", "published"), ("publisher", "comment")):
+            answer = _text(row.get(field, ""))
+            if answer:
+                task_sources[kind].append((paper_id, title, summary, answer))
+
+    tasks: list[tuple[str, str, str, str, str]] = []
+    offsets = {kind: 0 for kind in task_sources}
+    while len(tasks) < count:
+        added_in_round = False
+        for kind, candidates in task_sources.items():
+            offset = offsets[kind]
+            if offset >= len(candidates):
+                continue
+            paper_id, title, summary, answer = candidates[offset]
+            tasks.append((kind, paper_id, title, summary, answer))
+            offsets[kind] += 1
+            added_in_round = True
+            if len(tasks) == count:
+                return tasks
+        if not added_in_round:
+            break
+    return tasks
+
+
+def _generate_question(llm, kind: str, title: str, summary: str, answer: str) -> str:
+    task_instruction = {
+        "summary": "Ask about the central problem, method, finding, or application described in the abstract.",
+        "authors": "Ask who conducted the work, using research details from the abstract as the clue.",
+        "publication_date": "Ask when the work was published, using research details from the abstract as the clue.",
+        "publisher": "Ask which publisher issued the work, using research details from the abstract as the clue.",
+    }[kind]
+    prompt = f"""
+Create one difficult but answerable factual question for a scholarly RAG benchmark.
+
+Paper title (context only; never reveal it): {title}
+Abstract: {summary}
+Reference answer (context only; never reveal it): {answer}
+Requested answer type: {kind}
+
+{task_instruction}
+Rules:
+- Do not mention the title, DOI, URL, author names, publisher name, date, or reference answer.
+- Paraphrase the abstract; do not copy a phrase of more than six consecutive words.
+- Use concrete details from the abstract so semantic retrieval can find the document.
+- Ask exactly one fluent question in Vietnamese. Do not retain distinctive English
+  phrases from the title or abstract; translate and paraphrase the concepts.
+- Return only the question.
+""".strip()
+    result = llm.with_structured_output(_GeneratedQuestion).invoke(prompt)
+    question = _text(result.question)
+    lowered = question.casefold()
+    if len(question) < 20 or _text(title).casefold() in lowered or _text(answer).casefold() in lowered:
+        raise ValueError("Generated question leaked a title/reference answer or was too short.")
+    return question
+
+
+def build_llm_generated_test_set(
+    df: pd.DataFrame,
+    output_path: Path | str,
+    settings: Settings,
+    question_count: int = TARGET_TEST_SET_SIZE,
+    provenance_path: Path | str | None = None,
+) -> list[dict[str, Any]]:
+    """Freeze hard, non-template questions generated by the configured LLM.
+
+    The LLM only writes questions. Ground truths and document IDs are copied
+    from the clean dataframe, preventing any model-generated answer drift.
+    """
+    tasks = _hard_question_tasks(df, question_count)
+    if len(tasks) < MIN_TEST_SET_SIZE:
+        raise ValueError(f"Only {len(tasks)} LLM-generation tasks are available; at least {MIN_TEST_SET_SIZE} are required.")
+
+    llm = build_llm(settings=settings, temperature=0.0)
+    samples: list[dict[str, Any]] = []
+    for number, (kind, paper_id, title, summary, ground_truth) in enumerate(tasks, start=1):
+        question: str | None = None
+        last_error: Exception | None = None
+        for _ in range(3):
+            try:
+                question = _generate_question(llm, kind, title, summary, ground_truth)
+                break
+            except Exception as error:  # pragma: no cover - provider-dependent
+                last_error = error
+        if question is None:
+            raise RuntimeError(f"Could not generate a valid hard question for {paper_id}.") from last_error
+        samples.append(
+            {
+                "id": f"q{number}",
+                "question_type": "factual",
+                "question": question,
+                "ground_truth": ground_truth,
+                "ground_truth_doc_ids": [paper_id],
+            }
+        )
+    write_json(Path(output_path), samples)
+    if provenance_path is not None:
+        clean_payload = df.to_dict(orient="records")
+        clean_hash = hashlib.sha256(
+            json.dumps(clean_payload, ensure_ascii=False, sort_keys=True, default=str, separators=(",", ":")).encode("utf-8")
+        ).hexdigest()
+        write_json(
+            Path(provenance_path),
+            {
+                "generator_provider": settings.llm_provider,
+                "generator_model": settings.model_name,
+                "prompt_version": QUESTION_PROMPT_VERSION,
+                "question_count": len(samples),
+                "clean_data_sha256": clean_hash,
+                "test_set_sha256": frozen_set_hash(samples),
+            },
+        )
+    return samples

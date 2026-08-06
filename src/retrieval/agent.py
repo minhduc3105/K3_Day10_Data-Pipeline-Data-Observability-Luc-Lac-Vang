@@ -20,6 +20,9 @@ def build_agent(settings: Settings, index: LocalEmbeddingIndex):
             lines.append(
                 f"paper_id: {result.paper_id}\n"
                 f"title: {result.title}\n"
+                f"authors: {result.metadata.get('authors_joined', '')}\n"
+                f"published: {result.metadata.get('published', '')}\n"
+                f"publisher: {result.metadata.get('publisher', '')}\n"
                 f"score: {result.score:.4f}\n"
                 f"{result.content}"
             )
@@ -34,6 +37,9 @@ def build_agent(settings: Settings, index: LocalEmbeddingIndex):
         return (
             f"paper_id: {record['paper_id']}\n"
             f"title: {record['title']}\n"
+            f"authors: {record['metadata'].get('authors_joined', '')}\n"
+            f"published: {record['metadata'].get('published', '')}\n"
+            f"publisher: {record['metadata'].get('publisher', '')}\n"
             f"{record['content']}"
         )
 
@@ -44,6 +50,8 @@ def build_agent(settings: Settings, index: LocalEmbeddingIndex):
         system_prompt=(
             "You answer questions about the indexed scholarly paper corpus sourced from Crossref. "
             "Use tools before answering factual questions. "
+            "Use only metadata or text returned by tools, including publisher metadata when relevant. "
+            "Answer concisely with the requested fact and do not invent missing information. "
             "If the indexed corpus does not support the answer, say so clearly."
         ),
         name="paper_corpus_agent",

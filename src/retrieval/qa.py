@@ -26,6 +26,8 @@ def _extract_answer(question: str, top_result: SearchResult) -> str:
         return metadata["published"]
     if "what categories" in lowered:
         return metadata["categories_joined"]
+    if "publisher" in lowered or "nhà xuất bản" in lowered:
+        return str(metadata.get("publisher", ""))
     return first_sentence(metadata["summary"])
 
 

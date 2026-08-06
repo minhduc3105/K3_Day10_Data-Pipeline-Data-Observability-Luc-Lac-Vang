@@ -1,0 +1,8 @@
+{
+  "generator_provider": "openrouter",
+  "generator_model": "openai/gpt-4o-mini",
+  "prompt_version": "hard-vietnamese-paraphrase-v1",
+  "question_count": 42,
+  "clean_data_sha256": "8fe227c9561f33969ae0be5d7b03cb07e0de22838e4a19f6270595eb073a6128",
+  "test_set_sha256": "db85afe199ac6a51bbb5abd0ce4c1cbdcc542bf39cebafbc660e67ffe29cc377"
+}

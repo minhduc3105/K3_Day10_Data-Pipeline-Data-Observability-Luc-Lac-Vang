@@ -58,6 +58,7 @@ class LocalEmbeddingIndex:
                         "authors_joined": row["authors_joined"],
                         "categories_joined": row["categories_joined"],
                         "summary": row["summary"],
+                        "publisher": row.get("comment", ""),
                         "abs_url": row["abs_url"],
                         "pdf_url": row["pdf_url"],
                     },

@@ -4,7 +4,7 @@ import json
 
 import pandas as pd
 
-from evaluation.testset import MIN_TEST_SET_SIZE, build_test_set
+from evaluation.testset import MIN_TEST_SET_SIZE, _generate_question, build_test_set, frozen_set_hash
 
 
 def test_build_test_set_is_factual_deterministic_and_persisted(tmp_path) -> None:
@@ -30,9 +30,9 @@ def test_build_test_set_is_factual_deterministic_and_persisted(tmp_path) -> None
     assert [sample["id"] for sample in samples] == [f"q{index}" for index in range(1, len(samples) + 1)]
     assert all(sample["question_type"] == "factual" for sample in samples)
     assert all(len(sample["ground_truth_doc_ids"]) == 1 for sample in samples)
-    assert samples[0]["question"] == "Who authored 'Paper 0'?"
-    assert samples[1]["question"] == "When was 'Paper 0' published?"
-    assert samples[2]["question"] == "What categories does 'Paper 0' belong to?"
+    assert samples[0]["question"].startswith("Who authored")
+    assert samples[1]["question"].startswith("When was")
+    assert "Paper 0" not in samples[0]["question"]
     assert json.loads(output_path.read_text(encoding="utf-8")) == samples
 
 
@@ -47,3 +47,27 @@ def test_build_test_set_requires_thirty_answerable_questions(tmp_path) -> None:
         assert "at least 30" in str(error)
     else:  # pragma: no cover
         raise AssertionError("Expected a ValueError for an undersized dataset.")
+
+
+def test_llm_question_validation_rejects_title_or_answer_leakage() -> None:
+    class FakeLLM:
+        def __init__(self, question):
+            self.question = question
+
+        def with_structured_output(self, _):
+            return self
+
+        def invoke(self, _):
+            return type("Result", (), {"question": self.question})()
+
+    safe_question = _generate_question(
+        FakeLLM("Which research challenge is addressed by integrating data-driven models with development workflows?"),
+        "summary",
+        "Secret Paper Title",
+        "Abstract text",
+        "Secret answer",
+    )
+    assert safe_question.startswith("Which research")
+    with __import__("pytest").raises(ValueError):
+        _generate_question(FakeLLM("What does Secret Paper Title say?"), "summary", "Secret Paper Title", "Abstract", "Answer")
+    assert len(frozen_set_hash([{"id": "q1"}])) == 64

@@ -1649,7 +1649,7 @@
     ],
     "categories": [],
     "primary_category": "",
-    "published": "2000-01-01",
+    "published": "2023-04-01",
     "updated": "2026-07-23",
     "abs_url": "https://doi.org/10.1007/s10994-022-06200-0",
     "pdf_url": "https://link.springer.com/content/pdf/10.1007/s10994-022-06200-0.pdf",
@@ -1657,7 +1657,7 @@
     "authors_joined": "Felix Mohr, Marcel Wever",
     "categories_joined": "",
     "summary_chars": 1019,
-    "age_days": 9714.0,
+    "age_days": 1223.0,
     "text_for_embedding": "Title: Naive automated machine learning | Authors: Felix Mohr, Marcel Wever | Summary: Abstract An essential task of automated machine learning ( $$\\text {AutoML}$$ AutoML ) is the problem of automatically finding the pipeline with the best generalization performance on a given dataset. This problem has been addressed with sophisticated $$\\text {black-box}$$ black-box optimization techniques such as Bayesian optimization, grammar-based genetic algorithms, and tree search algorithms. Most of the current approaches are motivated by the assumption that optimizing the components of a pipeline in isolation may yield sub-optimal results. We present $$\\text {Naive AutoML}$$ Naive AutoML, an approach that precisely realizes such an in-isolation optimization of the different components of a pre-defined pipeline scheme. The returned pipeline is obtained by just taking the best algorithm of each slot. The isolated optimization leads to substantially reduced search spaces, and, surprisingly, this approach yields comparable and sometimes even better performance than current state-of-the-art optimizers."
   },
   {
@@ -3241,7 +3241,7 @@
     ],
     "categories": [],
     "primary_category": "",
-    "published": "2023-01-01",
+    "published": "2000-01-01",
     "updated": "2026-07-22",
     "abs_url": "https://doi.org/10.1007/978-1-0716-3195-9_2",
     "pdf_url": "",
@@ -3249,7 +3249,7 @@
     "authors_joined": "Johann Faouzi, Olivier Colliot",
     "categories_joined": "",
     "summary_chars": 627,
-    "age_days": 1313.0,
+    "age_days": 9714.0,
     "text_for_embedding": "Title: Classic Machine Learning Methods | Authors: Johann Faouzi, Olivier Colliot | Summary: Abstract In this chapter, we present the main classic machine learning methods. A large part of the chapter is devoted to supervised learning techniques for classification and regression, including nearest neighbor methods, linear and logistic regressions, support vector machines, and tree-based algorithms. We also describe the problem of overfitting as well as strategies to overcome it. We finally provide a brief overview of unsupervised learning methods, namely, for clustering and dimensionality reduction. The chapter does not cover neural networks and deep learning as these will be presented in Chaps. 3, 4, 5, and 6."
   },
   {
@@ -4093,24 +4093,24 @@
     "text_for_embedding": "Title: AUTOMATON | Authors: Adam Palmquist, Isak Barbopoulos, Miralem Helmefalk | Summary: This article displays a design ethnographic case study on an ongoing machine learning project at a Scandinavian gamification start-up company. From late 2020 until early 2021, the project produced a machine learning proof of concept, later implemented in the gamification start-up\u00b4s application programming interface to offer smart gamification. The initial results show promise in using prediction models to automate the cluster model selection affording more functional, autonomous, and scalable user segments that are faster to implement. The finding provides opportunities for gamification (e.g., in learning analytics and health informatics). An identified challenge was performance; the neural networks required hyperparameter fine-tuning, which is time-consuming and limits scalability. Interesting further investigations should consider the neural network fine-tuning process, but also attempt to verify the effectiveness of the cluster models selection compared with a control group."
   },
   {
-    "paper_id": "10.1007/978-1-0716-3195-9_2",
-    "title": "Classic Machine Learning Methods",
-    "summary": "Abstract In this chapter, we present the main classic machine learning methods. A large part of the chapter is devoted to supervised learning techniques for classification and regression, including nearest neighbor methods, linear and logistic regressions, support vector machines, and tree-based algorithms. We also describe the problem of overfitting as well as strategies to overcome it. We finally provide a brief overview of unsupervised learning methods, namely, for clustering and dimensionality reduction. The chapter does not cover neural networks and deep learning as these will be presented in Chaps. 3, 4, 5, and 6.",
+    "paper_id": "10.1007/s10994-022-06200-0",
+    "title": "Naive automated machine learning",
+    "summary": "Abstract An essential task of automated machine learning ( $$\\text {AutoML}$$ AutoML ) is the problem of automatically finding the pipeline with the best generalization performance on a given dataset. This problem has been addressed with sophisticated $$\\text {black-box}$$ black-box optimization techniques such as Bayesian optimization, grammar-based genetic algorithms, and tree search algorithms. Most of the current approaches are motivated by the assumption that optimizing the components of a pipeline in isolation may yield sub-optimal results. We present $$\\text {Naive AutoML}$$ Naive AutoML, an approach that precisely realizes such an in-isolation optimization of the different components of a pre-defined pipeline scheme. The returned pipeline is obtained by just taking the best algorithm of each slot. The isolated optimization leads to substantially reduced search spaces, and, surprisingly, this approach yields comparable and sometimes even better performance than current state-of-the-art optimizers.",
     "authors": [
-      "Johann Faouzi",
-      "Olivier Colliot"
+      "Felix Mohr",
+      "Marcel Wever"
     ],
     "categories": [],
     "primary_category": "",
-    "published": "2023-01-01",
-    "updated": "2026-07-22",
-    "abs_url": "https://doi.org/10.1007/978-1-0716-3195-9_2",
-    "pdf_url": "",
-    "comment": "Springer US",
-    "authors_joined": "Johann Faouzi, Olivier Colliot",
+    "published": "2023-04-01",
+    "updated": "2026-07-23",
+    "abs_url": "https://doi.org/10.1007/s10994-022-06200-0",
+    "pdf_url": "https://link.springer.com/content/pdf/10.1007/s10994-022-06200-0.pdf",
+    "comment": "Springer Science and Business Media LLC",
+    "authors_joined": "Felix Mohr, Marcel Wever",
     "categories_joined": "",
-    "summary_chars": 627,
-    "age_days": 1313.0,
-    "text_for_embedding": "Title: Classic Machine Learning Methods | Authors: Johann Faouzi, Olivier Colliot | Summary: Abstract In this chapter, we present the main classic machine learning methods. A large part of the chapter is devoted to supervised learning techniques for classification and regression, including nearest neighbor methods, linear and logistic regressions, support vector machines, and tree-based algorithms. We also describe the problem of overfitting as well as strategies to overcome it. We finally provide a brief overview of unsupervised learning methods, namely, for clustering and dimensionality reduction. The chapter does not cover neural networks and deep learning as these will be presented in Chaps. 3, 4, 5, and 6."
+    "summary_chars": 1019,
+    "age_days": 1223.0,
+    "text_for_embedding": "Title: Naive automated machine learning | Authors: Felix Mohr, Marcel Wever | Summary: Abstract An essential task of automated machine learning ( $$\\text {AutoML}$$ AutoML ) is the problem of automatically finding the pipeline with the best generalization performance on a given dataset. This problem has been addressed with sophisticated $$\\text {black-box}$$ black-box optimization techniques such as Bayesian optimization, grammar-based genetic algorithms, and tree search algorithms. Most of the current approaches are motivated by the assumption that optimizing the components of a pipeline in isolation may yield sub-optimal results. We present $$\\text {Naive AutoML}$$ Naive AutoML, an approach that precisely realizes such an in-isolation optimization of the different components of a pre-defined pipeline scheme. The returned pipeline is obtained by just taking the best algorithm of each slot. The isolated optimization leads to substantially reduced search spaces, and, surprisingly, this approach yields comparable and sometimes even better performance than current state-of-the-art optimizers."
   }
 ]

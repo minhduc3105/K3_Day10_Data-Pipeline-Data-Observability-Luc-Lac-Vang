@@ -1,9 +1,18 @@
 {
   "samples": 42,
-  "retrieval_hit_rate": 1.0,
-  "mean_token_f1": 0.36313673525655094,
-  "judge_accuracy": 0.35714285714285715,
-  "mean_judge_score": 2.4285714285714284,
+  "retrieval_hit_rate": 0.14285714285714285,
+  "mean_token_f1": 0.06037731328326092,
+  "judge_accuracy": 0.42857142857142855,
+  "mean_judge_score": 2.880952380952381,
+  "frozen_test_set_hash": "db85afe199ac6a51bbb5abd0ce4c1cbdcc542bf39cebafbc660e67ffe29cc377",
+  "frozen_test_set_samples": 42,
+  "agent_enabled": true,
+  "agent_error": null,
+  "judge_mode": "llm_with_heuristic_fallback",
+  "answer_mode_counts": {
+    "agent": 42,
+    "heuristic_fallback": 0
+  },
   "ragas": {
     "skipped": "Set RUN_RAGAS=1 to enable the slower Ragas pass."
   }
