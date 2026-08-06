@@ -1,0 +1,272 @@
+[
+  {
+    "id": "q1",
+    "question_type": "factual",
+    "question": "Who authored 'Developing and Running Machine Learning Software: Machine Learning Operations (MLOps)'?",
+    "ground_truth": "Marco Scutari, Mauro Malvestio",
+    "ground_truth_doc_ids": [
+      "10.1002/9781118445112.stat08455"
+    ]
+  },
+  {
+    "id": "q2",
+    "question_type": "factual",
+    "question": "When was 'Developing and Running Machine Learning Software: Machine Learning Operations (MLOps)' published?",
+    "ground_truth": "2023-11-28",
+    "ground_truth_doc_ids": [
+      "10.1002/9781118445112.stat08455"
+    ]
+  },
+  {
+    "id": "q3",
+    "question_type": "factual",
+    "question": "What is the main point of 'Developing and Running Machine Learning Software: Machine Learning Operations (MLOps)'?",
+    "ground_truth": "Abstract Machine learning software is fundamentally different from most other software in one important respect: it is tightly linked with data.",
+    "ground_truth_doc_ids": [
+      "10.1002/9781118445112.stat08455"
+    ]
+  },
+  {
+    "id": "q4",
+    "question_type": "factual",
+    "question": "Who authored 'Classic Machine Learning Methods'?",
+    "ground_truth": "Johann Faouzi, Olivier Colliot",
+    "ground_truth_doc_ids": [
+      "10.1007/978-1-0716-3195-9_2"
+    ]
+  },
+  {
+    "id": "q5",
+    "question_type": "factual",
+    "question": "When was 'Classic Machine Learning Methods' published?",
+    "ground_truth": "2023-01-01",
+    "ground_truth_doc_ids": [
+      "10.1007/978-1-0716-3195-9_2"
+    ]
+  },
+  {
+    "id": "q6",
+    "question_type": "factual",
+    "question": "What is the main point of 'Classic Machine Learning Methods'?",
+    "ground_truth": "Abstract In this chapter, we present the main classic machine learning methods.",
+    "ground_truth_doc_ids": [
+      "10.1007/978-1-0716-3195-9_2"
+    ]
+  },
+  {
+    "id": "q7",
+    "question_type": "factual",
+    "question": "Who authored 'Naive automated machine learning'?",
+    "ground_truth": "Felix Mohr, Marcel Wever",
+    "ground_truth_doc_ids": [
+      "10.1007/s10994-022-06200-0"
+    ]
+  },
+  {
+    "id": "q8",
+    "question_type": "factual",
+    "question": "When was 'Naive automated machine learning' published?",
+    "ground_truth": "2023-04-01",
+    "ground_truth_doc_ids": [
+      "10.1007/s10994-022-06200-0"
+    ]
+  },
+  {
+    "id": "q9",
+    "question_type": "factual",
+    "question": "What is the main point of 'Naive automated machine learning'?",
+    "ground_truth": "Abstract An essential task of automated machine learning ( $$\\text {AutoML}$$ AutoML ) is the problem of automatically finding the pipeline with the best generalization performance on a given dataset.",
+    "ground_truth_doc_ids": [
+      "10.1007/s10994-022-06200-0"
+    ]
+  },
+  {
+    "id": "q10",
+    "question_type": "factual",
+    "question": "Who authored 'When physics meets machine learning: a survey of physics-informed machine learning'?",
+    "ground_truth": "Chuizheng Meng, Sam Griesemer, Defu Cao, Sungyong Seo, Yan Liu",
+    "ground_truth_doc_ids": [
+      "10.1007/s44379-025-00016-0"
+    ]
+  },
+  {
+    "id": "q11",
+    "question_type": "factual",
+    "question": "When was 'When physics meets machine learning: a survey of physics-informed machine learning' published?",
+    "ground_truth": "2025-06-01",
+    "ground_truth_doc_ids": [
+      "10.1007/s44379-025-00016-0"
+    ]
+  },
+  {
+    "id": "q12",
+    "question_type": "factual",
+    "question": "What is the main point of 'When physics meets machine learning: a survey of physics-informed machine learning'?",
+    "ground_truth": "Abstract Physics-informed machine learning (PIML), the combination of prior physics knowledge with data-driven machine learning models, has emerged as an effective means of mitigating a shortage of training data, increasing model generalizability, and ensuring physical plausibility of results.",
+    "ground_truth_doc_ids": [
+      "10.1007/s44379-025-00016-0"
+    ]
+  },
+  {
+    "id": "q13",
+    "question_type": "factual",
+    "question": "Who authored 'Automated River Substrate Mapping From Sonar Imagery With Machine Learning'?",
+    "ground_truth": "C. S. Bodine, D. Buscombe, T. D. Hocking",
+    "ground_truth_doc_ids": [
+      "10.1029/2024jh000135"
+    ]
+  },
+  {
+    "id": "q14",
+    "question_type": "factual",
+    "question": "When was 'Automated River Substrate Mapping From Sonar Imagery With Machine Learning' published?",
+    "ground_truth": "2024-09-01",
+    "ground_truth_doc_ids": [
+      "10.1029/2024jh000135"
+    ]
+  },
+  {
+    "id": "q15",
+    "question_type": "factual",
+    "question": "What is the main point of 'Automated River Substrate Mapping From Sonar Imagery With Machine Learning'?",
+    "ground_truth": "Abstract Knowledge of the variation and distribution of substrates at large spatial extents in aquatic systems, particularly rivers, is severely lacking, impeding species conservation and ecosystem restoration efforts.",
+    "ground_truth_doc_ids": [
+      "10.1029/2024jh000135"
+    ]
+  },
+  {
+    "id": "q16",
+    "question_type": "factual",
+    "question": "Who authored 'Our Vision for JGR: Machine Learning and Computation'?",
+    "ground_truth": "E. Camporeale, R. Marino, the Editorial Board",
+    "ground_truth_doc_ids": [
+      "10.1029/2024jh000184"
+    ]
+  },
+  {
+    "id": "q17",
+    "question_type": "factual",
+    "question": "When was 'Our Vision for JGR: Machine Learning and Computation' published?",
+    "ground_truth": "2024-03-01",
+    "ground_truth_doc_ids": [
+      "10.1029/2024jh000184"
+    ]
+  },
+  {
+    "id": "q18",
+    "question_type": "factual",
+    "question": "What is the main point of 'Our Vision for JGR: Machine Learning and Computation'?",
+    "ground_truth": "Abstract This editorial introduces the inaugural issue of the Journal of Geophysical Research: Machine Learning and Computation to the scientific community, elucidating the motivations and vision behind its establishment.",
+    "ground_truth_doc_ids": [
+      "10.1029/2024jh000184"
+    ]
+  },
+  {
+    "id": "q19",
+    "question_type": "factual",
+    "question": "Who authored 'Machine Learning\u2010Based Hydrofacies Classification: Effects of Noise and Regularization'?",
+    "ground_truth": "Emmanuel Oladeji, Andrew Parsekian, Dario Grana",
+    "ground_truth_doc_ids": [
+      "10.1029/2024jh000197"
+    ]
+  },
+  {
+    "id": "q20",
+    "question_type": "factual",
+    "question": "When was 'Machine Learning\u2010Based Hydrofacies Classification: Effects of Noise and Regularization' published?",
+    "ground_truth": "2024-09-01",
+    "ground_truth_doc_ids": [
+      "10.1029/2024jh000197"
+    ]
+  },
+  {
+    "id": "q21",
+    "question_type": "factual",
+    "question": "What is the main point of 'Machine Learning\u2010Based Hydrofacies Classification: Effects of Noise and Regularization'?",
+    "ground_truth": "Abstract This study utilizes an unsupervised ML approach, the expectation\u2010maximization (EM) algorithm using Gaussian Mixture Models (GMM), to integrate near\u2010surface geophysics measurements for hydrofacies classification.",
+    "ground_truth_doc_ids": [
+      "10.1029/2024jh000197"
+    ]
+  },
+  {
+    "id": "q22",
+    "question_type": "factual",
+    "question": "Who authored 'Machine Learning Potential for Serpentines'?",
+    "ground_truth": "Hongjin Wang, Chenxing Luo, Renata M. Wentzcovitch",
+    "ground_truth_doc_ids": [
+      "10.1029/2024jh000434"
+    ]
+  },
+  {
+    "id": "q23",
+    "question_type": "factual",
+    "question": "When was 'Machine Learning Potential for Serpentines' published?",
+    "ground_truth": "2024-12-01",
+    "ground_truth_doc_ids": [
+      "10.1029/2024jh000434"
+    ]
+  },
+  {
+    "id": "q24",
+    "question_type": "factual",
+    "question": "What is the main point of 'Machine Learning Potential for Serpentines'?",
+    "ground_truth": "Abstract Serpentines are layered hydrous magnesium silicates (MgOO) formed through serpentinization, a geochemical process that significantly alters the physical property of the mantle.",
+    "ground_truth_doc_ids": [
+      "10.1029/2024jh000434"
+    ]
+  },
+  {
+    "id": "q25",
+    "question_type": "factual",
+    "question": "Who authored 'Machine Learning Detection of Melting Layers From Radar Observations'?",
+    "ground_truth": "Yan Xie, Fraser King, Claire Pettersen, Mark Flanner",
+    "ground_truth_doc_ids": [
+      "10.1029/2024jh000521"
+    ]
+  },
+  {
+    "id": "q26",
+    "question_type": "factual",
+    "question": "When was 'Machine Learning Detection of Melting Layers From Radar Observations' published?",
+    "ground_truth": "2025-06-01",
+    "ground_truth_doc_ids": [
+      "10.1029/2024jh000521"
+    ]
+  },
+  {
+    "id": "q27",
+    "question_type": "factual",
+    "question": "What is the main point of 'Machine Learning Detection of Melting Layers From Radar Observations'?",
+    "ground_truth": "Abstract Melting layers in the atmosphere signify where falling ice hydrometeors melt into raindrops, and can be identified by discernible radar signatures.",
+    "ground_truth_doc_ids": [
+      "10.1029/2024jh000521"
+    ]
+  },
+  {
+    "id": "q28",
+    "question_type": "factual",
+    "question": "Who authored 'A Review of Machine Learning\u2010Based Ionospheric Spatial and Temporal Modeling'?",
+    "ground_truth": "Shuyin Mao, Manuel Hern\u00e1ndez\u2010Pajares, Benedikt Soja",
+    "ground_truth_doc_ids": [
+      "10.1029/2024jh000555"
+    ]
+  },
+  {
+    "id": "q29",
+    "question_type": "factual",
+    "question": "When was 'A Review of Machine Learning\u2010Based Ionospheric Spatial and Temporal Modeling' published?",
+    "ground_truth": "2025-09-01",
+    "ground_truth_doc_ids": [
+      "10.1029/2024jh000555"
+    ]
+  },
+  {
+    "id": "q30",
+    "question_type": "factual",
+    "question": "What is the main point of 'A Review of Machine Learning\u2010Based Ionospheric Spatial and Temporal Modeling'?",
+    "ground_truth": "Abstract The ionosphere introduces disturbances and errors in radio signals for satellite communication and navigation, requiring precise modeling to mitigate these effects.",
+    "ground_truth_doc_ids": [
+      "10.1029/2024jh000555"
+    ]
+  }
+]
